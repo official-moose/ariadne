@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "version": "1.0",
+    "start_time": null,
+    "cycle_count": 0
+  },
+  "equity": {},
+  "positions": {},
+  "open_orders": {},
+  "daily_stats": {},
+  "risk_metrics": {},
+  "last_actions": {}
+}

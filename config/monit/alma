@@ -1,0 +1,6 @@
+check process alma with pidfile /root/Echelon/valentrix/mm/utils/tickersticker/alma.pid
+  start program = "/bin/bash -lc 'nohup /root/Echelon/valentrix/mm/config/bash/alma.sh >/dev/null 2>&1 &'"
+    with timeout 60 seconds
+  stop program  = "/bin/bash -lc 'kill -TERM $(cat /root/Echelon/valentrix/mm/utils/tickersticker/alma.pid)'"
+  working directory "/root/Echelon/valentrix"
+  if does not exist then restart

@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "version": "1.0",
+    "simulation_start": null,
+    "total_cycles": 0
+  },
+  "balances": {
+    "USDT": {
+      "available": 2500.00,
+      "hold": 0.0
+    }
+  },
+  "performance": {
+    "starting_capital": 2500.00,
+    "current_equity": 2500.00
+  },
+  "active_orders": [],
+  "position_history": {},
+  "realism_stats": {},
+  "config_overrides": {}
+}

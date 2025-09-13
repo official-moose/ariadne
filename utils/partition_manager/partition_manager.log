@@ -1,0 +1,1468 @@
+[2025-08-27 09:39:23] INFO: ======================================================================
+[2025-08-27 09:39:23] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-27 09:39:23] INFO: [INIT] Database connection established
+[2025-08-27 09:39:23] INFO: [CREATE] Created partition tickstick_2025_08_27_10 for next hour
+[2025-08-27 09:39:23] INFO: [SUCCESS] Next hour partition created
+[2025-08-27 09:39:23] ERROR: [ERROR] Failed to parse partition tickstick_2025_08_27_10: invalid literal for int() with base 10: "'1756292400'"
+[2025-08-27 09:39:23] INFO: [CLEANUP] No old partitions to drop
+[2025-08-27 09:39:24] ERROR: [ERROR] Failed to update heartbeat: relation "heartbeats" does not exist
+LINE 2:             INSERT INTO heartbeats (process_name, last_heart...
+                                ^
+
+[2025-08-27 09:39:24] INFO: [COMPLETE] Partition management complete
+[2025-08-27 09:39:24] INFO: [CLEANUP] Database connection closed
+[2025-08-27 09:39:24] INFO: ======================================================================
+[2025-08-27 18:21:43] INFO: ======================================================================
+[2025-08-27 18:21:43] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-27 18:21:43] INFO: [INIT] Database connection established
+[2025-08-27 18:21:43] INFO: [CREATE] Created partition tickstick_2025_08_27_19 for next hour
+[2025-08-27 18:21:43] INFO: [SUCCESS] Next hour partition created
+[2025-08-27 18:21:43] INFO: [CLEANUP] No old partitions to drop
+[2025-08-27 18:21:43] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-27 18:21:43] INFO: [COMPLETE] Partition management complete
+[2025-08-27 18:21:43] INFO: [CLEANUP] Database connection closed
+[2025-08-27 18:21:43] INFO: ======================================================================
+[2025-08-27 19:00:01] INFO: ======================================================================
+[2025-08-27 19:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-27 19:00:01] INFO: [INIT] Database connection established
+[2025-08-27 19:00:01] INFO: [CREATE] Created partition tickstick_2025_08_27_20 for next hour
+[2025-08-27 19:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-27 19:00:01] INFO: [CLEANUP] No old partitions to drop
+[2025-08-27 19:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-27 19:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-27 19:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-27 19:00:01] INFO: ======================================================================
+[2025-08-27 20:00:01] INFO: ======================================================================
+[2025-08-27 20:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-27 20:00:01] INFO: [INIT] Database connection established
+[2025-08-27 20:00:01] INFO: [CREATE] Created partition tickstick_2025_08_27_21 for next hour
+[2025-08-27 20:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-27 20:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_27_18
+[2025-08-27 20:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-27 20:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-27 20:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-27 20:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-27 20:00:01] INFO: ======================================================================
+[2025-08-27 21:00:01] INFO: ======================================================================
+[2025-08-27 21:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-27 21:00:01] INFO: [INIT] Database connection established
+[2025-08-27 21:00:02] INFO: [CREATE] Created partition tickstick_2025_08_27_22 for next hour
+[2025-08-27 21:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-27 21:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_27_19
+[2025-08-27 21:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-27 21:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-27 21:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-27 21:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-27 21:00:02] INFO: ======================================================================
+[2025-08-27 22:00:01] INFO: ======================================================================
+[2025-08-27 22:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-27 22:00:01] INFO: [INIT] Database connection established
+[2025-08-27 22:00:01] INFO: [CREATE] Created partition tickstick_2025_08_27_23 for next hour
+[2025-08-27 22:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-27 22:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_27_20
+[2025-08-27 22:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-27 22:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-27 22:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-27 22:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-27 22:00:01] INFO: ======================================================================
+[2025-08-27 23:00:02] INFO: ======================================================================
+[2025-08-27 23:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-27 23:00:02] INFO: [INIT] Database connection established
+[2025-08-27 23:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_00 for next hour
+[2025-08-27 23:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-27 23:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_27_21
+[2025-08-27 23:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-27 23:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-27 23:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-27 23:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-27 23:00:02] INFO: ======================================================================
+[2025-08-28 00:00:02] INFO: ======================================================================
+[2025-08-28 00:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 00:00:02] INFO: [INIT] Database connection established
+[2025-08-28 00:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_01 for next hour
+[2025-08-28 00:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 00:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_27_22
+[2025-08-28 00:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 00:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 00:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 00:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 00:00:02] INFO: ======================================================================
+[2025-08-28 01:00:02] INFO: ======================================================================
+[2025-08-28 01:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 01:00:02] INFO: [INIT] Database connection established
+[2025-08-28 01:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_02 for next hour
+[2025-08-28 01:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 01:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_27_23
+[2025-08-28 01:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 01:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 01:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 01:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 01:00:02] INFO: ======================================================================
+[2025-08-28 02:00:01] INFO: ======================================================================
+[2025-08-28 02:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 02:00:02] INFO: [INIT] Database connection established
+[2025-08-28 02:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_03 for next hour
+[2025-08-28 02:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 02:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_00
+[2025-08-28 02:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 02:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 02:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 02:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 02:00:02] INFO: ======================================================================
+[2025-08-28 03:00:01] INFO: ======================================================================
+[2025-08-28 03:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 03:00:01] INFO: [INIT] Database connection established
+[2025-08-28 03:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_04 for next hour
+[2025-08-28 03:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 03:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_01
+[2025-08-28 03:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 03:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 03:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 03:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 03:00:01] INFO: ======================================================================
+[2025-08-28 04:00:01] INFO: ======================================================================
+[2025-08-28 04:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 04:00:01] INFO: [INIT] Database connection established
+[2025-08-28 04:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_05 for next hour
+[2025-08-28 04:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 04:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_02
+[2025-08-28 04:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 04:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 04:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 04:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 04:00:01] INFO: ======================================================================
+[2025-08-28 05:00:01] INFO: ======================================================================
+[2025-08-28 05:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 05:00:02] INFO: [INIT] Database connection established
+[2025-08-28 05:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_06 for next hour
+[2025-08-28 05:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 05:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_03
+[2025-08-28 05:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 05:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 05:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 05:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 05:00:02] INFO: ======================================================================
+[2025-08-28 06:00:02] INFO: ======================================================================
+[2025-08-28 06:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 06:00:02] INFO: [INIT] Database connection established
+[2025-08-28 06:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_07 for next hour
+[2025-08-28 06:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 06:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_04
+[2025-08-28 06:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 06:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 06:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 06:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 06:00:02] INFO: ======================================================================
+[2025-08-28 07:00:01] INFO: ======================================================================
+[2025-08-28 07:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 07:00:01] INFO: [INIT] Database connection established
+[2025-08-28 07:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_08 for next hour
+[2025-08-28 07:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 07:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_05
+[2025-08-28 07:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 07:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 07:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 07:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 07:00:01] INFO: ======================================================================
+[2025-08-28 08:00:02] INFO: ======================================================================
+[2025-08-28 08:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 08:00:02] INFO: [INIT] Database connection established
+[2025-08-28 08:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_09 for next hour
+[2025-08-28 08:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 08:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_06
+[2025-08-28 08:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 08:00:03] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 08:00:03] INFO: [COMPLETE] Partition management complete
+[2025-08-28 08:00:03] INFO: [CLEANUP] Database connection closed
+[2025-08-28 08:00:03] INFO: ======================================================================
+[2025-08-28 09:00:01] INFO: ======================================================================
+[2025-08-28 09:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 09:00:01] INFO: [INIT] Database connection established
+[2025-08-28 09:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_10 for next hour
+[2025-08-28 09:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 09:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_07
+[2025-08-28 09:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 09:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 09:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 09:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 09:00:01] INFO: ======================================================================
+[2025-08-28 10:00:01] INFO: ======================================================================
+[2025-08-28 10:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 10:00:01] INFO: [INIT] Database connection established
+[2025-08-28 10:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_11 for next hour
+[2025-08-28 10:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 10:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_08
+[2025-08-28 10:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 10:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 10:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 10:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 10:00:01] INFO: ======================================================================
+[2025-08-28 11:00:02] INFO: ======================================================================
+[2025-08-28 11:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 11:00:02] INFO: [INIT] Database connection established
+[2025-08-28 11:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_12 for next hour
+[2025-08-28 11:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 11:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_09
+[2025-08-28 11:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 11:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 11:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 11:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 11:00:02] INFO: ======================================================================
+[2025-08-28 12:00:02] INFO: ======================================================================
+[2025-08-28 12:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 12:00:02] INFO: [INIT] Database connection established
+[2025-08-28 12:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_13 for next hour
+[2025-08-28 12:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 12:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_10
+[2025-08-28 12:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 12:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 12:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 12:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 12:00:02] INFO: ======================================================================
+[2025-08-28 13:00:03] INFO: ======================================================================
+[2025-08-28 13:00:03] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 13:00:03] INFO: [INIT] Database connection established
+[2025-08-28 13:00:03] INFO: [CREATE] Created partition tickstick_2025_08_28_14 for next hour
+[2025-08-28 13:00:03] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 13:00:03] INFO: [DROP] Dropped old partition tickstick_2025_08_28_11
+[2025-08-28 13:00:03] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 13:00:03] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 13:00:03] INFO: [COMPLETE] Partition management complete
+[2025-08-28 13:00:03] INFO: [CLEANUP] Database connection closed
+[2025-08-28 13:00:03] INFO: ======================================================================
+[2025-08-28 14:00:01] INFO: ======================================================================
+[2025-08-28 14:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 14:00:01] INFO: [INIT] Database connection established
+[2025-08-28 14:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_15 for next hour
+[2025-08-28 14:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 14:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_12
+[2025-08-28 14:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 14:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 14:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 14:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 14:00:01] INFO: ======================================================================
+[2025-08-28 15:00:01] INFO: ======================================================================
+[2025-08-28 15:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 15:00:01] INFO: [INIT] Database connection established
+[2025-08-28 15:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_16 for next hour
+[2025-08-28 15:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 15:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_13
+[2025-08-28 15:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 15:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 15:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 15:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 15:00:01] INFO: ======================================================================
+[2025-08-28 16:00:01] INFO: ======================================================================
+[2025-08-28 16:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 16:00:01] INFO: [INIT] Database connection established
+[2025-08-28 16:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_17 for next hour
+[2025-08-28 16:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 16:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_14
+[2025-08-28 16:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 16:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 16:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 16:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 16:00:02] INFO: ======================================================================
+[2025-08-28 17:00:01] INFO: ======================================================================
+[2025-08-28 17:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 17:00:01] INFO: [INIT] Database connection established
+[2025-08-28 17:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_18 for next hour
+[2025-08-28 17:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 17:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_15
+[2025-08-28 17:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 17:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 17:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 17:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 17:00:01] INFO: ======================================================================
+[2025-08-28 18:00:02] INFO: ======================================================================
+[2025-08-28 18:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 18:00:02] INFO: [INIT] Database connection established
+[2025-08-28 18:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_19 for next hour
+[2025-08-28 18:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 18:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_16
+[2025-08-28 18:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 18:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 18:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 18:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 18:00:02] INFO: ======================================================================
+[2025-08-28 19:00:02] INFO: ======================================================================
+[2025-08-28 19:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 19:00:02] INFO: [INIT] Database connection established
+[2025-08-28 19:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_20 for next hour
+[2025-08-28 19:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 19:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_17
+[2025-08-28 19:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 19:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 19:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 19:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 19:00:02] INFO: ======================================================================
+[2025-08-28 20:00:02] INFO: ======================================================================
+[2025-08-28 20:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 20:00:02] INFO: [INIT] Database connection established
+[2025-08-28 20:00:02] INFO: [CREATE] Created partition tickstick_2025_08_28_21 for next hour
+[2025-08-28 20:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 20:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_18
+[2025-08-28 20:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 20:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 20:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-28 20:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-28 20:00:02] INFO: ======================================================================
+[2025-08-28 21:00:01] INFO: ======================================================================
+[2025-08-28 21:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 21:00:01] INFO: [INIT] Database connection established
+[2025-08-28 21:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_22 for next hour
+[2025-08-28 21:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 21:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_19
+[2025-08-28 21:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 21:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 21:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 21:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 21:00:01] INFO: ======================================================================
+[2025-08-28 22:00:01] INFO: ======================================================================
+[2025-08-28 22:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 22:00:01] INFO: [INIT] Database connection established
+[2025-08-28 22:00:01] INFO: [CREATE] Created partition tickstick_2025_08_28_23 for next hour
+[2025-08-28 22:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 22:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_20
+[2025-08-28 22:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 22:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 22:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 22:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 22:00:01] INFO: ======================================================================
+[2025-08-28 23:00:01] INFO: ======================================================================
+[2025-08-28 23:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-28 23:00:01] INFO: [INIT] Database connection established
+[2025-08-28 23:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_00 for next hour
+[2025-08-28 23:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-28 23:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_21
+[2025-08-28 23:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-28 23:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-28 23:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-28 23:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-28 23:00:01] INFO: ======================================================================
+[2025-08-29 00:00:02] INFO: ======================================================================
+[2025-08-29 00:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 00:00:02] INFO: [INIT] Database connection established
+[2025-08-29 00:00:02] INFO: [CREATE] Created partition tickstick_2025_08_29_01 for next hour
+[2025-08-29 00:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 00:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_28_22
+[2025-08-29 00:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 00:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 00:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-29 00:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-29 00:00:02] INFO: ======================================================================
+[2025-08-29 01:00:01] INFO: ======================================================================
+[2025-08-29 01:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 01:00:01] INFO: [INIT] Database connection established
+[2025-08-29 01:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_02 for next hour
+[2025-08-29 01:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 01:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_28_23
+[2025-08-29 01:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 01:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 01:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 01:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 01:00:01] INFO: ======================================================================
+[2025-08-29 02:00:01] INFO: ======================================================================
+[2025-08-29 02:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 02:00:01] INFO: [INIT] Database connection established
+[2025-08-29 02:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_03 for next hour
+[2025-08-29 02:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 02:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_00
+[2025-08-29 02:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 02:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 02:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 02:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 02:00:01] INFO: ======================================================================
+[2025-08-29 03:00:01] INFO: ======================================================================
+[2025-08-29 03:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 03:00:01] INFO: [INIT] Database connection established
+[2025-08-29 03:00:02] INFO: [CREATE] Created partition tickstick_2025_08_29_04 for next hour
+[2025-08-29 03:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 03:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_29_01
+[2025-08-29 03:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 03:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 03:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-29 03:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-29 03:00:02] INFO: ======================================================================
+[2025-08-29 04:00:01] INFO: ======================================================================
+[2025-08-29 04:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 04:00:01] INFO: [INIT] Database connection established
+[2025-08-29 04:00:02] INFO: [CREATE] Created partition tickstick_2025_08_29_05 for next hour
+[2025-08-29 04:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 04:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_29_02
+[2025-08-29 04:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 04:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 04:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-29 04:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-29 04:00:02] INFO: ======================================================================
+[2025-08-29 05:00:02] INFO: ======================================================================
+[2025-08-29 05:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 05:00:02] INFO: [INIT] Database connection established
+[2025-08-29 05:00:02] INFO: [CREATE] Created partition tickstick_2025_08_29_06 for next hour
+[2025-08-29 05:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 05:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_29_03
+[2025-08-29 05:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 05:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 05:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-29 05:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-29 05:00:02] INFO: ======================================================================
+[2025-08-29 06:00:02] INFO: ======================================================================
+[2025-08-29 06:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 06:00:02] INFO: [INIT] Database connection established
+[2025-08-29 06:00:02] INFO: [CREATE] Created partition tickstick_2025_08_29_07 for next hour
+[2025-08-29 06:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 06:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_29_04
+[2025-08-29 06:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 06:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 06:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-29 06:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-29 06:00:02] INFO: ======================================================================
+[2025-08-29 07:00:04] INFO: ======================================================================
+[2025-08-29 07:00:04] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 07:00:04] INFO: [INIT] Database connection established
+[2025-08-29 07:00:05] INFO: [CREATE] Created partition tickstick_2025_08_29_08 for next hour
+[2025-08-29 07:00:05] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 07:00:05] INFO: [DROP] Dropped old partition tickstick_2025_08_29_05
+[2025-08-29 07:00:05] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 07:00:05] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 07:00:05] INFO: [COMPLETE] Partition management complete
+[2025-08-29 07:00:05] INFO: [CLEANUP] Database connection closed
+[2025-08-29 07:00:05] INFO: ======================================================================
+[2025-08-29 08:00:01] INFO: ======================================================================
+[2025-08-29 08:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 08:00:01] INFO: [INIT] Database connection established
+[2025-08-29 08:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_09 for next hour
+[2025-08-29 08:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 08:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_06
+[2025-08-29 08:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 08:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 08:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 08:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 08:00:01] INFO: ======================================================================
+[2025-08-29 09:00:01] INFO: ======================================================================
+[2025-08-29 09:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 09:00:01] INFO: [INIT] Database connection established
+[2025-08-29 09:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_10 for next hour
+[2025-08-29 09:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 09:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_07
+[2025-08-29 09:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 09:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 09:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 09:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 09:00:01] INFO: ======================================================================
+[2025-08-29 10:00:01] INFO: ======================================================================
+[2025-08-29 10:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 10:00:01] INFO: [INIT] Database connection established
+[2025-08-29 10:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_11 for next hour
+[2025-08-29 10:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 10:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_08
+[2025-08-29 10:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 10:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 10:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 10:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 10:00:01] INFO: ======================================================================
+[2025-08-29 11:00:02] INFO: ======================================================================
+[2025-08-29 11:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 11:00:02] INFO: [INIT] Database connection established
+[2025-08-29 11:00:02] INFO: [CREATE] Created partition tickstick_2025_08_29_12 for next hour
+[2025-08-29 11:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 11:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_29_09
+[2025-08-29 11:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 11:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 11:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-29 11:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-29 11:00:02] INFO: ======================================================================
+[2025-08-29 12:00:01] INFO: ======================================================================
+[2025-08-29 12:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 12:00:01] INFO: [INIT] Database connection established
+[2025-08-29 12:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_13 for next hour
+[2025-08-29 12:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 12:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_10
+[2025-08-29 12:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 12:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 12:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 12:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 12:00:01] INFO: ======================================================================
+[2025-08-29 13:00:02] INFO: ======================================================================
+[2025-08-29 13:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 13:00:02] INFO: [INIT] Database connection established
+[2025-08-29 13:00:02] INFO: [CREATE] Created partition tickstick_2025_08_29_14 for next hour
+[2025-08-29 13:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 13:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_29_11
+[2025-08-29 13:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 13:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 13:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-29 13:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-29 13:00:02] INFO: ======================================================================
+[2025-08-29 14:00:01] INFO: ======================================================================
+[2025-08-29 14:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 14:00:01] INFO: [INIT] Database connection established
+[2025-08-29 14:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_15 for next hour
+[2025-08-29 14:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 14:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_12
+[2025-08-29 14:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 14:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 14:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 14:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 14:00:01] INFO: ======================================================================
+[2025-08-29 15:00:01] INFO: ======================================================================
+[2025-08-29 15:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 15:00:01] INFO: [INIT] Database connection established
+[2025-08-29 15:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_16 for next hour
+[2025-08-29 15:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 15:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_13
+[2025-08-29 15:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 15:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 15:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 15:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 15:00:01] INFO: ======================================================================
+[2025-08-29 16:00:02] INFO: ======================================================================
+[2025-08-29 16:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 16:00:02] INFO: [INIT] Database connection established
+[2025-08-29 16:00:02] INFO: [CREATE] Created partition tickstick_2025_08_29_17 for next hour
+[2025-08-29 16:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 16:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_29_14
+[2025-08-29 16:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 16:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 16:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-29 16:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-29 16:00:02] INFO: ======================================================================
+[2025-08-29 17:00:01] INFO: ======================================================================
+[2025-08-29 17:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 17:00:01] INFO: [INIT] Database connection established
+[2025-08-29 17:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_18 for next hour
+[2025-08-29 17:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 17:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_15
+[2025-08-29 17:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 17:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 17:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-29 17:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-29 17:00:02] INFO: ======================================================================
+[2025-08-29 18:00:01] INFO: ======================================================================
+[2025-08-29 18:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 18:00:01] INFO: [INIT] Database connection established
+[2025-08-29 18:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_19 for next hour
+[2025-08-29 18:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 18:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_16
+[2025-08-29 18:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 18:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 18:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 18:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 18:00:01] INFO: ======================================================================
+[2025-08-29 19:00:01] INFO: ======================================================================
+[2025-08-29 19:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 19:00:01] INFO: [INIT] Database connection established
+[2025-08-29 19:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_20 for next hour
+[2025-08-29 19:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 19:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_17
+[2025-08-29 19:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 19:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 19:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 19:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 19:00:01] INFO: ======================================================================
+[2025-08-29 20:00:01] INFO: ======================================================================
+[2025-08-29 20:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 20:00:01] INFO: [INIT] Database connection established
+[2025-08-29 20:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_21 for next hour
+[2025-08-29 20:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 20:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_18
+[2025-08-29 20:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 20:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 20:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 20:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 20:00:01] INFO: ======================================================================
+[2025-08-29 21:00:01] INFO: ======================================================================
+[2025-08-29 21:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 21:00:01] INFO: [INIT] Database connection established
+[2025-08-29 21:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_22 for next hour
+[2025-08-29 21:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 21:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_19
+[2025-08-29 21:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 21:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 21:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 21:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 21:00:01] INFO: ======================================================================
+[2025-08-29 22:00:01] INFO: ======================================================================
+[2025-08-29 22:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 22:00:01] INFO: [INIT] Database connection established
+[2025-08-29 22:00:01] INFO: [CREATE] Created partition tickstick_2025_08_29_23 for next hour
+[2025-08-29 22:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 22:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_20
+[2025-08-29 22:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 22:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 22:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 22:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 22:00:01] INFO: ======================================================================
+[2025-08-29 23:00:01] INFO: ======================================================================
+[2025-08-29 23:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-29 23:00:01] INFO: [INIT] Database connection established
+[2025-08-29 23:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_00 for next hour
+[2025-08-29 23:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-29 23:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_21
+[2025-08-29 23:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-29 23:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-29 23:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-29 23:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-29 23:00:01] INFO: ======================================================================
+[2025-08-30 00:00:02] INFO: ======================================================================
+[2025-08-30 00:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 00:00:03] INFO: [INIT] Database connection established
+[2025-08-30 00:00:04] INFO: [CREATE] Created partition tickstick_2025_08_30_01 for next hour
+[2025-08-30 00:00:04] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 00:00:04] INFO: [DROP] Dropped old partition tickstick_2025_08_29_22
+[2025-08-30 00:00:04] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 00:00:04] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 00:00:04] INFO: [COMPLETE] Partition management complete
+[2025-08-30 00:00:04] INFO: [CLEANUP] Database connection closed
+[2025-08-30 00:00:04] INFO: ======================================================================
+[2025-08-30 01:00:01] INFO: ======================================================================
+[2025-08-30 01:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 01:00:01] INFO: [INIT] Database connection established
+[2025-08-30 01:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_02 for next hour
+[2025-08-30 01:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 01:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_29_23
+[2025-08-30 01:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 01:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 01:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 01:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 01:00:01] INFO: ======================================================================
+[2025-08-30 02:00:02] INFO: ======================================================================
+[2025-08-30 02:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 02:00:02] INFO: [INIT] Database connection established
+[2025-08-30 02:00:02] INFO: [CREATE] Created partition tickstick_2025_08_30_03 for next hour
+[2025-08-30 02:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 02:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_30_00
+[2025-08-30 02:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 02:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 02:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-30 02:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-30 02:00:02] INFO: ======================================================================
+[2025-08-30 03:00:01] INFO: ======================================================================
+[2025-08-30 03:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 03:00:01] INFO: [INIT] Database connection established
+[2025-08-30 03:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_04 for next hour
+[2025-08-30 03:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 03:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_01
+[2025-08-30 03:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 03:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 03:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 03:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 03:00:01] INFO: ======================================================================
+[2025-08-30 04:00:01] INFO: ======================================================================
+[2025-08-30 04:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 04:00:01] INFO: [INIT] Database connection established
+[2025-08-30 04:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_05 for next hour
+[2025-08-30 04:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 04:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_02
+[2025-08-30 04:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 04:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 04:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 04:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 04:00:01] INFO: ======================================================================
+[2025-08-30 05:00:01] INFO: ======================================================================
+[2025-08-30 05:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 05:00:01] INFO: [INIT] Database connection established
+[2025-08-30 05:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_06 for next hour
+[2025-08-30 05:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 05:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_03
+[2025-08-30 05:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 05:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 05:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 05:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 05:00:01] INFO: ======================================================================
+[2025-08-30 06:00:01] INFO: ======================================================================
+[2025-08-30 06:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 06:00:01] INFO: [INIT] Database connection established
+[2025-08-30 06:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_07 for next hour
+[2025-08-30 06:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 06:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_04
+[2025-08-30 06:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 06:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 06:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 06:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 06:00:01] INFO: ======================================================================
+[2025-08-30 07:00:01] INFO: ======================================================================
+[2025-08-30 07:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 07:00:01] INFO: [INIT] Database connection established
+[2025-08-30 07:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_08 for next hour
+[2025-08-30 07:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 07:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_05
+[2025-08-30 07:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 07:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 07:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 07:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 07:00:01] INFO: ======================================================================
+[2025-08-30 08:00:01] INFO: ======================================================================
+[2025-08-30 08:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 08:00:01] INFO: [INIT] Database connection established
+[2025-08-30 08:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_09 for next hour
+[2025-08-30 08:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 08:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_06
+[2025-08-30 08:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 08:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 08:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 08:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 08:00:01] INFO: ======================================================================
+[2025-08-30 09:00:02] INFO: ======================================================================
+[2025-08-30 09:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 09:00:02] INFO: [INIT] Database connection established
+[2025-08-30 09:00:02] INFO: [CREATE] Created partition tickstick_2025_08_30_10 for next hour
+[2025-08-30 09:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 09:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_30_07
+[2025-08-30 09:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 09:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 09:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-30 09:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-30 09:00:02] INFO: ======================================================================
+[2025-08-30 10:00:01] INFO: ======================================================================
+[2025-08-30 10:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 10:00:01] INFO: [INIT] Database connection established
+[2025-08-30 10:00:02] INFO: [CREATE] Created partition tickstick_2025_08_30_11 for next hour
+[2025-08-30 10:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 10:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_30_08
+[2025-08-30 10:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 10:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 10:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-30 10:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-30 10:00:02] INFO: ======================================================================
+[2025-08-30 11:00:01] INFO: ======================================================================
+[2025-08-30 11:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 11:00:01] INFO: [INIT] Database connection established
+[2025-08-30 11:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_12 for next hour
+[2025-08-30 11:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 11:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_09
+[2025-08-30 11:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 11:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 11:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 11:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 11:00:01] INFO: ======================================================================
+[2025-08-30 12:00:01] INFO: ======================================================================
+[2025-08-30 12:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 12:00:01] INFO: [INIT] Database connection established
+[2025-08-30 12:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_13 for next hour
+[2025-08-30 12:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 12:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_10
+[2025-08-30 12:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 12:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 12:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 12:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 12:00:01] INFO: ======================================================================
+[2025-08-30 13:00:01] INFO: ======================================================================
+[2025-08-30 13:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 13:00:01] INFO: [INIT] Database connection established
+[2025-08-30 13:00:02] INFO: [CREATE] Created partition tickstick_2025_08_30_14 for next hour
+[2025-08-30 13:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 13:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_30_11
+[2025-08-30 13:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 13:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 13:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-30 13:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-30 13:00:02] INFO: ======================================================================
+[2025-08-30 14:00:01] INFO: ======================================================================
+[2025-08-30 14:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 14:00:01] INFO: [INIT] Database connection established
+[2025-08-30 14:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_15 for next hour
+[2025-08-30 14:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 14:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_12
+[2025-08-30 14:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 14:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 14:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 14:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 14:00:01] INFO: ======================================================================
+[2025-08-30 15:00:01] INFO: ======================================================================
+[2025-08-30 15:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 15:00:01] INFO: [INIT] Database connection established
+[2025-08-30 15:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_16 for next hour
+[2025-08-30 15:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 15:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_13
+[2025-08-30 15:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 15:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 15:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 15:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 15:00:01] INFO: ======================================================================
+[2025-08-30 16:00:01] INFO: ======================================================================
+[2025-08-30 16:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 16:00:01] INFO: [INIT] Database connection established
+[2025-08-30 16:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_17 for next hour
+[2025-08-30 16:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 16:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_14
+[2025-08-30 16:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 16:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 16:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 16:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 16:00:01] INFO: ======================================================================
+[2025-08-30 17:00:01] INFO: ======================================================================
+[2025-08-30 17:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 17:00:01] INFO: [INIT] Database connection established
+[2025-08-30 17:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_18 for next hour
+[2025-08-30 17:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 17:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_15
+[2025-08-30 17:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 17:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 17:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 17:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 17:00:01] INFO: ======================================================================
+[2025-08-30 18:00:02] INFO: ======================================================================
+[2025-08-30 18:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 18:00:02] INFO: [INIT] Database connection established
+[2025-08-30 18:00:02] INFO: [CREATE] Created partition tickstick_2025_08_30_19 for next hour
+[2025-08-30 18:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 18:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_30_16
+[2025-08-30 18:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 18:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 18:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-30 18:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-30 18:00:02] INFO: ======================================================================
+[2025-08-30 19:00:01] INFO: ======================================================================
+[2025-08-30 19:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 19:00:01] INFO: [INIT] Database connection established
+[2025-08-30 19:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_20 for next hour
+[2025-08-30 19:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 19:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_17
+[2025-08-30 19:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 19:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 19:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 19:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 19:00:01] INFO: ======================================================================
+[2025-08-30 20:00:01] INFO: ======================================================================
+[2025-08-30 20:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 20:00:01] INFO: [INIT] Database connection established
+[2025-08-30 20:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_21 for next hour
+[2025-08-30 20:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 20:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_18
+[2025-08-30 20:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 20:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 20:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 20:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 20:00:01] INFO: ======================================================================
+[2025-08-30 21:00:01] INFO: ======================================================================
+[2025-08-30 21:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 21:00:01] INFO: [INIT] Database connection established
+[2025-08-30 21:00:02] INFO: [CREATE] Created partition tickstick_2025_08_30_22 for next hour
+[2025-08-30 21:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 21:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_30_19
+[2025-08-30 21:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 21:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 21:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-30 21:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-30 21:00:02] INFO: ======================================================================
+[2025-08-30 22:00:01] INFO: ======================================================================
+[2025-08-30 22:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 22:00:01] INFO: [INIT] Database connection established
+[2025-08-30 22:00:01] INFO: [CREATE] Created partition tickstick_2025_08_30_23 for next hour
+[2025-08-30 22:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 22:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_20
+[2025-08-30 22:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 22:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 22:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 22:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 22:00:01] INFO: ======================================================================
+[2025-08-30 23:00:01] INFO: ======================================================================
+[2025-08-30 23:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-30 23:00:01] INFO: [INIT] Database connection established
+[2025-08-30 23:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_00 for next hour
+[2025-08-30 23:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-30 23:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_21
+[2025-08-30 23:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-30 23:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-30 23:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-30 23:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-30 23:00:01] INFO: ======================================================================
+[2025-08-31 00:00:01] INFO: ======================================================================
+[2025-08-31 00:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 00:00:01] INFO: [INIT] Database connection established
+[2025-08-31 00:00:03] INFO: [CREATE] Created partition tickstick_2025_08_31_01 for next hour
+[2025-08-31 00:00:03] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 00:00:03] INFO: [DROP] Dropped old partition tickstick_2025_08_30_22
+[2025-08-31 00:00:03] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 00:00:04] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 00:00:05] INFO: [COMPLETE] Partition management complete
+[2025-08-31 00:00:05] INFO: [CLEANUP] Database connection closed
+[2025-08-31 00:00:05] INFO: ======================================================================
+[2025-08-31 01:00:01] INFO: ======================================================================
+[2025-08-31 01:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 01:00:01] INFO: [INIT] Database connection established
+[2025-08-31 01:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_02 for next hour
+[2025-08-31 01:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 01:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_30_23
+[2025-08-31 01:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 01:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 01:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 01:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 01:00:02] INFO: ======================================================================
+[2025-08-31 02:00:01] INFO: ======================================================================
+[2025-08-31 02:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 02:00:01] INFO: [INIT] Database connection established
+[2025-08-31 02:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_03 for next hour
+[2025-08-31 02:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 02:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_00
+[2025-08-31 02:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 02:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 02:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 02:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 02:00:02] INFO: ======================================================================
+[2025-08-31 03:00:01] INFO: ======================================================================
+[2025-08-31 03:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 03:00:01] INFO: [INIT] Database connection established
+[2025-08-31 03:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_04 for next hour
+[2025-08-31 03:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 03:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_01
+[2025-08-31 03:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 03:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 03:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 03:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 03:00:02] INFO: ======================================================================
+[2025-08-31 04:00:02] INFO: ======================================================================
+[2025-08-31 04:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 04:00:02] INFO: [INIT] Database connection established
+[2025-08-31 04:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_05 for next hour
+[2025-08-31 04:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 04:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_02
+[2025-08-31 04:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 04:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 04:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 04:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 04:00:02] INFO: ======================================================================
+[2025-08-31 05:00:02] INFO: ======================================================================
+[2025-08-31 05:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 05:00:02] INFO: [INIT] Database connection established
+[2025-08-31 05:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_06 for next hour
+[2025-08-31 05:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 05:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_03
+[2025-08-31 05:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 05:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 05:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 05:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 05:00:02] INFO: ======================================================================
+[2025-08-31 06:00:02] INFO: ======================================================================
+[2025-08-31 06:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 06:00:02] INFO: [INIT] Database connection established
+[2025-08-31 06:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_07 for next hour
+[2025-08-31 06:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 06:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_04
+[2025-08-31 06:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 06:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 06:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 06:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 06:00:02] INFO: ======================================================================
+[2025-08-31 07:00:02] INFO: ======================================================================
+[2025-08-31 07:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 07:00:02] INFO: [INIT] Database connection established
+[2025-08-31 07:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_08 for next hour
+[2025-08-31 07:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 07:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_05
+[2025-08-31 07:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 07:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 07:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 07:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 07:00:02] INFO: ======================================================================
+[2025-08-31 08:00:01] INFO: ======================================================================
+[2025-08-31 08:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 08:00:01] INFO: [INIT] Database connection established
+[2025-08-31 08:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_09 for next hour
+[2025-08-31 08:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 08:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_06
+[2025-08-31 08:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 08:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 08:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 08:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 08:00:01] INFO: ======================================================================
+[2025-08-31 09:00:01] INFO: ======================================================================
+[2025-08-31 09:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 09:00:01] INFO: [INIT] Database connection established
+[2025-08-31 09:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_10 for next hour
+[2025-08-31 09:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 09:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_07
+[2025-08-31 09:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 09:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 09:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 09:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 09:00:01] INFO: ======================================================================
+[2025-08-31 10:00:02] INFO: ======================================================================
+[2025-08-31 10:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 10:00:02] INFO: [INIT] Database connection established
+[2025-08-31 10:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_11 for next hour
+[2025-08-31 10:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 10:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_08
+[2025-08-31 10:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 10:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 10:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 10:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 10:00:02] INFO: ======================================================================
+[2025-08-31 11:00:01] INFO: ======================================================================
+[2025-08-31 11:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 11:00:01] INFO: [INIT] Database connection established
+[2025-08-31 11:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_12 for next hour
+[2025-08-31 11:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 11:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_09
+[2025-08-31 11:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 11:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 11:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 11:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 11:00:01] INFO: ======================================================================
+[2025-08-31 12:00:01] INFO: ======================================================================
+[2025-08-31 12:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 12:00:01] INFO: [INIT] Database connection established
+[2025-08-31 12:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_13 for next hour
+[2025-08-31 12:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 12:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_10
+[2025-08-31 12:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 12:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 12:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 12:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 12:00:01] INFO: ======================================================================
+[2025-08-31 13:00:01] INFO: ======================================================================
+[2025-08-31 13:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 13:00:02] INFO: [INIT] Database connection established
+[2025-08-31 13:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_14 for next hour
+[2025-08-31 13:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 13:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_11
+[2025-08-31 13:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 13:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 13:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 13:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 13:00:02] INFO: ======================================================================
+[2025-08-31 14:00:01] INFO: ======================================================================
+[2025-08-31 14:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 14:00:01] INFO: [INIT] Database connection established
+[2025-08-31 14:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_15 for next hour
+[2025-08-31 14:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 14:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_12
+[2025-08-31 14:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 14:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 14:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 14:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 14:00:01] INFO: ======================================================================
+[2025-08-31 15:00:01] INFO: ======================================================================
+[2025-08-31 15:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 15:00:01] INFO: [INIT] Database connection established
+[2025-08-31 15:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_16 for next hour
+[2025-08-31 15:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 15:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_13
+[2025-08-31 15:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 15:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 15:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 15:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 15:00:01] INFO: ======================================================================
+[2025-08-31 16:00:01] INFO: ======================================================================
+[2025-08-31 16:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 16:00:01] INFO: [INIT] Database connection established
+[2025-08-31 16:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_17 for next hour
+[2025-08-31 16:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 16:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_14
+[2025-08-31 16:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 16:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 16:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 16:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 16:00:01] INFO: ======================================================================
+[2025-08-31 17:00:02] INFO: ======================================================================
+[2025-08-31 17:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 17:00:02] INFO: [INIT] Database connection established
+[2025-08-31 17:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_18 for next hour
+[2025-08-31 17:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 17:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_15
+[2025-08-31 17:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 17:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 17:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 17:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 17:00:02] INFO: ======================================================================
+[2025-08-31 18:00:01] INFO: ======================================================================
+[2025-08-31 18:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 18:00:01] INFO: [INIT] Database connection established
+[2025-08-31 18:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_19 for next hour
+[2025-08-31 18:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 18:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_16
+[2025-08-31 18:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 18:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 18:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 18:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 18:00:01] INFO: ======================================================================
+[2025-08-31 19:00:02] INFO: ======================================================================
+[2025-08-31 19:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 19:00:02] INFO: [INIT] Database connection established
+[2025-08-31 19:00:02] INFO: [CREATE] Created partition tickstick_2025_08_31_20 for next hour
+[2025-08-31 19:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 19:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_17
+[2025-08-31 19:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 19:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 19:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 19:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 19:00:02] INFO: ======================================================================
+[2025-08-31 20:00:01] INFO: ======================================================================
+[2025-08-31 20:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 20:00:01] INFO: [INIT] Database connection established
+[2025-08-31 20:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_21 for next hour
+[2025-08-31 20:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 20:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_18
+[2025-08-31 20:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 20:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 20:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 20:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 20:00:01] INFO: ======================================================================
+[2025-08-31 21:00:01] INFO: ======================================================================
+[2025-08-31 21:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 21:00:01] INFO: [INIT] Database connection established
+[2025-08-31 21:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_22 for next hour
+[2025-08-31 21:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 21:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_19
+[2025-08-31 21:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 21:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 21:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 21:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 21:00:01] INFO: ======================================================================
+[2025-08-31 22:00:01] INFO: ======================================================================
+[2025-08-31 22:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 22:00:01] INFO: [INIT] Database connection established
+[2025-08-31 22:00:01] INFO: [CREATE] Created partition tickstick_2025_08_31_23 for next hour
+[2025-08-31 22:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 22:00:01] INFO: [DROP] Dropped old partition tickstick_2025_08_31_20
+[2025-08-31 22:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 22:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 22:00:01] INFO: [COMPLETE] Partition management complete
+[2025-08-31 22:00:01] INFO: [CLEANUP] Database connection closed
+[2025-08-31 22:00:01] INFO: ======================================================================
+[2025-08-31 23:00:02] INFO: ======================================================================
+[2025-08-31 23:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-08-31 23:00:02] INFO: [INIT] Database connection established
+[2025-08-31 23:00:02] INFO: [CREATE] Created partition tickstick_2025_09_01_00 for next hour
+[2025-08-31 23:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-08-31 23:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_21
+[2025-08-31 23:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-08-31 23:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-08-31 23:00:02] INFO: [COMPLETE] Partition management complete
+[2025-08-31 23:00:02] INFO: [CLEANUP] Database connection closed
+[2025-08-31 23:00:02] INFO: ======================================================================
+[2025-09-01 00:00:04] INFO: ======================================================================
+[2025-09-01 00:00:04] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 00:00:04] INFO: [INIT] Database connection established
+[2025-09-01 00:00:04] INFO: [CREATE] Created partition tickstick_2025_09_01_01 for next hour
+[2025-09-01 00:00:04] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 00:00:04] INFO: [DROP] Dropped old partition tickstick_2025_08_31_22
+[2025-09-01 00:00:04] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 00:00:06] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 00:00:06] INFO: [COMPLETE] Partition management complete
+[2025-09-01 00:00:06] INFO: [CLEANUP] Database connection closed
+[2025-09-01 00:00:06] INFO: ======================================================================
+[2025-09-01 01:00:01] INFO: ======================================================================
+[2025-09-01 01:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 01:00:01] INFO: [INIT] Database connection established
+[2025-09-01 01:00:02] INFO: [CREATE] Created partition tickstick_2025_09_01_02 for next hour
+[2025-09-01 01:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 01:00:02] INFO: [DROP] Dropped old partition tickstick_2025_08_31_23
+[2025-09-01 01:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 01:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 01:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-01 01:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-01 01:00:02] INFO: ======================================================================
+[2025-09-01 02:00:01] INFO: ======================================================================
+[2025-09-01 02:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 02:00:01] INFO: [INIT] Database connection established
+[2025-09-01 02:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_03 for next hour
+[2025-09-01 02:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 02:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_00
+[2025-09-01 02:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 02:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 02:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 02:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 02:00:01] INFO: ======================================================================
+[2025-09-01 03:00:01] INFO: ======================================================================
+[2025-09-01 03:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 03:00:01] INFO: [INIT] Database connection established
+[2025-09-01 03:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_04 for next hour
+[2025-09-01 03:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 03:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_01
+[2025-09-01 03:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 03:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 03:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 03:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 03:00:01] INFO: ======================================================================
+[2025-09-01 04:00:01] INFO: ======================================================================
+[2025-09-01 04:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 04:00:01] INFO: [INIT] Database connection established
+[2025-09-01 04:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_05 for next hour
+[2025-09-01 04:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 04:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_02
+[2025-09-01 04:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 04:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 04:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 04:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 04:00:01] INFO: ======================================================================
+[2025-09-01 05:00:01] INFO: ======================================================================
+[2025-09-01 05:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 05:00:01] INFO: [INIT] Database connection established
+[2025-09-01 05:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_06 for next hour
+[2025-09-01 05:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 05:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_03
+[2025-09-01 05:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 05:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 05:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 05:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 05:00:01] INFO: ======================================================================
+[2025-09-01 06:00:02] INFO: ======================================================================
+[2025-09-01 06:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 06:00:02] INFO: [INIT] Database connection established
+[2025-09-01 06:00:02] INFO: [CREATE] Created partition tickstick_2025_09_01_07 for next hour
+[2025-09-01 06:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 06:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_01_04
+[2025-09-01 06:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 06:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 06:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-01 06:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-01 06:00:02] INFO: ======================================================================
+[2025-09-01 07:00:02] INFO: ======================================================================
+[2025-09-01 07:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 07:00:02] INFO: [INIT] Database connection established
+[2025-09-01 07:00:02] INFO: [CREATE] Created partition tickstick_2025_09_01_08 for next hour
+[2025-09-01 07:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 07:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_01_05
+[2025-09-01 07:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 07:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 07:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-01 07:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-01 07:00:02] INFO: ======================================================================
+[2025-09-01 08:00:02] INFO: ======================================================================
+[2025-09-01 08:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 08:00:02] INFO: [INIT] Database connection established
+[2025-09-01 08:00:02] INFO: [CREATE] Created partition tickstick_2025_09_01_09 for next hour
+[2025-09-01 08:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 08:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_01_06
+[2025-09-01 08:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 08:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 08:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-01 08:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-01 08:00:02] INFO: ======================================================================
+[2025-09-01 09:00:01] INFO: ======================================================================
+[2025-09-01 09:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 09:00:02] INFO: [INIT] Database connection established
+[2025-09-01 09:00:02] INFO: [CREATE] Created partition tickstick_2025_09_01_10 for next hour
+[2025-09-01 09:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 09:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_01_07
+[2025-09-01 09:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 09:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 09:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-01 09:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-01 09:00:02] INFO: ======================================================================
+[2025-09-01 10:00:01] INFO: ======================================================================
+[2025-09-01 10:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 10:00:01] INFO: [INIT] Database connection established
+[2025-09-01 10:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_11 for next hour
+[2025-09-01 10:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 10:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_08
+[2025-09-01 10:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 10:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 10:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 10:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 10:00:01] INFO: ======================================================================
+[2025-09-01 11:00:01] INFO: ======================================================================
+[2025-09-01 11:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 11:00:01] INFO: [INIT] Database connection established
+[2025-09-01 11:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_12 for next hour
+[2025-09-01 11:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 11:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_09
+[2025-09-01 11:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 11:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 11:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 11:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 11:00:01] INFO: ======================================================================
+[2025-09-01 12:00:01] INFO: ======================================================================
+[2025-09-01 12:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 12:00:01] INFO: [INIT] Database connection established
+[2025-09-01 12:00:02] INFO: [CREATE] Created partition tickstick_2025_09_01_13 for next hour
+[2025-09-01 12:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 12:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_01_10
+[2025-09-01 12:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 12:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 12:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-01 12:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-01 12:00:02] INFO: ======================================================================
+[2025-09-01 13:00:01] INFO: ======================================================================
+[2025-09-01 13:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 13:00:01] INFO: [INIT] Database connection established
+[2025-09-01 13:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_14 for next hour
+[2025-09-01 13:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 13:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_11
+[2025-09-01 13:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 13:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 13:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 13:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 13:00:01] INFO: ======================================================================
+[2025-09-01 14:00:01] INFO: ======================================================================
+[2025-09-01 14:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 14:00:01] INFO: [INIT] Database connection established
+[2025-09-01 14:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_15 for next hour
+[2025-09-01 14:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 14:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_12
+[2025-09-01 14:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 14:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 14:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 14:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 14:00:01] INFO: ======================================================================
+[2025-09-01 15:00:01] INFO: ======================================================================
+[2025-09-01 15:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 15:00:01] INFO: [INIT] Database connection established
+[2025-09-01 15:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_16 for next hour
+[2025-09-01 15:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 15:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_13
+[2025-09-01 15:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 15:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 15:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 15:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 15:00:01] INFO: ======================================================================
+[2025-09-01 16:00:02] INFO: ======================================================================
+[2025-09-01 16:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 16:00:02] INFO: [INIT] Database connection established
+[2025-09-01 16:00:02] INFO: [CREATE] Created partition tickstick_2025_09_01_17 for next hour
+[2025-09-01 16:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 16:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_01_14
+[2025-09-01 16:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 16:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 16:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-01 16:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-01 16:00:02] INFO: ======================================================================
+[2025-09-01 17:00:01] INFO: ======================================================================
+[2025-09-01 17:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 17:00:01] INFO: [INIT] Database connection established
+[2025-09-01 17:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_18 for next hour
+[2025-09-01 17:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 17:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_15
+[2025-09-01 17:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 17:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 17:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 17:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 17:00:01] INFO: ======================================================================
+[2025-09-01 18:00:01] INFO: ======================================================================
+[2025-09-01 18:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 18:00:01] INFO: [INIT] Database connection established
+[2025-09-01 18:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_19 for next hour
+[2025-09-01 18:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 18:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_16
+[2025-09-01 18:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 18:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 18:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 18:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 18:00:01] INFO: ======================================================================
+[2025-09-01 19:00:02] INFO: ======================================================================
+[2025-09-01 19:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 19:00:02] INFO: [INIT] Database connection established
+[2025-09-01 19:00:02] INFO: [CREATE] Created partition tickstick_2025_09_01_20 for next hour
+[2025-09-01 19:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 19:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_01_17
+[2025-09-01 19:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 19:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 19:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-01 19:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-01 19:00:02] INFO: ======================================================================
+[2025-09-01 20:00:01] INFO: ======================================================================
+[2025-09-01 20:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 20:00:01] INFO: [INIT] Database connection established
+[2025-09-01 20:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_21 for next hour
+[2025-09-01 20:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 20:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_18
+[2025-09-01 20:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 20:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 20:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 20:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 20:00:01] INFO: ======================================================================
+[2025-09-01 21:00:01] INFO: ======================================================================
+[2025-09-01 21:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 21:00:01] INFO: [INIT] Database connection established
+[2025-09-01 21:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_22 for next hour
+[2025-09-01 21:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 21:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_19
+[2025-09-01 21:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 21:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 21:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 21:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 21:00:01] INFO: ======================================================================
+[2025-09-01 22:00:01] INFO: ======================================================================
+[2025-09-01 22:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 22:00:01] INFO: [INIT] Database connection established
+[2025-09-01 22:00:01] INFO: [CREATE] Created partition tickstick_2025_09_01_23 for next hour
+[2025-09-01 22:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 22:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_20
+[2025-09-01 22:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 22:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 22:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 22:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 22:00:01] INFO: ======================================================================
+[2025-09-01 23:00:01] INFO: ======================================================================
+[2025-09-01 23:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-01 23:00:01] INFO: [INIT] Database connection established
+[2025-09-01 23:00:01] INFO: [CREATE] Created partition tickstick_2025_09_02_00 for next hour
+[2025-09-01 23:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-01 23:00:01] INFO: [DROP] Dropped old partition tickstick_2025_09_01_21
+[2025-09-01 23:00:01] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-01 23:00:01] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-01 23:00:01] INFO: [COMPLETE] Partition management complete
+[2025-09-01 23:00:01] INFO: [CLEANUP] Database connection closed
+[2025-09-01 23:00:01] INFO: ======================================================================
+[2025-09-02 00:00:01] INFO: ======================================================================
+[2025-09-02 00:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-02 00:00:01] INFO: [INIT] Database connection established
+[2025-09-02 00:00:02] INFO: [CREATE] Created partition tickstick_2025_09_02_01 for next hour
+[2025-09-02 00:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-02 00:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_01_22
+[2025-09-02 00:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-02 00:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-02 00:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-02 00:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-02 00:00:02] INFO: ======================================================================
+[2025-09-02 01:00:01] INFO: ======================================================================
+[2025-09-02 01:00:01] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-02 01:00:01] INFO: [INIT] Database connection established
+[2025-09-02 01:00:01] INFO: [CREATE] Created partition tickstick_2025_09_02_02 for next hour
+[2025-09-02 01:00:01] INFO: [SUCCESS] Next hour partition created
+[2025-09-02 01:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_01_23
+[2025-09-02 01:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-02 01:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-02 01:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-02 01:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-02 01:00:02] INFO: ======================================================================
+[2025-09-02 02:00:02] INFO: ======================================================================
+[2025-09-02 02:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-02 02:00:02] INFO: [INIT] Database connection established
+[2025-09-02 02:00:02] INFO: [CREATE] Created partition tickstick_2025_09_02_03 for next hour
+[2025-09-02 02:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-02 02:00:02] INFO: [DROP] Dropped old partition tickstick_2025_09_02_00
+[2025-09-02 02:00:02] INFO: [CLEANUP] Dropped 1 old partitions
+[2025-09-02 02:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-02 02:00:02] INFO: [COMPLETE] Partition management complete
+[2025-09-02 02:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-02 02:00:02] INFO: ======================================================================
+[2025-09-06 11:04:36] INFO: ======================================================================
+[2025-09-06 11:04:36] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-06 11:04:36] INFO: [INIT] Database connection established
+[2025-09-06 11:04:36] INFO: [CREATE] Created partition tickstick_2025_09_06_12 for next hour
+[2025-09-06 11:04:36] INFO: [SUCCESS] Next hour partition created
+[2025-09-06 11:04:36] INFO: [DROP] Dropped old partition tickstick_2025_09_02_01
+[2025-09-06 11:04:36] INFO: [DROP] Dropped old partition tickstick_2025_09_02_02
+[2025-09-06 11:04:36] INFO: [DROP] Dropped old partition tickstick_2025_09_02_03
+[2025-09-06 11:04:36] INFO: [CLEANUP] Dropped 3 old partitions
+[2025-09-06 11:04:36] INFO: [SWEEP] No proposals to expire (>10m)
+[2025-09-06 11:04:36] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-06 11:04:36] INFO: [COMPLETE] Partition management + proposal sweep complete
+[2025-09-06 11:04:36] INFO: [CLEANUP] Database connection closed
+[2025-09-06 11:04:36] INFO: ======================================================================
+[2025-09-06 12:00:02] INFO: ======================================================================
+[2025-09-06 12:00:02] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-06 12:00:02] INFO: [INIT] Database connection established
+[2025-09-06 12:00:02] INFO: [CREATE] Created partition tickstick_2025_09_06_13 for next hour
+[2025-09-06 12:00:02] INFO: [SUCCESS] Next hour partition created
+[2025-09-06 12:00:02] INFO: [CLEANUP] No old partitions to drop
+[2025-09-06 12:00:02] INFO: [SWEEP] No proposals to expire (>10m)
+[2025-09-06 12:00:02] INFO: [HEARTBEAT] Updated heartbeat
+[2025-09-06 12:00:02] INFO: [COMPLETE] Partition management + proposal sweep complete
+[2025-09-06 12:00:02] INFO: [CLEANUP] Database connection closed
+[2025-09-06 12:00:02] INFO: ======================================================================
+[2025-09-08 19:48:40] INFO: ======================================================================
+[2025-09-08 19:48:40] INFO: [INIT] Starting Partition Manager - Hourly Run
+[2025-09-08 19:48:40] INFO: [INIT] Database connection established
+[2025-09-08 19:48:40] INFO: [CREATE] Created partition tickstick_2025_09_08_20 for next hour
+[2025-09-08 19:48:40] INFO: [SUCCESS] Next hour partition created
+[2025-09-08 19:48:40] INFO: [DROP] Dropped old partition tickstick_2025_09_06_12
+[2025-09-08 19:48:40] INFO: [DROP] Dropped old partition tickstick_2025_09_06_13
+[2025-09-08 19:48:40] INFO: [CLEANUP] Dropped 2 old partitions
+[2025-09-08 19:48:40] INFO: [SWEEP] No proposals to expire (>10m)
+[2025-09-08 19:48:40] INFO: [COMPLETE] Partition management + proposal sweep complete
+[2025-09-08 19:48:40] INFO: [CLEANUP] Database connection closed
+[2025-09-08 19:48:40] INFO: ======================================================================

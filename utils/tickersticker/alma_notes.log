@@ -1,0 +1,37 @@
+timestamp: "UNIX timestamp when the data was fetched"
+
+symbol: "Trading pair symbol (e.g., BTC-USDT)"
+
+symbolName: "Display name of the trading pair (can change after renaming)"
+
+buy: "Best bid price (highest buyer)"
+
+sell: "Best ask price (lowest seller)"
+
+bestBidSize: "Size of the best bid order"
+
+bestAskSize: "Size of the best ask order"
+
+changeRate: "24h price change rate | changeRate = (lastPrice - openPrice24h) / openPrice24h | (e.g., -0.0055 = -0.55%)"
+
+changePrice: "Absolute price change over the last 24h"
+
+high: "Highest traded price in the last 24h"
+
+low: "Lowest traded price in the last 24h"
+
+vol: "24h trading volume in the base currency | eg. How many BTC changed hands in the last 24h -> 2282.709 BTC"
+
+volValue: "24h trading volume in the quote currency | eg. Total value of those trades in USDT -> 25.9M USDT"
+
+last: "Last traded price"
+
+averagePrice: "Average trading price in the last 24 hours"
+
+takerFeeRate: "Basic taker fee rate"
+
+makerFeeRate: "Basic maker fee rate"
+
+takerCoefficient: "The taker fee coefficient. The actual fee needs to be multiplied by this coefficient to get the final fee. Most currencies have a coefficient of 1. If set to 0, it means no fee"
+
+makerCoefficient: "The maker fee coefficient. The actual fee needs to be multiplied by this coefficient to get the final fee. Most currencies have a coefficient of 1. If set to 0, it means no fee"
