@@ -9402,3 +9402,7 @@
 2025-09-13 23:17:17,215 WARNING laurel.notes: [CRITICAL] partition_manager: 645435s since heartbeat (threshold: 300s)
 2025-09-13 23:17:17,216 WARNING laurel.notes: [CRITICAL] alma: 404683s since heartbeat (threshold: 30s)
 2025-09-13 23:17:17,216 WARNING laurel.notes: [CRITICAL] edith: 444517s since heartbeat (threshold: 1800s)
+2025-09-13 23:17:47,248 WARNING laurel.notes: [CRITICAL] partition_manager: 645465s since heartbeat (threshold: 300s)
+2025-09-13 23:17:47,248 WARNING laurel.notes: [CRITICAL] alma: 404713s since heartbeat (threshold: 30s)
+2025-09-13 23:17:47,248 WARNING laurel.notes: [CRITICAL] edith: 444547s since heartbeat (threshold: 1800s)
+2025-09-13 23:17:47,248 INFO laurel: Hourly report sent: 3 issues
