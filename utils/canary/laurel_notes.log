@@ -1824,3 +1824,6 @@
 2025-09-13 08:28:29,576 WARNING laurel.notes: [CRITICAL] partition_manager: 592107s since heartbeat (threshold: 300s)
 2025-09-13 08:28:29,576 WARNING laurel.notes: [CRITICAL] alma: 351355s since heartbeat (threshold: 30s)
 2025-09-13 08:28:29,576 WARNING laurel.notes: [CRITICAL] edith: 391189s since heartbeat (threshold: 1800s)
+2025-09-13 08:28:59,603 WARNING laurel.notes: [CRITICAL] partition_manager: 592137s since heartbeat (threshold: 300s)
+2025-09-13 08:28:59,604 WARNING laurel.notes: [CRITICAL] alma: 351385s since heartbeat (threshold: 30s)
+2025-09-13 08:28:59,604 WARNING laurel.notes: [CRITICAL] edith: 391219s since heartbeat (threshold: 1800s)
