@@ -4713,3 +4713,6 @@
 2025-09-13 10:17:05,430 WARNING laurel.notes: [CRITICAL] alma: 357871s since heartbeat (threshold: 30s)
 2025-09-13 10:17:05,430 WARNING laurel.notes: [CRITICAL] edith: 397705s since heartbeat (threshold: 1800s)
 2025-09-13 10:17:05,432 INFO laurel: Hourly report sent: 3 issues
+2025-09-13 10:17:35,457 WARNING laurel.notes: [CRITICAL] partition_manager: 598653s since heartbeat (threshold: 300s)
+2025-09-13 10:17:35,457 WARNING laurel.notes: [CRITICAL] alma: 357901s since heartbeat (threshold: 30s)
+2025-09-13 10:17:35,457 WARNING laurel.notes: [CRITICAL] edith: 397735s since heartbeat (threshold: 1800s)
