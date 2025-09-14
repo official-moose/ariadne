@@ -26,3 +26,4 @@ DETAIL:  A field with precision 20, scale 8 must round to an absolute value less
 DETAIL:  A field with precision 20, scale 8 must round to an absolute value less than 10^12.
 
 [SHUTDOWN] Received signal 15, shutting down gracefully...
+DEBUG: process_name raw='wintermute', lowered='wintermute'
