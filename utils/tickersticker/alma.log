@@ -27,3 +27,6 @@ DETAIL:  A field with precision 20, scale 8 must round to an absolute value less
 
 [SHUTDOWN] Received signal 15, shutting down gracefully...
 DEBUG: process_name raw='wintermute', lowered='wintermute'
+[INSERT ERROR] numeric field overflow
+DETAIL:  A field with precision 20, scale 8 must round to an absolute value less than 10^12.
+
