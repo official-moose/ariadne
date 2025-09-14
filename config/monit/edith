@@ -1,0 +1,5 @@
+check process edith with pidfile /root/Echelon/valentrix/mm/utils/partition_manager/edith.pid
+  start program = "/bin/bash -lc 'nohup /root/Echelon/valentrix/mm/config/bash/edith.sh >/dev/null 2>&1 &'"
+    with timeout 60 seconds
+  stop program  = "/bin/bash -lc 'kill -TERM $(cat /root/Echelon/valentrix/mm/utils/partition_manager/edith.pid)'"
+  if does not exist then start
