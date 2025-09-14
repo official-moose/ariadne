@@ -11618,3 +11618,9 @@
 2025-09-14 05:19:35,707 WARNING laurel.notes: [STATCON2] alma: 426419s since heartbeat (threshold: 60s)
 2025-09-14 05:19:36,744 INFO laurel: Alert sent: [ STATCON2 ] Second missed heartbeat for edith | Mode -> simulation
 2025-09-14 05:19:36,744 WARNING laurel.notes: [STATCON2] edith: 466253s since heartbeat (threshold: 1800s)
+2025-09-14 05:20:07,834 INFO laurel: Alert sent: [ STATCON1 ] !PROCESS DOWN! Flatline on partition_manager | Mode -> simulation
+2025-09-14 05:20:07,834 WARNING laurel.notes: [STATCON1] partition_manager: 667204s since heartbeat (threshold: 300s)
+2025-09-14 05:20:09,923 INFO laurel: Alert sent: [ STATCON1 ] !PROCESS DOWN! Flatline on alma | Mode -> simulation
+2025-09-14 05:20:09,923 WARNING laurel.notes: [STATCON1] alma: 426452s since heartbeat (threshold: 60s)
+2025-09-14 05:20:11,055 INFO laurel: Alert sent: [ STATCON1 ] !PROCESS DOWN! Flatline on edith | Mode -> simulation
+2025-09-14 05:20:11,055 WARNING laurel.notes: [STATCON1] edith: 466286s since heartbeat (threshold: 1800s)
