@@ -11526,3 +11526,7 @@
 2025-09-14 05:08:40,445 INFO laurel: Alert sent: [ STATCON3 ] Missed heartbeat for edith | Mode -> simulation
 2025-09-14 05:08:40,445 WARNING laurel.notes: [STATCON3] edith: 465596s since heartbeat (threshold: 1800s)
 2025-09-14 05:08:41,568 INFO laurel: Alert sent: [ SIGCON1 ] hari missing | Mode -> simulation
+2025-09-14 05:08:42,615 INFO laurel: Alert sent: [ SIGCON1 ] ariadne missing | Mode -> simulation
+2025-09-14 05:08:43,738 INFO laurel: Alert sent: [ SIGCON1 ] andi missing | Mode -> simulation
+2025-09-14 05:08:44,777 INFO laurel: Alert sent: [ SIGCON1 ] karin missing | Mode -> simulation
+2025-09-14 05:08:45,855 INFO laurel: Hourly report sent: 3 issues
