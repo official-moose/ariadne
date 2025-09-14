@@ -95,12 +95,6 @@ def send_email(subject: str, status: str, title: str, message: str) -> str:
         "OPSCON1": 	"#990000",	# Issues detected
     }    
     
-    STATUS_COLORS = {
-        "SYSTEM NOMINAL": "#2e7d32",
-        "PROCESS DOWN": "#c0392b",
-        "MULTIPLE DOWN": "#c0392b",
-        "SENSITIVE": "#BE644C",
-    }
     status_text = str(status).upper()
     status_color = STATUS_COLORS.get(status_text, "#BE644C")
 
@@ -205,7 +199,7 @@ HOURLY_REPORT_INTERVAL = 3600  # Send status email every hour
 HEARTBEAT_THRESHOLDS = {
     'ariadne': 120,      # Main bot - 2 minutes
     'hari': 60,          # SOC - 1 minute
-    'alma': 60,          # Ticker sticker - 30 seconds
+    'alma': 60,          # Ticker sticker - 60 seconds
     'karin': 60,         # Schema monitor - 1 minute
     'andi': 360,         # TQT processor - 6 minutes (updates every 5)
     'edith': 1800,       # Partition manager - 30 minutes
@@ -219,7 +213,7 @@ ALERT_LEVELS = {
     3: "STATCON1",	# on the third missing heartbeat
     4: "SIGCON1",	# Process never started
     5: "OPSCON5",	# Normal, all systems nominal
-    6: "OPSCON1":,	# Issues detected
+    6: "OPSCON1",	# Issues detected
 }
 
 # Global shutdown flag
@@ -366,10 +360,13 @@ class HeartbeatMonitor:
         """Send alert for process issues."""
         try:
             tp = now_pack()
-            level_name = ALERT_LEVELS[alert_level]
-
-            # Build subject based on level
-            if alert_level == 3:
+            
+            # Build subject, status, and title based on condition
+            if missing:
+                subject = f"[ SIGCON1 ] {process} missing | Mode -> {get_mode()}"
+                status = "SIGCON1"
+                title = f"SIGCON1 | Critical Alert | {process} cannot be found."
+            elif alert_level == 3:
                 subject = f"[ STATCON1 ] !PROCESS DOWN! Flatline on {process} | Mode -> {get_mode()}"
                 status = "STATCON1"
                 title = f"STATCON1 | Critical Alert | {process} is not running."
@@ -377,18 +374,13 @@ class HeartbeatMonitor:
                 subject = f"[ STATCON2 ] Second missed heartbeat for {process} | Mode -> {get_mode()}"
                 status = "STATCON2"
                 title = f"STATCON2 | {process} has missed it's second check-in."
-            elif alert_level == 1:
+            else:  # alert_level == 1
                 subject = f"[ STATCON3 ] Missed heartbeat for {process} | Mode -> {get_mode()}"
                 status = "STATCON3"
                 title = f"STATCON3 | {process} has missed it's first check-in."
-            else:
-                subject = f"[ SIGCON1 ] {process} missing | Mode -> {get_mode()}"
-                status = "SIGNCON1"
-                title = f"SIGCON1 | Critical Alert | {process} cannot be found."
-
-            # Build title and message
+            
+            # Build message
             if missing:
-                title = title
                 message_html = f"""Process: {process}
 Status: NEVER REPORTED
 Mode: {get_mode()}
@@ -397,19 +389,16 @@ Time: {tp.human}
 Action Required: Start {process} immediately"""
             else:
                 minutes_since = seconds_since / 60.0 if seconds_since else 0
-                title = f"{level_name}: Process Heartbeat Issue"
-
-                action_text = ""
+                
                 if alert_level == 3:
                     action_text = "ACTION REQUIRED: Process appears to be DOWN. Restart immediately."
                 elif alert_level == 2:
                     action_text = "WARNING: Process may be struggling. Check logs."
                 else:
                     action_text = "NOTICE: Monitoring closely, no action required yet."
-
-                # Add current system status
+                
                 system_status = self._format_system_status()
-
+                
                 message_html = f"""Process: {process}
 Last Heartbeat: {minutes_since:.1f} minutes ago
 Threshold: {threshold} seconds
