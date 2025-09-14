@@ -76,7 +76,7 @@ def send_email(subject: str, status: str, title: str, message: str) -> str:
     port = getattr(marcus, "ALERT_EMAIL_SMTP_PORT", None)
     recipient = getattr(marcus, "ALERT_EMAIL_RECIPIENT", None)
 
-    USERCODE = "AND"  # hardcode per file
+    USERCODE = "LAU"  # hardcode per file
 
     # ---- Edit Sender Info (per file) ----
     user = os.getenv(f"{USERCODE}_USR")
