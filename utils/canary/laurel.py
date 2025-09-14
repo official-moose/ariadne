@@ -381,12 +381,12 @@ class HeartbeatMonitor:
             
             # Build message
             if missing:
-                message_html = f"""Process: {process}
-Status: NEVER REPORTED
-Mode: {get_mode()}
-Time: {tp.human}
+                message_html = f"""<b>Process:</b> {process}<br>
+<b>Status:</b> NEVER REPORTED<br>
+<b>Mode:</b> {get_mode()}<br>
+<b>Time:</b> {tp.human}<br>
 
-Action Required: Start {process} immediately"""
+<b>Action Required:</b> Start {process} immediately"""
             else:
                 minutes_since = seconds_since / 60.0 if seconds_since else 0
                 
@@ -399,16 +399,16 @@ Action Required: Start {process} immediately"""
                 
                 system_status = self._format_system_status()
                 
-                message_html = f"""Process: {process}
-Last Heartbeat: {minutes_since:.1f} minutes ago
-Threshold: {threshold} seconds
-Consecutive Misses: {self.missed_checks[process]}
-Alert Level: {alert_level}/3
-Mode: {get_mode()}
-Time: {tp.human}
+                message_html = f"""<b>Process:</b> {process}<br>
+<b>Last Heartbeat:</b> {minutes_since:.1f} minutes ago<br>
+<b>Threshold:</b> {threshold} seconds<br>
+<b>Consecutive Misses:</b> {self.missed_checks[process]}<br>
+<b>Alert Level:</b> {alert_level}/3<br>
+<b>Mode:</b> {get_mode()}<br>
+<b>Time:</b> {tp.human}<br><br>
 
-{action_text}
-{system_status}"""
+<b>{action_text}</b><br>
+<b>{system_status}</b>"""
 
             # Send alert
             send_email(
@@ -443,17 +443,17 @@ Time: {tp.human}
                 system_status = self._format_system_status()
 
                 message_html = f"""
-Time: {tp.human}
-Mode: {get_mode()}
-Status: ALL SYSTEMS OPERATIONAL
+<b>Time:</b> {tp.human}<br>
+<b>Mode:</b> {get_mode()}<br>
+<b>Status:</b> ALL SYSTEMS OPERATIONAL<br>
 
-Monitoring {len(self.process_status)} processes:
-{system_status}
+<b>Monitoring {len(self.process_status)} processes:</b><br>
+{system_status}<br><br>
 
-Laurel Statistics:
-- Checks Performed: {self.check_count}
-- Alerts Sent: {self.alerts_sent}
-- Uptime: {(time.time() - start_time) / 3600:.1f} hours
+<b>Laurel Statistics:</b><br>
+- <b>Checks Performed:</b> {self.check_count}<br>
+- <b>Alerts Sent:</b> {self.alerts_sent}<br>
+- <b>Uptime:</b> {(time.time() - start_time) / 3600:.1f} hours<br>
 """
             else:
                 problem_count = sum(1 for s in self.process_status.values() if s.get('is_stale', False))
@@ -471,20 +471,20 @@ Laurel Statistics:
                 system_status = self._format_system_status()
 
                 message_html = f"""
-Time: {tp.human}
-Mode: {get_mode()}
-Status: {problem_count} PROCESS(ES) WITH ISSUES
+<b>Time:</b> {tp.human}<br>
+<b>Mode:</b> {get_mode()}<br>
+<b>Status:</b> {problem_count} PROCESS(ES) WITH ISSUES<br><br>
 
-Issues:
-{issues_text}
+<b>Issues:</b><br>
+{issues_text}<br><br>
 
-All Processes:
-{system_status}
+<b>All Processes:</b><br>
+{system_status}<br><br>
 
-Laurel Statistics:
-- Checks Performed: {self.check_count}
-- Alerts Sent: {self.alerts_sent}
-- Uptime: {(time.time() - start_time) / 3600:.1f} hours
+<b>Laurel Statistics:</b><br>
+- <b>Checks Performed:</b> {self.check_count}<br>
+- <b>Alerts Sent:</b> {self.alerts_sent}<br>
+- <b>Uptime:</b> {(time.time() - start_time) / 3600:.1f} hours<br>
 """
 
             # Send report
