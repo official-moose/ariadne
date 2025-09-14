@@ -123,7 +123,7 @@ def main():
                 SELECT tablename 
                 FROM pg_tables 
                 WHERE tablename LIKE 'tickstick_%' 
-                ORDER BY tablename
+                ORDER BY tablename ASC
             """)
             
             partitions = cur.fetchall()
