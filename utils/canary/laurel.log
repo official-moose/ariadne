@@ -11852,3 +11852,9 @@
 2025-09-14 06:57:48,541 ERROR laurel: Failed to check heartbeats: 'default'
 2025-09-14 06:58:18,562 ERROR laurel: Failed to check heartbeats: 'default'
 2025-09-14 06:58:28,588 INFO laurel: [SHUTDOWN] Received signal 15, shutting down...
+2025-09-14 06:58:48,579 ERROR laurel: Failed to check heartbeats: 'default'
+2025-09-14 06:58:48,580 INFO laurel: [SHUTDOWN] LAUREL shutting down gracefully
+2025-09-14 06:58:48,803 INFO laurel: [INIT] LAUREL starting in simulation mode
+2025-09-14 06:58:48,803 INFO laurel: [INIT] Monitoring 1 processes
+2025-09-14 06:58:48,803 INFO laurel: [INIT] Check interval: 30s, Report interval: 3600s
+2025-09-14 06:58:48,813 ERROR laurel: Failed to check heartbeats: 'default'
