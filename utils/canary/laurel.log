@@ -11612,3 +11612,9 @@
 2025-09-14 05:19:00,506 INFO laurel: Alert sent: [ SIGCON1 ] andi missing | Mode -> simulation
 2025-09-14 05:19:02,555 INFO laurel: Alert sent: [ SIGCON1 ] ariadne missing | Mode -> simulation
 2025-09-14 05:19:03,617 INFO laurel: Hourly report sent: 3 issues
+2025-09-14 05:19:34,706 INFO laurel: Alert sent: [ STATCON2 ] Second missed heartbeat for partition_manager | Mode -> simulation
+2025-09-14 05:19:34,706 WARNING laurel.notes: [STATCON2] partition_manager: 667171s since heartbeat (threshold: 300s)
+2025-09-14 05:19:35,706 INFO laurel: Alert sent: [ STATCON2 ] Second missed heartbeat for alma | Mode -> simulation
+2025-09-14 05:19:35,707 WARNING laurel.notes: [STATCON2] alma: 426419s since heartbeat (threshold: 60s)
+2025-09-14 05:19:36,744 INFO laurel: Alert sent: [ STATCON2 ] Second missed heartbeat for edith | Mode -> simulation
+2025-09-14 05:19:36,744 WARNING laurel.notes: [STATCON2] edith: 466253s since heartbeat (threshold: 1800s)

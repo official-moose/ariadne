@@ -9324,3 +9324,6 @@
 2025-09-14 05:18:55,128 WARNING laurel.notes: [STATCON3] partition_manager: 667132s since heartbeat (threshold: 300s)
 2025-09-14 05:18:56,198 WARNING laurel.notes: [STATCON3] alma: 426380s since heartbeat (threshold: 60s)
 2025-09-14 05:18:57,247 WARNING laurel.notes: [STATCON3] edith: 466213s since heartbeat (threshold: 1800s)
+2025-09-14 05:19:34,706 WARNING laurel.notes: [STATCON2] partition_manager: 667171s since heartbeat (threshold: 300s)
+2025-09-14 05:19:35,707 WARNING laurel.notes: [STATCON2] alma: 426419s since heartbeat (threshold: 60s)
+2025-09-14 05:19:36,744 WARNING laurel.notes: [STATCON2] edith: 466253s since heartbeat (threshold: 1800s)
