@@ -11594,3 +11594,10 @@
 2025-09-14 05:18:23,812 WARNING laurel.notes: [STATCON1] alma: 426349s since heartbeat (threshold: 60s)
 2025-09-14 05:18:23,812 WARNING laurel.notes: [STATCON1] edith: 466183s since heartbeat (threshold: 1800s)
 2025-09-14 05:18:33,202 INFO laurel: [SHUTDOWN] Received signal 15, shutting down...
+2025-09-14 05:18:53,828 WARNING laurel.notes: [STATCON1] partition_manager: 667131s since heartbeat (threshold: 300s)
+2025-09-14 05:18:53,828 WARNING laurel.notes: [STATCON1] alma: 426379s since heartbeat (threshold: 60s)
+2025-09-14 05:18:53,828 WARNING laurel.notes: [STATCON1] edith: 466213s since heartbeat (threshold: 1800s)
+2025-09-14 05:18:53,828 INFO laurel: [SHUTDOWN] LAUREL shutting down gracefully
+2025-09-14 05:18:54,010 INFO laurel: [INIT] LAUREL starting in simulation mode
+2025-09-14 05:18:54,010 INFO laurel: [INIT] Monitoring 6 processes
+2025-09-14 05:18:54,010 INFO laurel: [INIT] Check interval: 30s, Report interval: 3600s
