@@ -11661,3 +11661,10 @@
 2025-09-14 05:27:11,467 WARNING laurel.notes: [STATCON1] alma: 426877s since heartbeat (threshold: 60s)
 2025-09-14 05:27:11,467 WARNING laurel.notes: [STATCON1] edith: 466711s since heartbeat (threshold: 1800s)
 2025-09-14 05:27:34,655 INFO laurel: [SHUTDOWN] Received signal 15, shutting down...
+2025-09-14 05:27:41,475 WARNING laurel.notes: [STATCON1] alma: 426907s since heartbeat (threshold: 60s)
+2025-09-14 05:27:41,475 WARNING laurel.notes: [STATCON1] edith: 466741s since heartbeat (threshold: 1800s)
+2025-09-14 05:27:41,476 INFO laurel: [SHUTDOWN] LAUREL shutting down gracefully
+2025-09-14 05:27:41,655 INFO laurel: [INIT] LAUREL starting in simulation mode
+2025-09-14 05:27:41,655 INFO laurel: [INIT] Monitoring 1 processes
+2025-09-14 05:27:41,655 INFO laurel: [INIT] Check interval: 30s, Report interval: 3600s
+2025-09-14 05:27:41,662 ERROR laurel: Failed to check heartbeats: 'default'
