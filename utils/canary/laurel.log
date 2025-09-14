@@ -11519,3 +11519,10 @@
 2025-09-14 05:08:36,182 INFO laurel: [INIT] LAUREL starting in simulation mode
 2025-09-14 05:08:36,182 INFO laurel: [INIT] Monitoring 6 processes
 2025-09-14 05:08:36,182 INFO laurel: [INIT] Check interval: 30s, Report interval: 3600s
+2025-09-14 05:08:37,287 INFO laurel: Alert sent: [ STATCON3 ] Missed heartbeat for partition_manager | Mode -> simulation
+2025-09-14 05:08:37,288 WARNING laurel.notes: [STATCON3] partition_manager: 666514s since heartbeat (threshold: 300s)
+2025-09-14 05:08:38,371 INFO laurel: Alert sent: [ STATCON3 ] Missed heartbeat for alma | Mode -> simulation
+2025-09-14 05:08:38,371 WARNING laurel.notes: [STATCON3] alma: 425762s since heartbeat (threshold: 60s)
+2025-09-14 05:08:40,445 INFO laurel: Alert sent: [ STATCON3 ] Missed heartbeat for edith | Mode -> simulation
+2025-09-14 05:08:40,445 WARNING laurel.notes: [STATCON3] edith: 465596s since heartbeat (threshold: 1800s)
+2025-09-14 05:08:41,568 INFO laurel: Alert sent: [ SIGCON1 ] hari missing | Mode -> simulation
