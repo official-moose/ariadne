@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3 
 """
 Database monitoring script for Ariadne
 Checks heartbeats, partitions, and recent ticker data
