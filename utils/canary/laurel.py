@@ -197,13 +197,13 @@ HOURLY_REPORT_INTERVAL = 3600  # Send status email every hour
 # Process-specific heartbeat thresholds (in seconds)
 # How long before we consider a process missing
 HEARTBEAT_THRESHOLDS = {
-    'ariadne': 120,      # Main bot - 2 minutes
-    'hari': 60,          # SOC - 1 minute
+    #'ariadne': 120,      # Main bot - 2 minutes
+    #'hari': 60,          # SOC - 1 minute
     'alma': 60,          # Ticker sticker - 60 seconds
-    'karin': 60,         # Schema monitor - 1 minute
-    'andi': 360,         # TQT processor - 6 minutes (updates every 5)
+    #'karin': 60,         # Schema monitor - 1 minute
+    #'andi': 360,         # TQT processor - 6 minutes (updates every 5)
     'edith': 1800,       # Partition manager - 30 minutes
-    'default': 300       # Default - 5 minutes
+    #'default': 300       # Default - 5 minutes
 }
 
 # Alert levels
