@@ -8,7 +8,9 @@ import ssl
 import uuid
 from email.message import EmailMessage
 from email.utils import formataddr
-
+from datetime import datetime
+from zoneinfo import ZoneInfo
+    
 # third-party imports
 from dotenv import load_dotenv
 
@@ -20,16 +22,6 @@ load_dotenv("mm/data/secrets/.env")
 
 
 def send_email(subject: str, status: str, title: str, message: str) -> str:
-    import importlib
-    import os
-    import smtplib
-    import ssl
-    import uuid
-    from email.message import EmailMessage
-    from email.utils import formataddr
-    from datetime import datetime
-    from zoneinfo import ZoneInfo
-    import mm.config.marcus as marcus
 
     importlib.reload(marcus)
     if not bool(getattr(marcus, "ALERT_EMAIL_ENABLED", False)):
@@ -52,10 +44,12 @@ def send_email(subject: str, status: str, title: str, message: str) -> str:
 
     # status color map
     STATUS_COLORS = {
-        "SYSTEM NOMINAL": "#2e7d32",
-        "PROCESS DOWN": "#c0392b",
-        "MULTIPLE DOWN": "#c0392b",
-        "SENSITIVE": "#BE644C",
+        "STATCON3": "#F1C232",	# on the first missing heartbeat 
+        "STATCON2": "#E69138",	# on the second missing heartbeat
+        "STATCON1": "#CC0000",	# on the third missing heartbeat
+        "SIGCON1": 	"#FB6D8B",	# Process never started
+		"OPSCON5": 	"#F5F5F5",	# Normal, all systems nominal
+        "OPSCON1": 	"#990000",	# Issues detected
     }
     status_text = str(status).upper()
     status_color = STATUS_COLORS.get(status_text, "#BE644C")
@@ -144,21 +138,4 @@ def send_email(subject: str, status: str, title: str, message: str) -> str:
 
     return msg_id
 
-
-# ONE TEST: fire on load
-print("Sending email...")
-mid = send_email(
-    subject="Kinetic Automated Relay Interface Node",
-    status="SENSITIVE",  # e.g., SYSTEM NOMINAL / PROCESS DOWN / MULTIPLE DOWN / SENSITIVE
-    title="Some urgent message about something",
-    message=(
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
-        "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
-        "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu "
-        "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa "
-        "qui officia deserunt mollit anim id est laborum."
-    ),
-)
-print("Send successful. Confirmation ->", mid)
 
