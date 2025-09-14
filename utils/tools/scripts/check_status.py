@@ -123,7 +123,7 @@ def main():
                 SELECT tablename 
                 FROM pg_tables 
                 WHERE tablename LIKE 'tickstick_%' 
-                ORDER BY tablename ASC
+                ORDER BY tablename
             """)
             
             partitions = cur.fetchall()
@@ -183,7 +183,7 @@ def main():
         print(f"{'='*60}")
         
         try:
-            time.sleep(300)  # 5 minutes
+            time.sleep(15)  # 5 minutes
         except KeyboardInterrupt:
             print("\n\nDashboard stopped by user")
             break
