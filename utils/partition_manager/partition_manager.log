@@ -1525,3 +1525,7 @@ DEBUG: process_name raw='wintermute', lowered='wintermute'
 [2025-09-14 19:16:04] INFO: [PARTITION] Running partition management (cycle 49)
 [2025-09-14 19:16:04] INFO: [CREATE] Created partition tickstick_2025_09_14_20
 [2025-09-14 19:16:04] INFO: [CREATE] Created partition tickstick_2025_09_14_21
+[2025-09-14 19:16:04] INFO: [CREATE] Created partition tickstick_2025_09_14_22
+[2025-09-14 19:16:04] INFO: [PARTITION] Created 3 new partitions
+[2025-09-14 19:16:04] INFO: [DROP] Dropped old partition tickstick_2025_09_14_17
+[2025-09-14 19:16:04] INFO: [PARTITION] Dropped 1 old partitions
