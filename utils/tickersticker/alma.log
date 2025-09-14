@@ -201,3 +201,6 @@ DETAIL:  A field with precision 20, scale 8 must round to an absolute value less
 [INSERT ERROR] numeric field overflow
 DETAIL:  A field with precision 20, scale 8 must round to an absolute value less than 10^12.
 
+[INSERT ERROR] numeric field overflow
+DETAIL:  A field with precision 20, scale 8 must round to an absolute value less than 10^12.
+
