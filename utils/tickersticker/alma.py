@@ -165,11 +165,9 @@ def insert_rows(conn, timestamp, tickers):
 
 def main():
     """Main loop"""
-    print("[INIT] Starting Ticker Sticker v5.0...")
-
+    
     conn = get_connection()
-    print("[INIT] PostgreSQL connected, starting loop...")
-
+    
     cycle_count = 0
 
     try:
@@ -182,9 +180,6 @@ def main():
                 tickers = client.get_all_tickers()
 
                 inserted = insert_rows(conn, now_ts, tickers)
-
-                print(f"[{now_local().isoformat(timespec='seconds')}] "
-                      f"Cycle complete - Inserted: {inserted} records")
 
                 cycle_count += 1
 
@@ -204,23 +199,15 @@ def main():
             # Tracer line: Cycle No. | Start | Runtime | Sleep | HBS
             runtime_ms = int(round(elapsed * 1000))
             sleep_ms = int(round(sleep_time * 1000))
-            _hb_logger.info(
-                f"Cycle No. {cycle_count}  |  {start_dt.strftime('%Y-%m-%d %H:%M:%S')}  |  "
-                f"Runtime: {runtime_ms}ms  |  Sleep Calculation: {sleep_ms}ms  | HBS: {hbs_str}"
-            )
-
+            
             if sleep_time > 0.0:
                 time.sleep(sleep_time)
 
-    except KeyboardInterrupt:
-        print("[SHUTDOWN] Keyboard interrupt received")
-    except Exception as e:
+        except Exception as e:
         print(f"[FATAL ERROR] {e}")
     finally:
         _cleanup_pidfile()
-        print("[SHUTDOWN] Closing database connection...")
         conn.close()
-        print("[SHUTDOWN] Ticker Sticker shut down gracefully")
-
+        
 if __name__ == "__main__":
     main()
