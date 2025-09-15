@@ -123,3 +123,5 @@
 [2025-09-15 04:16:08] INFO: [PARTITION] Created 3 new partitions
 [2025-09-15 04:16:08] INFO: [DROP] Dropped old partition tickstick_2025_09_15_02
 [2025-09-15 04:16:08] INFO: [PARTITION] Dropped 1 old partitions
+[2025-09-15 05:16:09] INFO: [PARTITION] Running partition management (cycle 109)
+[2025-09-15 05:16:09] INFO: [CREATE] Created partition tickstick_2025_09_15_06
