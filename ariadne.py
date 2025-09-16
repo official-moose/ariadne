@@ -38,7 +38,7 @@ from dotenv import load_dotenv
 import mm.config.marcus as marcus
 from mm.core.drcalvin import Level_I
 from mm.core.grayson import Grayson
-from mm.core.quorra import Quorra
+from mm.utils.seldon_engine.quorra import Quorra
 from mm.core.petra import Petra
 from mm.core.helen import Helen
 from mm.core.malcolm import Malcolm
