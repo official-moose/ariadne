@@ -23,7 +23,7 @@ class Christian:
     Accounting Manager - Stub Implementation
     
     This is a stub to prevent import errors. In simulation mode,
-    all accounting is handled by other components.
+    all accounting is handled by other components. 
     """
     
     def __init__(self, client=None, config=None):
