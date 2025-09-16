@@ -1,19 +1,22 @@
-#>> 🍁 A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 5                ✅ Production ready                
-#>>
-#>> Ticker Sticker
-#>> mm/utils/tickersticker/alma.py
-#>>
-#>> Captures market data every 3 seconds and stores to db. 
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]        💫 PERSISTANT RUNTIME  ➰ MONIT MANAGED      
-#>>────────────────────────────────────────────────────────────────
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250905.01
+#===================================================================
+# last update: 2025 | Sept. 5                   Production ready ✅
+#===================================================================
+# Alma
+# mm/utils/tickersticker/alma.py             
+#
+#🔺 THIS FILE IS MISSION CRITICAL 🔺
+#
+# Captures market data every 3 seconds and stores to db.
+#
+# [520] [741] [8]                   
+#===================================================================
+# 🔰 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
+#===================================================================
 
-# Build|20250905.01
+# 🔸 Standard Library Imports ======================================
 
-# stdlib imports
 import importlib
 import smtplib
 import ssl
@@ -33,16 +36,20 @@ from email.message import EmailMessage
 from email.utils import formataddr
 from zoneinfo import ZoneInfo
     
-# third-party imports
+# 🔸 third-party imports ===========================================
+
 from dotenv import load_dotenv
 
-# local application imports
+# 🔸 local application imports =====================================
+
 import mm.config.marcus as marcus
 
-# load env for this process
+# 🔸 load env for this process =====================================
+
 load_dotenv("mm/data/secrets/.env")
 
-# heartbeat tracer logger -> mm/utils/tickersticker/alma_heartbeats.log
+# 🔸 heartbeat tracer logger =======================================
+
 _hb_logger = logging.getLogger("alma_hb")
 _hb_logger.setLevel(logging.INFO)
 _log_path = "mm/utils/tickersticker/alma_heartbeats.log"
@@ -52,7 +59,8 @@ if not _hb_logger.handlers:
     _fh.setFormatter(logging.Formatter('%(message)s'))
     _hb_logger.addHandler(_fh)
 
-# Global shutdown flag
+# 🔸 Global shutdown flag ==========================================
+
 shutdown_requested = False
 
 def signal_handler(signum, frame):
@@ -64,7 +72,8 @@ def signal_handler(signum, frame):
 signal.signal(signal.SIGTERM, signal_handler)
 signal.signal(signal.SIGINT,  signal_handler)
 
-# PID support for MONIT
+# 🔸 PID support for MONIT =========================================
+
 PID_FILE = "/root/Echelon/valentrix/mm/utils/tickersticker/alma.pid"
 
 def _cleanup_pidfile():
@@ -74,7 +83,8 @@ def _cleanup_pidfile():
     except Exception:
         pass
 
-# remove stale pid if dead
+# 🔸 remove stale pid if dead ======================================
+
 if os.path.exists(PID_FILE):
     try:
         with open(PID_FILE) as f:
@@ -84,7 +94,8 @@ if os.path.exists(PID_FILE):
     except Exception:
         pass
 
-# write our pid
+# 🔸 write our pid =================================================
+
 try:
     with open(PID_FILE, "w") as f:
         f.write(str(os.getpid()))
@@ -199,6 +210,8 @@ def insert_rows(conn, timestamp, tickers):
         finally:
             cursor.close()
     return 0
+
+# 🔸 Drop-in Email Sender ==========================================
 
 def send_email(subject: str, status: str, title: str, message: str) -> str:
 
