@@ -162,10 +162,9 @@ class Ariadne:
         self.mode = None
         self.cycle_count = 0
 
-    def run(self):
+ # 🔸 STARTUP =======================================================
 
-# 🔸 STARTUP =======================================================
-        
+    def run(self):
         self.logger.info("Starting cycle...")
         self.mode = self.inara.get_mode()
         self.client = self.inara.get_trading_client()
