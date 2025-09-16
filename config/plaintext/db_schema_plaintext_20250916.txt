@@ -1,6 +1,6 @@
 DATABASE SCHEMA
 ==================================================
-Generated: 2025-09-16T02:51:32.988345
+Generated: 2025-09-16T03:43:12.842559
 
 TABLE LIST
 --------------------
@@ -31,11 +31,11 @@ TABLE LIST
 25. system_state
 26. tax_lots
 27. tickstick
-28. tickstick_2025_09_16_01
-29. tickstick_2025_09_16_02
-30. tickstick_2025_09_16_03
-31. tickstick_2025_09_16_04
-32. tickstick_2025_09_16_05
+28. tickstick_2025_09_16_02
+29. tickstick_2025_09_16_03
+30. tickstick_2025_09_16_04
+31. tickstick_2025_09_16_05
+32. tickstick_2025_09_16_06
 33. trades
 34. transaction_queue
 35. wallet_hold_ledger
@@ -825,41 +825,6 @@ INDEXES:
 
 ------------------------------------------------------------
 
-TABLE: tickstick_2025_09_16_01
-==============================
-COLUMNS:
-  id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
-  timestamp                 bigint NOT NULL
-  symbol                    text NOT NULL
-  symbol_name               text
-  buy                       numeric
-  sell                      numeric
-  last                      numeric
-  best_bid_size             numeric
-  best_ask_size             numeric
-  change_rate               numeric
-  change_price              numeric
-  high                      numeric
-  low                       numeric
-  vol                       numeric
-  vol_value                 numeric
-  average_price             numeric
-  taker_fee_rate            numeric
-  maker_fee_rate            numeric
-  taker_coefficient         numeric
-  maker_coefficient         numeric
-
-CONSTRAINTS:
-  2200_25217_1_not_null (CHECK)
-  2200_25217_2_not_null (CHECK)
-  2200_25217_3_not_null (CHECK)
-
-INDEXES:
-  tickstick_2025_09_16_01_symbol_timestamp_idx
-    CREATE INDEX tickstick_2025_09_16_01_symbol_timestamp_idx ON public.tickstick_2025_09_16_01 USING btree (symbol, "timestamp" DESC)
-
-------------------------------------------------------------
-
 TABLE: tickstick_2025_09_16_02
 ==============================
 COLUMNS:
@@ -997,6 +962,41 @@ CONSTRAINTS:
 INDEXES:
   tickstick_2025_09_16_05_symbol_timestamp_idx
     CREATE INDEX tickstick_2025_09_16_05_symbol_timestamp_idx ON public.tickstick_2025_09_16_05 USING btree (symbol, "timestamp" DESC)
+
+------------------------------------------------------------
+
+TABLE: tickstick_2025_09_16_06
+==============================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
+  timestamp                 bigint NOT NULL
+  symbol                    text NOT NULL
+  symbol_name               text
+  buy                       numeric
+  sell                      numeric
+  last                      numeric
+  best_bid_size             numeric
+  best_ask_size             numeric
+  change_rate               numeric
+  change_price              numeric
+  high                      numeric
+  low                       numeric
+  vol                       numeric
+  vol_value                 numeric
+  average_price             numeric
+  taker_fee_rate            numeric
+  maker_fee_rate            numeric
+  taker_coefficient         numeric
+  maker_coefficient         numeric
+
+CONSTRAINTS:
+  2200_25253_1_not_null (CHECK)
+  2200_25253_2_not_null (CHECK)
+  2200_25253_3_not_null (CHECK)
+
+INDEXES:
+  tickstick_2025_09_16_06_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_16_06_symbol_timestamp_idx ON public.tickstick_2025_09_16_06 USING btree (symbol, "timestamp" DESC)
 
 ------------------------------------------------------------
 
