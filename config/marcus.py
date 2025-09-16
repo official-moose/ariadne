@@ -1,47 +1,64 @@
-#>> A R I A N D E v6
-#>> last update: 2025 | Sept. 4
-#>>
-#>> Ariadne Config Parameters
-#>> mm/config/marcus.py
-#>>
-#>> Config parameters for the market making bot, Ariadne.
-#>> Trading limits & tolerances.
-#>> Operation mode toggle.
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]
-#>>────────────────────────────────────────────────────────────────
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250904.01
+#===================================================================
+# last update: 2025 | Sept. 4                   Production ready ✅
+#===================================================================
+# Marcus
+# mm/config/marcus.py
+#
+# Config parameters for the market making bot, Ariadne.
+# Trading limits & tolerances.
+# Operation mode toggle..
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✖ PERSISTANT RUNTIME  ✖ MONIT MANAGED
+#===================================================================
 
-# Build|20250904.01
 
 from typing import List
 
-# ── Operational Mode Toggle ─────────────────────────────────────────────────────────────────────
+# 🔸 Standard Library Imports ======================================
+
 MODE: str = "simulation"
 # Options
-#>> simulation  | full simulation of live operations.
-#>> live        | production environment, real trades, real money.
-#>> halted      | no new orders, existing bids/asks are allowed to complete.
-#>> drain       | no new orders, existing bids cancelled, positions are liquidated profitable or neutral.
-#>> maintenance | trading actions disabled, background processes continue.
-#>> shadow      | runs the full decision loop in parallel with live but only logs intents (no orders).
+# >> simulation  | full simulation of live operations.
+# >> live        | production environment, real trades, real money.
+# >> halted      | no new orders, existing bids/asks are allowed to complete.
+# >> drain       | no new orders, existing bids cancelled, positions are liquidated profitable or neutral.
+# >> maintenance | trading actions disabled, background processes continue.
+# >> shadow      | runs the full decision loop in parallel with live but only logs intents (no orders).
     
-# ── Dashboard Progress Bar  ─────────────────────────────────────────────────────────────────────   
+# 🔸 Dashboard Progress Bar  =======================================
+
 SHOW_PROGRESS: bool = False
+    
+# 🔸 Base Standard Parameters  =====================================
 
-# ── Paths ───────────────────────────────────────────────────────────────────────────────────────    
-SIMULATION_DB_PATH: str = "mm/data/sims/ariadne_sim.db"   
-LIVE_DB_PATH: str = "mm/data/live/ariadne_live.db"        
-LEDGER_DB_PATH: str = "mm/data/finance/ledger.db"
-SIM_STATE_FILE: str = "mm/data/state/sim_state.json"   
-LIVE_STATE_FILE: str = "mm/data/state/live_state.json" 
-
-# ── Capital & Risk Management ───────────────────────────────────────────────────────────────────
-INITIAL_CAPITAL: float = 2500.0             # USDT
-MAX_EXPOSURE_PER_PAIR: float = 0.1          # 10% of total capital
+INITIAL_CAPITAL: float = 2500.0             # CAD
 QUOTE_CURRENCY: str = "USDT"
-BASE_QUOTE: str = QUOTE_CURRENCY            #For backwards compatibility, can be removed later.
+    
+# 🔸 Filters and Scoring ===========================================
+
+MIN_24H_VOLUME: float = 5000000             # 5M USDT minimum volume
+MAX_24H_VOLUME: float = 200000000           # 200M USDT maximum volume
+MIN_COIN_AGE: int = 7                       # Minimum days of trading required
+SPREAD_TIGHTNESS: float = 0.15              # 15% component in Liquidity scoring
+ORDER_BOOK_DEPTH: float = 0.15              # 15% component in Liquidity scoring
+SLIPPAGE_RESISTANCE: float = 0.10           # 10% component in Liquidity scoring
+VOLATILITY_PROFILE: float = 0.15            # 15% component in Market scoring
+VOLUME_CONSISTENCY: float = 0.10            # 10% component in Market scoring 
+PRICE_STABILITY: float = 0.05               #  5% component in Market scoring
+FEE_EFFICIENCY: float = 0.10                # 10% component in Trading scoring 
+EXECUTION_SPEED: float = 0.10               # 10% component in Trading scoring 
+MARKET_IMPACT: float = 0.10                 # 10% component in Trading scoring
+OPPORTUNITY_MOD: float = 0.05               #  5% bonus applied to the overall score
+MIN_LIQUIDITY_SCORE: float = 50.0           # Minimum score (0-100) to consider a pair
+
+
+
+MAX_EXPOSURE_PER_PAIR: float = 0.1          # 10% of total capital
+
 INVENTORY_DRAWDOWN_LIMIT: float = 0.1       # 10% loss on inventory triggers defense
     
 # ── Market Making Parameters ────────────────────────────────────────────────────────────────────
@@ -88,29 +105,18 @@ PANIC_THRESHOLD: float = 0.05               # 5% price move triggers emergency s
 PANIC_LOOKBACK_WINDOW: int = 60             # Duration in seconds to measure the panic threshold
 
 # ── Market Selection & Filters ──────────────────────────────────────────────────────────────────
-QUOTE_CURRENCY: str = "USDT"                # Only select USDT pairs ᴾᴿᴱꝬᴵᴸᵀᴱᴿ
-MIN_24H_VOLUME: float = 5000000             # 5M USDT minimum volume ᴾᴿᴱꝬᴵᴸᵀᴱᴿ
-MAX_24H_VOLUME: float = 200000000           # 200M USDT maximum volume ᴾᴿᴱꝬᴵᴸᵀᴱᴿ
-MIN_COIN_AGE: int = 7                       # Minimum days of trading required ᴾᴿᴱꝬᴵᴸᵀᴱᴿ
+
+
 MIN_BOOK_DEPTH_USD: float = 1000.0          # Minimum order book depth in USD
 MAX_TOP_WALL_SHARE: float = 0.3             # Maximum allowed top order dominance (30%)
-MIN_LIQUIDITY_SCORE: float = 50.0           # Minimum score (0-100) to consider a pair
+
 MAX_ACTIVE_PAIRS: int = 10                  # Maximum simultaneous positions
 
-# ── Scoring Engine Weights ──────────────────────────────────────────────────────────────────────
-LIQUIDITY: float = 0.40                     # 40% weight in overall scoring 
-SPREAD_TIGHTNESS: float = 0.15              # 15% component in Liquidity scoring §ᵁᴮ
-ORDER_BOOK_DEPTH: float = 0.15              # 15% component in Liquidity scoring §ᵁᴮ
-SLIPPAGE_RESISTANCE: float = 0.10           # 10% component in Liquidity scoring §ᵁᴮ
-MARKET: float = 0.30                        # 30% weight in overall scoring 
-VOLATILITY_PROFILE: float = 0.15            # 15% component in Market scoring §ᵁᴮ
-VOLUME_CONSISTENCY: float = 0.10            # 10% component in Market scoring §ᵁᴮ 
-PRICE_STABILITY: float = 0.05               #  5% component in Market scoring §ᵁᴮ
-TRADING: float = 0.30                       # 30% weight in overall scoring 
-FEE_EFFICIENCY: float = 0.10                # 10% component in Trading scoring §ᵁᴮ 
-EXECUTION_SPEED: float = 0.10               # 10% component in Trading scoring §ᵁᴮ 
-MARKET_IMPACT: float = 0.10                 # 10% component in Trading scoring §ᵁᴮ
-OPPORTUNITY_MOD: float = 0.05               #  5% bonus applied to the overall score
+# ── Pre-existing, but not called anywhere ───────────────────────────────────────────────────────
+# LIQUIDITY: float = 0.40                     # 40% weight in overall scoring    
+# MARKET: float = 0.30                        # 30% weight in overall scoring 
+# TRADING: float = 0.30                       # 30% weight in overall scoring 
+
 
 # ── Operational Settings ────────────────────────────────────────────────────────────────────────
 LOOP_DELAY: int = 5                         # Seconds to wait between main loop iterations
