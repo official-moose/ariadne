@@ -1,9 +1,49 @@
 DATABASE SCHEMA
 ==================================================
-Generated: 2025-09-16T02:20:22.124598
+Generated: 2025-09-16T02:36:52.401903
 
-TABLES (36 found)
-------------------------------
+TABLE LIST
+--------------------
+ 1. accounts
+ 2. asset_hold_ledger
+ 3. asset_holds
+ 4. asset_prices
+ 5. heartbeats
+ 6. inventory_limits
+ 7. journal_entries
+ 8. ledger_entries
+ 9. order_cancel
+10. orders
+11. performance_metrics
+12. positions
+13. proposal_router_log
+14. proposals
+15. realism_history
+16. risk_metrics
+17. sim_balances
+18. sim_order_cancel
+19. sim_orders
+20. sim_positions
+21. sim_trades
+22. sim_transactions
+23. symbol_info
+24. system_events
+25. system_state
+26. tax_lots
+27. tickstick
+28. tickstick_2025_09_16_01
+29. tickstick_2025_09_16_02
+30. tickstick_2025_09_16_03
+31. tickstick_2025_09_16_04
+32. tickstick_2025_09_16_05
+33. trades
+34. transaction_queue
+35. wallet_hold_ledger
+36. wallet_holds
+
+Total: 36 tables
+
+============================================================
 
 TABLE: accounts
 ===============
