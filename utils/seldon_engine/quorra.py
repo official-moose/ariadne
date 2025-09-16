@@ -1,19 +1,19 @@
-#>> A R I A N D E v6
-#>> last update: 2025 | Sept. 4
-#>>
-#>> Quorra (The Seldon Engine)
-#>> mm/utils/seldon_engine/quorra.py
-#>>
-#>> This is an intuitive engine, not an oracle. It does not predict 
-#>> price. It assists in gauging relative risk/reward across 
-#>> multiple technical, market, and soon, on-chain dimensions.
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]
-#>>────────────────────────────────────────────────────
-
-# Build|20250904.01
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250904.01
+#===================================================================
+# last update: 2025 | Sept. 4                   Production ready ❌
+#===================================================================
+# Quorra (The Seldon Engine)
+# mm/utils/seldon_engine/quorra.pyy
+#
+# This is an intuitive engine, not an oracle. It does not predict 
+# price. It assists in gauging relative risk/reward across 
+# multiple technical, market, and soon, on-chain dimensions. 
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✖ PERSISTANT RUNTIME  ✖ MONIT MANAGED
+#===================================================================
 
 import logging
 import json
