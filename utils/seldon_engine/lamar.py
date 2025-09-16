@@ -1,17 +1,17 @@
-#>> A R I A N D E [v 6.1]   
-#>> last update: 2025 | Sept. 9                ✅ PRODUCTION READY                
-#>>
-#>> Proposal Approvals Orchestrator
-#>> mm/utils/seldon_engine/lamar.py
-#>>
-#>> Listens to Postgres and notifies managers.
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]        💫 PERSISTANT RUNTIME  ➰ MONIT MANAGED      
-#>>────────────────────────────────────────────────────────────────
-
-# Build|20250909.01
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250909.01
+#===================================================================
+# last update: 2025 | Sept. 9                   Production ready ❌
+#===================================================================
+# Lamar - Proposal Approvals Orchestrator
+# mm/utils/seldon_engine/lamar.py
+#
+# Listens to Postgres and notifies managers.
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
+#===================================================================
 
 import json
 import select
