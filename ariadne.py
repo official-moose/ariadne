@@ -36,7 +36,7 @@ from dotenv import load_dotenv
 # 🔸 local application imports =====================================
 
 import mm.config.marcus as marcus
-from mm.core.calvin import DrCalvin
+from mm.core.drcalvin import DrCalvin
 from mm.core.grayson import Grayson
 from mm.core.quorra import Quorra
 from mm.core.petra import Petra
