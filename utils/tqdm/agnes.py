@@ -1,19 +1,19 @@
-#>> A R I A N D E v6
-#>> last update: 2025 | Sept. 5
-#>>
-#>> TQDM Logger
-#>> mm/utils/tqdm/agnes.py
-#>>
-#>> A logging handler that safely outputs to a terminal.
-#>> Ensures human-freindly readability.    
-#>> Formats [DEBUG][INFO][WARNING][ERROR][CRITICAL] 
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]      
-#>>────────────────────────────────────────────────────────────────
-
-# Build|20250905.01
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250905.01
+#===================================================================
+# last update: 2025 | Sept. 5                   Production ready ✅
+#===================================================================
+# Agnes - TQDM Logger
+# mm/utils/tqdm/agnes.py
+#
+# A logging handler that safely outputs to a terminal.
+# Ensures human-freindly readability.    
+# Formats [DEBUG][INFO][WARNING][ERROR][CRITICAL] 
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✖ PERSISTANT RUNTIME  ✖ MONIT MANAGED
+#===================================================================
 
 import logging
 import tqdm
