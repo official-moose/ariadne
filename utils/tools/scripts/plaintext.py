@@ -22,8 +22,8 @@ def generate_file_structure():
         f.write(f"Generated: {datetime.now().isoformat()}\n\n")
         
         for root, dirs, files in os.walk("mm"):
-            # Remove __pycache__ directories
-            dirs[:] = [d for d in dirs if d != '__pycache__']
+            # Remove __pycache__ and .git directories
+            dirs[:] = [d for d in dirs if d not in ['__pycache__', '.git']]
             
             level = root.replace("mm", "").count(os.sep)
             
@@ -54,9 +54,12 @@ def generate_code_pages():
         f.write(f"Generated: {datetime.now().isoformat()}\n\n")
         
         for root, dirs, files in os.walk("mm"):
+            # Skip .git, assets, and __pycache__ directories
+            dirs[:] = [d for d in dirs if d not in ['.git', 'assets', '__pycache__']]
+            
             for file in files:
-                # Skip .log and .txt files
-                if file.endswith('.log') or file.endswith('.txt'):
+                # Skip .log, .txt files and __init__.py files
+                if file.endswith('.log') or file.endswith('.txt') or file == '__init__.py':
                     continue
                     
                 file_path = os.path.join(root, file)
