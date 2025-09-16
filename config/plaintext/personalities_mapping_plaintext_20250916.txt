@@ -1,0 +1,30 @@
+Personalities
+
+	NAME		LOCATION & FILENAME					FUNCTION				DESCRIPTION
+==========================================================================================================================================================
+1	Ariandne	mm/ariadne.py						Main Executable			Main file that orchestrates function and flow.
+2	Marcus		mm/config/marcus.py					Config File				Holds site-wide config parameters.
+3	Alec		mm/core/alec.py						Cancel Manager			Authority to cancel orders, set system to halted.
+4	Ash			mm/core/ash.py						Banking Assistant		Maintains a real-time balance cache @ 1 sec. intervals.
+5	Christian	mm/core/christian.py				Accountant				Live-mode only. Maintains ledger for irl tax purposes. **Current: Stubbed
+6	Dr. Calvin	mm/core/drcalvin.py					Scoring Level I			Prefilters assets, assigns initial scoring of best trading pairs.
+7	Grayson		mm/core/grayson.py					Risk Manager			Enforces compliance with trading parameters from Marcus.
+8	Helen		mm/core/helen.py					Inventory Manager		Maintains assets and postitions control.
+9	Julius		mm/core/julius.py					Banker					Maintains balance and spending control.
+10	Malcolm		mm/core/malcolm.py					Purchasing Manager		Performs all purchasing actions. (bids)
+11	Naomi		mm/core/naomi.py					Panic Manager			Protects against market moves, authority to cancel orders, halt system.
+12	Petra		mm/core/petra.py					Sales Manager			Performs all sell actions. (asks)
+13	Verity		mm/core/verity.py					Applied Metrics			Records and analyzed performance and risk metrics.
+14	Laurel		mm/utils/canary/laurel.py			Heartbeat Monitor		Monitors heartbeats table and alerts on process down.
+15	Inara		mm/utils/helpers/inara.py			Central Authority		Central authority for runmode and TradingClient
+16	Wintermute	mm/utils/helpers/wintermute.py		Repo					Stores common functions and methods for use by others.
+17	Viki		mm/utils/market_state/viki.py		Market Watcher			Determines the state of the market for any asset. (panic, calm, etc)
+18	Rachael		mm/utils/nexus-6/rachael.py			Order Controller Saves	Determines if a lower scoring order can be saved. Can modify orders.
+19	Edith		mm/utils/partition_manager/edith.py	Database Cutation		Handles tickstick partitions, sweeping of stale orders.
+20	Lamar		mm/utils/seldon_engine/lamar.py		Comms Controller		Listens for postgres triggers, signals other processes to task.
+21	Quorra		mm/utils/seldon_engine/quorra.py	Scoring Level II		Uses market intelligence to update initial scoring provided by Dr. Calvin.
+22	Hari		mm/utils/soc/hari.py				The Market				Simulates the market while in simultation runmode. May manage orders in live.
+23	Alma		mm/utils/tickersticker/alma.py		Database Populator		Creates a table of current ticker data for top pairs using same prefilter.
+24	Agnes		mm/utils/tqdm/agnes.py				Comms Formatter			Uses TQDM Logger to ensure uniform logging across site.
+25	Andi		mm/utils/tqt/andi.py				Database Integrity		Transactional Query Table Processor. Validates and queues database writes.
+26	Karin		mm/utils/tqt/karin.py				Database Assistant		Curates a cache of database table schemas to facilitate Andi's process. 
