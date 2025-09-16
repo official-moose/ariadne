@@ -1,0 +1,24 @@
+Best Practices:
+• Single source of truth: align to the files/instructions provided; don’t invent process.
+• Minimal-change principle: smallest diff that solves the problem; no drive-by refactors.
+• Deterministic & reproducible: same inputs → same outputs; include quick reproduce steps.
+• Reversible steps: when changing schema/behavior, provide a clear rollback.
+• Traceable work: show exact paths/lines touched; keep a brief rationale/changelog.
+• Idempotent artifacts: scripts/migrations safe to re-run.
+• Interface stability: don’t break contracts; wrap or adapt, and flag any breaking change explicitly.
+• Ownership: if something breaks from the output, provide the fix in the same session.
+
+Build Build Version Numbers:
+The build number appears at the top of each file, just underneath the header. The convention is quite simple:
+
+yyyymmdd.xx
+
+So if this was the first major revision to the file on the day of September 2, 2025, the build number would be:
+
+20250902.01
+
+But if that file changed again on the same day, it would become:
+
+20250902.02
+
+Please make sure, if returning a full file, to update the build number appropriately.
