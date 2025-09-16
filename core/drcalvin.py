@@ -33,15 +33,12 @@ from mm.config.marcus import (
     MIN_24H_VOLUME,
     MAX_24H_VOLUME,
     MIN_COIN_AGE,
-    LIQUIDITY,
     SPREAD_TIGHTNESS,
     ORDER_BOOK_DEPTH,
     SLIPPAGE_RESISTANCE,
-    MARKET,
     VOLATILITY_PROFILE,
     VOLUME_CONSISTENCY,
     PRICE_STABILITY,
-    TRADING,
     FEE_EFFICIENCY,
     EXECUTION_SPEED,
     MARKET_IMPACT,
@@ -49,7 +46,7 @@ from mm.config.marcus import (
     MIN_LIQUIDITY_SCORE
 )
 
-class Intake:
+class Level_I:
     def __init__(self, config):
         self.cfg = config
         
