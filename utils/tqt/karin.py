@@ -14,23 +14,6 @@
 #===================================================================
 # 🔰 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
 #===================================================================
-
-#>> A R I A N D E v6
-#>> last update: 2025 | Sept. 03
-#>>
-#>> KARIN (Kinetic Automated Relay Interface Node)
-#>> mm/utils/tqt/karin.py
-#>>
-#>> Schema discovery and monitoring for Andi's validation
-#>> Discovers and monitors ALL database tables
-#>> Updates cache for Andi, alerts on changes
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]
-#>>────────────────────────────────────────────────────────────────
-
-# Build|20250903.01
  
 import os
 import sys
@@ -44,10 +27,10 @@ from dotenv import load_dotenv
 import psycopg2
 import psycopg2.extras
 
-# Load environment variables
+# 🔸 Load environment variables ====================================
 load_dotenv()
 
-# Add parent directory to path for imports
+# 🔸 Add parent directory to path for imports ======================
 sys.path.append('/root/Echelon/valentrix')
 
 from mm.utils.helpers.wintermute import (
@@ -62,16 +45,15 @@ from mm.utils.helpers.wintermute import (
 from mm.utils.helpers.inara import get_mode
 from mm.config.marcus import ALERT_EMAIL_RECIPIENT
 
-# ──────────────────────────────────────────────────────────────────
-# Configuration
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Configuration =================================================
 
 SCHEMA_CACHE_PATH = "/root/Echelon/valentrix/mm/data/source/schemas.json"
 PID_FILE = "/root/Echelon/valentrix/mm/utils/tqt/karin.pid"
 LOG_FILE = "/root/Echelon/valentrix/mm/utils/tqt/karin.log"
 CHECK_INTERVAL = 30  # seconds
 
-# Default values for nullable->not null transitions
+# 🔸 Default values for nullable->not null transitions =============
+
 DEFAULT_VALUES = {
     'TEXT': "''",
     'VARCHAR': "''",
@@ -102,18 +84,19 @@ DEFAULT_VALUES = {
     'INTERVAL': "'0 seconds'::interval"
 }
 
-# Global shutdown flag
+# 🔸 Global shutdown flag ==========================================
+
 shutdown_requested = False
 
-# Logger
+# 🔸 Logger ========================================================
+
 log = get_logger("karin", LOG_FILE)
 
-# Email client
+# 🔸 Email client
+
 mailer = EmailClient('karin')
 
-# ──────────────────────────────────────────────────────────────────
-# Signal Handlers
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Signal Handlers ===============================================
 
 def signal_handler(signum, frame):
     """Handle shutdown signals gracefully."""
@@ -124,9 +107,7 @@ def signal_handler(signum, frame):
 signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
-# ──────────────────────────────────────────────────────────────────
-# Schema Discovery
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Schema Discovery ==============================================
 
 class SchemaDiscovery:
     """Discovers and compares ALL database schemas."""
@@ -550,9 +531,7 @@ class SchemaDiscovery:
         
         return "\n".join(lines)
 
-# ──────────────────────────────────────────────────────────────────
-# Main Process
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Main Process ==================================================
 
 class KARIN:
     """Main KARIN process - monitors ALL schemas continuously."""
@@ -676,9 +655,7 @@ class KARIN:
         finally:
             cleanup_pid_file(PID_FILE)
 
-# ──────────────────────────────────────────────────────────────────
-# Entry Point
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Entry Point ===================================================
 
 if __name__ == "__main__":
     karin = KARIN()
