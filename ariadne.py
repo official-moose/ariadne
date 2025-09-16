@@ -1,21 +1,21 @@
-#>> A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 15                ❌ PRODUCTION READY
-#>>
-#>> Ariadne Actual
-#>> mm/ariadne.py
-#>>
-#>> Initialized: August 19, 2025
-#>> Sim Testing: ---   
-#>> Launched: ---
-#>> KuCoin exchange market maker bot. 
-#>> Initial capital of $2,500 CAD
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]        💫 PERSISTANT RUNTIME  ➰ MONIT MANAGED
-#>>────────────────────────────────────────────────────────────────
-
-# Build|20250915.01
+#===================================================================
+# 🍁 A R I A N D E                    version 6.1 build 20250915.01
+#===================================================================
+# last update: 2025 | Sept. 15                  Production ready ✅
+#===================================================================
+# Ariadne Actual
+# mm/ariadne.py
+#
+# Initialized: August 19, 2025
+# Sim Testing: ---   
+# Launched: ---
+# KuCoin exchange market maker bot. 
+# Initial capital of $2,500 CAD
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
+#===================================================================
 
 import os
 import importlib
@@ -27,10 +27,12 @@ from email.message import EmailMessage
 from email.utils import formataddr
 from zoneinfo import ZoneInfo
 
-# third-party imports
+# 🔸 third-party imports ===========================================
+
 from dotenv import load_dotenv
 
-# local application imports
+# 🔸 local application imports =====================================
+
 import mm.config.marcus as marcus
 from mm.core.calvin import DrCalvin
 from mm.core.grayson import Grayson
@@ -46,12 +48,11 @@ from mm.utils.nexus_6.rachael import Replicant
 from mm.utils.database import Database
 from mm.utils.heartbeat import Heartbeat
 
-# load env for this process
+# 🔸 load env for this process =====================================
+
 load_dotenv("mm/data/secrets/.env")
 
-# -----------------------------------------------------------------------------
-# Drop-in Emailer
-# -----------------------------------------------------------------------------
+# 🔸 Drop-in Emailer ===============================================
 
 def send_email(subject: str, status: str, title: str, message: str) -> str:
 
@@ -65,7 +66,7 @@ def send_email(subject: str, status: str, title: str, message: str) -> str:
     port = getattr(marcus, "ALERT_EMAIL_SMTP_PORT", None)
     recipient = getattr(marcus, "ALERT_EMAIL_RECIPIENT", None)
 
-    USERCODE = "ALM"  # hardcode per file
+    USERCODE = "ARI"  # hardcode per file
 
     # ---- Edit Sender Info (per file) ----
     user = os.getenv(f"{USERCODE}_USR")
@@ -148,9 +149,7 @@ def send_email(subject: str, status: str, title: str, message: str) -> str:
 
     return msg_id
 
-# -----------------------------------------------------------------------------
-# Ariadne Class
-# -----------------------------------------------------------------------------
+# 🔸 Ariadne Class =================================================
 
 class Ariadne:
 
@@ -162,13 +161,16 @@ class Ariadne:
         self.cycle_count = 0
 
     def run(self):
-        # --- 🔸 STARTUP 🔸 ---
+
+# 🔸 STARTUP =======================================================
+        
         self.logger.info("Starting cycle...")
         self.mode = self.inara.get_mode()
         self.client = self.inara.get_trading_client()
         self.logger.info(f"Mode: {self.mode}, Client: {self.client}")
 
-        # --- Risk Assessment on open orders ---
+# 🔸 OPEN ORDERS RISK ASSESSMENT====================================
+        
         current_orders = self.client.get_open_orders()
 
         for order in current_orders.copy():
@@ -199,7 +201,8 @@ class Ariadne:
                 self.logger.info(f"Order {order_id} canceled by Quorra (score {score2}).")
                 continue
 
-        # --- 🔸 SELL CYCLE 🔸 ---
+# 🔸 SELL CYCLE ====================================================
+        
         petra = Petra(self.client)
         proposals = petra.prepare_sell_orders(Helen.get_positions())
 
@@ -216,7 +219,8 @@ class Ariadne:
             elif response == "approved":
                 self.client.place_order(proposal)
 
-        # --- 🔸 BUY CYCLE 🔸 ---
+# 🔸 BUY CYCLE =====================================================
+        
         best_pairs = Helen.get_best_pairs()
         best_pairs = [p for p in best_pairs if Grayson(p).compliant()]
         scored_pairs = [(p, Quorra(p).score_pair()) for p in best_pairs]
@@ -238,7 +242,8 @@ class Ariadne:
                 self.client.place_order(proposal)
                 Database.record_order(proposal)
 
-        # --- 🔸 HOUSEKEEPING CYCLE 🔸 ---
+# 🔸 HOUSEKEEPING CYCLE ============================================
+
         if self.mode == "simulation":
             Julius().sweep_stale_holds()
             Helen.sweep_stale_holds()
