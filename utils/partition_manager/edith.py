@@ -1,17 +1,17 @@
-#>> 🍁 A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 14                ✅ Production ready
-#>>
-#>> EDITH - Partition Manager
-#>> mm/utils/partition_manager/edith.py
-#>>
-#>> Manages hourly partitions and sweeps expired proposals
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]        💫 PERSISTANT RUNTIME  ➰ MONIT MANAGED
-#>>────────────────────────────────────────────────────────────────
-
-# Build|20250914.01
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250914.01
+#===================================================================
+# last update: 2025 | Sept. 14                  Production ready ✅
+#===================================================================
+# Edith - Partition Manager
+# mm/utils/partition_manager/edith.py
+#
+# Manages hourly partitions and sweeps expired proposals
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
+#===================================================================
 
 import os
 import sys
