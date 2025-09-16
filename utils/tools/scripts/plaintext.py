@@ -16,30 +16,49 @@ def generate_file_structure():
     date_str = get_current_date()
     output_file = f"mm/config/plaintext/file_structure_plaintext_{date_str}.txt"
     
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         f.write("PROJECT FILE STRUCTURE\n")
         f.write("=" * 50 + "\n")
-        f.write(f"Generated: {datetime.now().isoformat()}\n\n") 
+        f.write(f"Generated: {datetime.now().isoformat()}\n\n")
         
         for root, dirs, files in os.walk("mm"):
+            # Remove __pycache__ directories
+            dirs[:] = [d for d in dirs if d != '__pycache__']
+            
             level = root.replace("mm", "").count(os.sep)
-            indent = "  " * level
-            f.write(f"{indent}{os.path.basename(root)}/\n")
-            sub_indent = "  " * (level + 1)
-            for file in files:
-                f.write(f"{sub_indent}{file}\n")
+            
+            if level == 0:
+                f.write("mm/\n")
+            else:
+                dirname = os.path.basename(root)
+                prefix = "│   " * (level - 1) + "├── "
+                f.write(f"{prefix}{dirname}/\n")
+            
+            # Sort files
+            files.sort()
+            for i, file in enumerate(files):
+                is_last_file = (i == len(files) - 1)
+                if level == 0:
+                    prefix = "└── " if is_last_file else "├── "
+                else:
+                    prefix = "│   " * level + ("└── " if is_last_file else "├── ")
+                f.write(f"{prefix}{file}\n")
 
 def generate_code_pages():
     date_str = get_current_date()
     output_file = f"mm/config/plaintext/code_pages_plaintext_{date_str}.txt"
     
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         f.write("ALL CODE IN PLAINTEXT\n")
         f.write("=" * 50 + "\n")
         f.write(f"Generated: {datetime.now().isoformat()}\n\n")
         
         for root, dirs, files in os.walk("mm"):
             for file in files:
+                # Skip .log and .txt files
+                if file.endswith('.log') or file.endswith('.txt'):
+                    continue
+                    
                 file_path = os.path.join(root, file)
                 
                 f.write("\n" + "=" * 80 + "\n")
@@ -62,7 +81,7 @@ def generate_db_schema():
     dsn = os.getenv("PG_DSN", "dbname=ariadne user=postgres host=localhost")
     conn = psycopg2.connect(dsn)
     
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         f.write("DATABASE SCHEMA\n")
         f.write("=" * 50 + "\n")
         f.write(f"Generated: {datetime.now().isoformat()}\n\n")
@@ -73,9 +92,15 @@ def generate_db_schema():
         cur.execute("SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename")
         tables = [row[0] for row in cur.fetchall()]
         
-        f.write(f"TABLES ({len(tables)} found)\n")
-        f.write("-" * 30 + "\n\n")
+        # Table listing at the beginning
+        f.write("TABLE LIST\n")
+        f.write("-" * 20 + "\n")
+        for i, table_name in enumerate(tables, 1):
+            f.write(f"{i:2d}. {table_name}\n")
+        f.write(f"\nTotal: {len(tables)} tables\n\n")
+        f.write("=" * 60 + "\n\n")
         
+        # Individual table details
         for table_name in tables:
             f.write(f"TABLE: {table_name}\n")
             f.write("=" * (len(table_name) + 7) + "\n")
