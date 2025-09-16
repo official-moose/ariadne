@@ -1,19 +1,21 @@
-#>> A R I A N D E v6
-#>> last update: 2025 | Sept. 5
-#>>
-#>> Simulated Market Place
-#>> mm/utils/soc/hari.py
-#>>
-#>> Checks simulated orders and mimicks the market process. 
-#>> Applies "realisms" to keep me humble.
-#>> Records trade, releases sim funds. 
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]
-#>>────────────────────────────────────────────────────────────────
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250905.01
+#===================================================================
+# last update: 2025 | Sept. 5                   Production ready ❌
+#===================================================================
+# Hari - Simulated Market Place
+# mm/utils/soc/hari.py
+#
+# Checks simulated orders and mimicks the market process. 
+# Applies "realisms" to keep me humble.
+# Records trade via Andi.
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
+#===================================================================
 
-# Build|20250905.01
+# 🔸 Standard Library Imports ======================================
 
 import os
 import sys
@@ -31,7 +33,8 @@ from logging.handlers import RotatingFileHandler
 from mm.utils.helpers.wintermute import get_db_connection, release_db_connection
 from mm.utils.helpers.inara import get_mode
 
-# ── Constants ─────────────────────────────────────────────────────────
+# 🔸 Constants =====================================================
+
 CHECK_INTERVAL_SECONDS = 5
 HEARTBEAT_CYCLES = 12  # Every 60 seconds
 REALISM_CHANCE = 0.15  # 15% chance
@@ -40,18 +43,21 @@ PID_FILE = os.getenv("SOC_PID_FILE", "/root/Echelon/valentrix/mm/utils/soc/soc.p
 LOG_FILE = os.getenv("SOC_LOG_FILE", "/root/Echelon/valentrix/mm/utils/soc/soc.log")
 MAKER_REST_THRESHOLD_SECONDS = 5  # age on book to count as maker
 
-# Market condition thresholds
+# 🔸 Market condition thresholds ===================================
+
 PANIC_VOLATILITY_THRESHOLD = 0.05  # 5% in 15 mins
 STRESS_VOLATILITY_THRESHOLD = 0.02  # 2% in 15 mins
 MOMENTUM_WINDOW_SECONDS = 5         # lookback for short-term drift
 MOMENTUM_TOUCHED_THRESH = 0.001     # 0.10% move considered “moving away”
 MOMENTUM_SKIP_BONUS = 0.07          # +7% skip chance when moving away
 
-# ── Logging Setup (rotating) ─────────────────────────────────────────
+# 🔸 Logging Setup (rotating) ======================================
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-# Ensure log directory exists
+# 🔸 Ensure log directory exists ===================================
+
 try:
     os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
 except Exception:
@@ -62,12 +68,14 @@ rot.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s: %(message)s', '
 stdout = logging.StreamHandler(sys.stdout)
 stdout.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s: %(message)s', '%Y-%m-%d %H:%M:%S'))
 
-# avoid duplicate handlers if reloaded
+# 🔸 avoid duplicate handlers if reloaded ==========================
+
 if not logger.handlers:
     logger.addHandler(rot)
     logger.addHandler(stdout)
 
-# ── Global shutdown flag ──────────────────────────────────────────────
+# 🔸 Global shutdown flag ==========================================
+
 shutdown_requested = False
 
 def signal_handler(signum, frame):
@@ -76,11 +84,13 @@ def signal_handler(signum, frame):
     logger.info(f"[SHUTDOWN] Received signal {signum}, shutting down gracefully...")
     shutdown_requested = True
 
-# Register signal handlers
+# 🔸 Register signal handlers ======================================
+
 signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
-# ── Database Connection ───────────────────────────────────────────────
+# 🔸 Database Connection ===========================================
+
 def get_db_connection():
     """Get connection to ariadne database"""
     return psycopg2.connect(
@@ -89,7 +99,8 @@ def get_db_connection():
         host="localhost"
     )
 
-# ── PID Management ────────────────────────────────────────────────────
+# 🔸 PID Management ================================================
+
 def write_pid_file():
     """Write PID file for monit"""
     try:
@@ -100,7 +111,8 @@ def write_pid_file():
         f.write(str(os.getpid()))
     logger.info(f"[INIT] PID {os.getpid()} written to {PID_FILE}")
 
-# ── Market Analysis ───────────────────────────────────────────────────
+# 🔸 Market Analysis ===============================================
+
 def calculate_volatility(conn, symbol: str, minutes: int = 10) -> float:
     """Calculate price volatility over specified minutes"""
     try:
@@ -137,12 +149,14 @@ def get_market_condition(conn, symbol: str) -> str:
     else:
         return "normal"
 
-# -- Fix UTC Seconds --------------------------------------------------
+# 🔸 Fix UTC Seconds ===============================================
+
 def utc_now_ts() -> int:
     """UTC 'now' as integer seconds."""
     return int(datetime.utcnow().timestamp())
 
-# ── Order Book Analysis ───────────────────────────────────────────────
+# 🔸 Order Book Analysis ===========================================
+
 def get_order_book_state(conn, symbol: str) -> Dict:
     """Get current order book state for realism calculations, normalized:
        - both bid/ask > 0
@@ -202,7 +216,8 @@ def get_order_book_state(conn, symbol: str) -> Dict:
         logger.error(f"[ERROR] Failed to get/normalize order book for {symbol}: {e}")
         return None
 
-# ── Realism Functions ─────────────────────────────────────────────────
+# 🔸 Realism Functions =============================================
+
 def check_realism_history(conn, symbol: str) -> bool:
     """Check if symbol had realism applied in last 12 hours"""
     try:
@@ -402,7 +417,8 @@ def apply_skip_touch(order: Dict, book_state: Dict, momentum: float = 0.0, recor
 
     return order
 
-# ── Order Processing ──────────────────────────────────────────────────
+# 🔸 Order Processing ==============================================
+
 def should_fill_order(order: Dict, ticker_data: Dict) -> bool:
     """Fill predicate with safety guards:
        - require bid/ask present and > 0
@@ -824,7 +840,8 @@ def process_fill(conn, order: Dict, fill_price: float, fill_qty: float, fee_amou
         logger.error(f"[ERROR] Failed to process fill atomically: {e}")
         conn.rollback()
 
-# ── Main Order Checker ────────────────────────────────────────────────
+# 🔸 Main Order Checker ============================================
+
 class SimOrderChecker:
     def __init__(self):
         self.cycle_count = 0
@@ -1151,7 +1168,8 @@ class SimOrderChecker:
         
         logger.info("[SHUTDOWN] SOC shutting down gracefully")
 
-# ── Main Entry Point ──────────────────────────────────────────────────
+# 🔸 Main Entry Point ==============================================
+
 if __name__ == "__main__":
     checker = SimOrderChecker()
     checker.run_continuous()
