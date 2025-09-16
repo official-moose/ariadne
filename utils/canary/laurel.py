@@ -1,18 +1,18 @@
-#>> 🍁 A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 13               ✅ Production ready
-#>>
-#>> LAUREL - Heartbeat Monitor
-#>> mm/utils/canary/laurel.py
-#>>
-#>> Monitors all process heartbeats, alerts on failures
-#>> Sends hourly status report as own heartbeat
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]        💫 PERSISTANT RUNTIME  ➰ MONIT MANAGED
-#>>────────────────────────────────────────────────────────────────
-
-# Build|20250913.03
+#===================================================================
+# 🍁 A R I A N D E                    version 6.1 build 20250913.03
+#===================================================================
+# last update: 2025 | Sept. 13                  Production ready ✅
+#===================================================================
+# LAUREL - Heartbeat Monitor
+# mm/utils/canary/laurel.py
+#
+# Monitors all process heartbeats, alerts on failures
+# Sends hourly status report as own heartbeat
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
+#===================================================================
 
 import os
 import sys
@@ -32,10 +32,10 @@ from email.utils import formataddr
 from zoneinfo import ZoneInfo
 import importlib
 
-# Load environment variables
+# 🔸 Load environment variables ====================================
 load_dotenv()
 
-# Add parent directory to path for imports
+# 🔸 Add parent directory to path for imports ======================
 sys.path.append('/root/Echelon/valentrix')
 
 from mm.utils.helpers.wintermute import (
@@ -50,9 +50,7 @@ from mm.utils.helpers.inara import get_mode
 from mm.config.marcus import ALERT_EMAIL_RECIPIENT
 import mm.config.marcus as marcus
 
-# ──────────────────────────────────────────────────────────────────
-# Email Function
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Email Function ================================================
 
 def send_email(subject: str, status: str, title: str, message: str) -> str:
     import importlib
@@ -182,20 +180,19 @@ def send_email(subject: str, status: str, title: str, message: str) -> str:
 
     return msg_id
 
-# ──────────────────────────────────────────────────────────────────
-# Configuration
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Configuration =================================================
 
 PID_FILE = "/root/Echelon/valentrix/mm/utils/canary/laurel.pid"
 LOG_FILE = "/root/Echelon/valentrix/mm/utils/canary/laurel.log"
 NOTES_FILE = "/root/Echelon/valentrix/mm/utils/canary/laurel_notes.log"
 
-# Monitoring parameters
+# 🔸 Monitoring parameters =========================================
+
 CHECK_INTERVAL = 30  # Check every 30 seconds
 HOURLY_REPORT_INTERVAL = 3600  # Send status email every hour
 
-# Process-specific heartbeat thresholds (in seconds)
-# How long before we consider a process missing
+# 🔸 Process-specific heartbeat thresholds (in seconds) ============
+
 HEARTBEAT_THRESHOLDS = {
     #'ariadne': 120,      # Main bot - 2 minutes
     #'hari': 60,          # SOC - 1 minute
@@ -206,7 +203,8 @@ HEARTBEAT_THRESHOLDS = {
     #'default': 300       # Default - 5 minutes
 }
 
-# Alert levels
+# 🔸 Alert levels for email alerts =================================
+
 ALERT_LEVELS = {
     1: "STATCON3",	# on the first missing heartbeat 
     2: "STATCON2",	# on the second missing heartbeat
@@ -216,16 +214,16 @@ ALERT_LEVELS = {
     6: "OPSCON1",	# Issues detected
 }
 
-# Global shutdown flag
+# 🔸 Global shutdown flag ==========================================
+
 shutdown_requested = False
 
-# Loggers
+# 🔸 Loggers =======================================================
+
 log = get_logger("laurel", LOG_FILE)
 notes = get_logger("laurel.notes", NOTES_FILE)
 
-# ──────────────────────────────────────────────────────────────────
-# Signal Handlers
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Signal Handlers ===============================================
 
 def signal_handler(signum, frame):
     """Handle shutdown signals gracefully."""
@@ -236,9 +234,7 @@ def signal_handler(signum, frame):
 signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
-# ──────────────────────────────────────────────────────────────────
-# Heartbeat Checker
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Heartbeat Checker =============================================
 
 class HeartbeatMonitor:
     """Monitors process heartbeats and sends alerts."""
@@ -443,18 +439,18 @@ class HeartbeatMonitor:
                 system_status = self._format_system_status()
 
                 message_html = f"""
-<b>Time:</b> {tp.human}<br>
-<b>Mode:</b> {get_mode()}<br>
-<b>Status:</b> ALL SYSTEMS OPERATIONAL<br>
+                                <b>Time:</b> {tp.human}<br>
+                                <b>Mode:</b> {get_mode()}<br>
+                                <b>Status:</b> ALL SYSTEMS OPERATIONAL<br>
 
-<b>Monitoring {len(self.process_status)} processes:</b><br>
-{system_status}<br><br>
+                                <b>Monitoring {len(self.process_status)} processes:</b><br>
+                                {system_status}<br><br>
 
-<b>Laurel Statistics:</b><br>
-- <b>Checks Performed:</b> {self.check_count}<br>
-- <b>Alerts Sent:</b> {self.alerts_sent}<br>
-- <b>Uptime:</b> {(time.time() - start_time) / 3600:.1f} hours<br>
-"""
+                                <b>Laurel Statistics:</b><br>
+                                - <b>Checks Performed:</b> {self.check_count}<br>
+                                - <b>Alerts Sent:</b> {self.alerts_sent}<br>
+                                - <b>Uptime:</b> {(time.time() - start_time) / 3600:.1f} hours<br>
+                                """
             else:
                 problem_count = sum(1 for s in self.process_status.values() if s.get('is_stale', False))
                 subject = f"[ OPSCON1 ] PRIORITY SITREP -> {problem_count} issues detected. {tp.dt.strftime('%H:%M:%S')}"
@@ -471,21 +467,21 @@ class HeartbeatMonitor:
                 system_status = self._format_system_status()
 
                 message_html = f"""
-<b>Time:</b> {tp.human}<br>
-<b>Mode:</b> {get_mode()}<br>
-<b>Status:</b> {problem_count} PROCESS(ES) WITH ISSUES<br><br>
+                                <b>Time:</b> {tp.human}<br>
+                                <b>Mode:</b> {get_mode()}<br>
+                                <b>Status:</b> {problem_count} PROCESS(ES) WITH ISSUES<br><br>
 
-<b>Issues:</b><br>
-{issues_text}<br><br>
+                                <b>Issues:</b><br>
+                                {issues_text}<br><br>
 
-<b>All Processes:</b><br>
-{system_status}<br><br>
+                                <b>All Processes:</b><br>
+                                {system_status}<br><br>
 
-<b>Laurel Statistics:</b><br>
-- <b>Checks Performed:</b> {self.check_count}<br>
-- <b>Alerts Sent:</b> {self.alerts_sent}<br>
-- <b>Uptime:</b> {(time.time() - start_time) / 3600:.1f} hours<br>
-"""
+                                <b>Laurel Statistics:</b><br>
+                                - <b>Checks Performed:</b> {self.check_count}<br>
+                                - <b>Alerts Sent:</b> {self.alerts_sent}<br>
+                                - <b>Uptime:</b> {(time.time() - start_time) / 3600:.1f} hours<br>
+                                """
 
             # Send report
             send_email(
@@ -506,9 +502,9 @@ class HeartbeatMonitor:
 
         for process, status in sorted(self.process_status.items()):
             if status.get('is_stale', False):
-                state = "⚠️ STALE"
+                state = "âš ï¸ STALE"
             else:
-                state = "✓ OK"
+                state = "âœ“ OK"
 
             seconds = status.get('seconds_since', 0)
             if seconds < 60:
@@ -545,9 +541,7 @@ class HeartbeatMonitor:
         except Exception as e:
             log.error(f"Failed to update own heartbeat: {e}")
 
-# ──────────────────────────────────────────────────────────────────
-# Main Process Loop
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Main Process Loop =============================================
 
 def main():
     """Main process loop."""
@@ -596,9 +590,7 @@ def main():
     finally:
         cleanup_pid_file(PID_FILE)
 
-# ──────────────────────────────────────────────────────────────────
-# Entry Point
-# ──────────────────────────────────────────────────────────────────────
+# 🔸 Entry Point ===================================================
 
 if __name__ == "__main__":
     main()
