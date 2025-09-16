@@ -1,19 +1,19 @@
-#>> 🍁 A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 3               ❌ PRODUCTION READY
-#>>
-#>> Andi - Transactional Query Table Processor
-#>> mm/utils/tqt/andi.py
-#>>
-#>> Validates and queues database writes from managers
-#>> Batches for efficiency, handles retries, maintains data 
-#>> integrity.
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]                                       🤖 DROID
-#>>────────────────────────────────────────────────────────────────
-
-# Build|20250903.01
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250903.01
+#===================================================================
+# last update: 2025 | Sept. 3                   Production ready ❌
+#===================================================================
+# Andi - Transactional Query Table Processor
+# mm/utils/tqt/andi.py
+#
+# Validates and queues database writes from managers
+# Batches for efficiency, handles retries, maintains data 
+# integrity
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
+#===================================================================
 
 import os
 import sys
@@ -31,7 +31,8 @@ from collections import defaultdict
 import psycopg2
 import psycopg2.extras
 
-# Add project root for imports (deployment path)
+# 🔸 Add project root for imports (deployment path) ================
+
 sys.path.append('/root/Echelon/valentrix')
 
 from mm.utils.helpers.wintermute import (
@@ -46,16 +47,15 @@ from mm.utils.helpers.wintermute import (
 )
 from mm.utils.helpers.inara import get_mode
 
-# ──────────────────────────────────────────────────────────────────
-# Configuration
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Configuration =================================================
 
 SCHEMA_CACHE_PATH = "/root/Echelon/valentrix/mm/data/source/schemas.json"
 PID_FILE = "/root/Echelon/valentrix/mm/utils/tqt/andi.pid"
 LOG_FILE = "/root/Echelon/valentrix/mm/utils/tqt/andi.log"
 NOTES_FILE = "/root/Echelon/valentrix/mm/utils/tqt/andi_notes.log"
 
-# Processing parameters
+# 🔸 Processing parameters =========================================
+
 BATCH_SIZE = 50           # Max items per batch (mixed table/hold/asset)
 BATCH_INTERVAL = 0.10     # seconds
 RETRY_MAX = 3             # Max retries per item
@@ -63,20 +63,21 @@ RETRY_DELAY = 0.50        # Initial retry delay (per item)
 DLQ_MAX_SIZE = 1000       # Max failed items to retain
 HEARTBEAT_INTERVAL = 300  # seconds
 
-# Sweeping defaults
+# 🔸 Sweeping defaults =============================================
+
 HOLD_SWEEP_AGE_MIN = 10     # minutes for holds.sweep
 ASSET_SWEEP_AGE_MIN = 10    # minutes for assets.sweep
 
-# Global shutdown flag
+# 🔸 Global shutdown flag ==========================================
+
 shutdown_requested = False
 
-# Loggers
+# 🔸 Loggers =======================================================
+
 log = get_logger("andi", LOG_FILE)
 notes = get_logger("andi.notes", NOTES_FILE)
 
-# ──────────────────────────────────────────────────────────────────
-# Signal Handlers
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Signal Handlers ===============================================
 
 def signal_handler(signum, frame):
     """Handle shutdown signals gracefully."""
@@ -87,9 +88,7 @@ def signal_handler(signum, frame):
 signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
-# ──────────────────────────────────────────────────────────────────
-# Schema Validator
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Schema Validator ==============================================
 
 class SchemaValidator:
     """
@@ -187,9 +186,7 @@ class SchemaValidator:
             return value  # let PG handle
         return value
 
-# ──────────────────────────────────────────────────────────────────
-# Write Queue Manager
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Write Queue Manager ===========================================
 
 class WriteQueue:
     """
@@ -414,9 +411,7 @@ Recent DLQ Entries:
             'stats': dict(self.stats)
         }
 
-# ──────────────────────────────────────────────────────────────────
-# ANDI Core
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Andi Core =====================================================
 
 class ANDI:
     """Main ANDI process - provides queue methods and processes items."""
@@ -432,7 +427,7 @@ class ANDI:
         self.cycle_count = 0
         self.last_heartbeat = time.time()
 
-    # ── Table-specific queue methods ──────────────────────────────────
+    # 🔸 Table-specific queue methods ==============================
 
     def queue_order(self, data: Dict, source: str = None) -> str:
         return self.queue.enqueue('sim_orders', data, source or 'unknown')
@@ -455,7 +450,7 @@ class ANDI:
     def queue_generic(self, table: str, data: Dict, source: str = None) -> str:
         return self.queue.enqueue(table, data, source or 'unknown')
 
-    # ── Topic queue methods ───────────────────────────────────────────
+    # 🔸 Topic queue methods =======================================
 
     def queue_hold(self, topic: str, payload: Dict, source: str = None) -> str:
         """Julius → holds.*"""
@@ -465,7 +460,7 @@ class ANDI:
         """Helen → assets.*"""
         return self.queue.enqueue_topic(topic, payload, source or 'helen')
 
-    # ── Processing loop ───────────────────────────────────────────────
+    # 🔸 Processing loop ===========================================
 
     def _process_loop(self):
         log.info("[PROCESSOR] Write processing thread started")
@@ -510,7 +505,7 @@ class ANDI:
         except Exception as e:
             log.error(f"Heartbeat update failed: {e}")
 
-    # ── Lifecycle management ─────────────────────────────────────────
+    # 🔸 Lifecycle management ======================================
 
     def start(self):
         if self.running:
@@ -542,7 +537,7 @@ class ANDI:
             }
         }
 
-    # ── Hold event processing (Julius) ───────────────────────────────
+    # 🔸 Hold event processing (Julius) ============================
 
     def _process_hold_event(self, item: Dict[str, Any]) -> None:
         topic = item['topic']
@@ -682,7 +677,7 @@ class ANDI:
             if conn:
                 release_db_connection(conn)
 
-    # ── Asset event processing (Helen) ───────────────────────────────
+    # 🔸 Asset event processing (Helen) ============================
 
     def _process_asset_event(self, item: Dict[str, Any]) -> None:
         """
@@ -793,9 +788,7 @@ class ANDI:
             if conn:
                 release_db_connection(conn)
 
-# ──────────────────────────────────────────────────────────────────
-# Singleton Instance
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Singleton Instance ============================================
 
 _andi_instance: Optional[ANDI] = None
 
@@ -807,9 +800,7 @@ def get_andi() -> ANDI:
         _andi_instance.start()
     return _andi_instance
 
-# ──────────────────────────────────────────────────────────────────
-# Main Entry Point (for standalone operation)
-# ──────────────────────────────────────────────────────────────────
+# 🔸 Main Entry Point (for standalone operation) ===================
 
 def main():
     """Run ANDI as standalone process."""
