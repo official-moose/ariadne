@@ -1,3 +1,20 @@
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250903.01
+#===================================================================
+# last update: 2025 | Sept. 3                   Production ready ✅
+#===================================================================
+# KARIN (Kinetic Automated Relay Interface Node)
+# mm/utils/tqt/karin.py
+#
+# Schema discovery and monitoring for Andi's validation
+# Discovers and monitors ALL database tables
+# Updates cache for Andi, alerts on changes
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
+#===================================================================
+
 #>> A R I A N D E v6
 #>> last update: 2025 | Sept. 03
 #>>
