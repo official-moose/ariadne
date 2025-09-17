@@ -489,6 +489,15 @@ class SimClient:
         with self.db_lock:
             return self._get_order_internal(order_id)
     
+    def get_orders(self, status: str = "active"):
+        # 🔹 Gets all active orders for the opening risk check.
+        with get_db_connection() as conn:
+            cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cur.execute(f"SELECT * FROM sim_orders WHERE status = '{status}'")
+            rows = cur.fetchall()
+            cur.close()
+            return rows
+    
     def _get_order_internal(self, order_id: str) -> Dict:
         """Internal method to get order."""
         try:
