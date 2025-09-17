@@ -35,7 +35,7 @@ CHAN_READY_P = "proposals.ready.petra"
 CHAN_DENIED_M = "proposals.denied.malcolm"
 CHAN_DENIED_P = "proposals.denied.petra"
 
-class Lamar:
+class SigInt: 
     def __init__(self):
         self.listen_conn = None
         self.oper_conn = get_db_connection()
