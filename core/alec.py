@@ -19,6 +19,23 @@ import logging
 import time
 from typing import Dict, List, Tuple, Optional
 from datetime import datetime, timedelta
+import os
+import importlib
+import smtplib
+import ssl
+import uuid
+from email.message import EmailMessage
+from email.utils import formataddr
+from zoneinfo import ZoneInfo
+
+# third-party imports
+from dotenv import load_dotenv
+
+# local application imports
+import mm.config.marcus as marcus
+
+# load env for this process
+load_dotenv("mm/data/secrets/.env")
 
 # Import config parameters
 from mm.config.marcus import (
@@ -27,12 +44,6 @@ from mm.config.marcus import (
     ALERT_EMAIL_ENABLED, ALERT_EMAIL_ADDRESS,
     ALERT_EMAIL_RECIPIENT, QUOTE_CURRENCY
 )
-
-# Email imports (conditional)
-if ALERT_EMAIL_ENABLED:
-    import smtplib
-    from email.mime.text import MIMEText
-    from mm.utils.helpers.timezone import get_email_date
 
 # ── Logger Setup ──────────────────────────────────────────────────────
 logger = logging.getLogger('ariadne.termination')
@@ -61,6 +72,123 @@ class Alec:
             'manual': 0
         }
         
+    def send_email(subject: str, status: str, title: str, message: str) -> str:
+
+        importlib.reload(marcus)
+        if not bool(getattr(marcus, "ALERT_EMAIL_ENABLED", False)):
+            return "disabled"
+        if str(getattr(marcus, "ALERT_EMAIL_ENCRYPT", "SSL")).upper() != "SSL":
+            return "Simple Mail Transfer Protocol not established. No conn."
+
+        host = getattr(marcus, "ALERT_EMAIL_SMTP_SERVER", None)
+        port = getattr(marcus, "ALERT_EMAIL_SMTP_PORT", None)
+        recipient = getattr(marcus, "ALERT_EMAIL_RECIPIENT", None)
+
+        USERCODE = "ALE"  # hardcode per file
+
+        # ---- Edit Sender Info (per file) ----
+        user = os.getenv(f"{USERCODE}_USR")
+        pwd = os.getenv(f"{USERCODE}_PWD")
+        sender_email = user
+        sender_name = os.getenv(f"{USERCODE}_NAME")
+        # -------------------------------------
+
+        # status color map
+        STATUS_COLORS = {
+            "STATCON3": "#F1C232",	# on the first missing heartbeat 
+            "STATCON2": "#E69138",	# on the second missing heartbeat
+            "STATCON1": "#CC0000",	# on the third missing heartbeat
+            "SIGCON1": 	"#FB6D8B",	# Process never started
+            "OPSCON5": 	"#F5F5F5",	# Normal, all systems nominal
+            "OPSCON1": 	"#990000",	# Issues detected
+        }
+        status_text = str(status).upper()
+        status_color = STATUS_COLORS.get(status_text, "#BE644C")
+
+        msg = EmailMessage()
+        domain = sender_email.split("@")[1] if "@" in sender_email else "hodlcorp.io"
+        msg_id = f"<{uuid.uuid4()}@{domain}>"
+        msg["Message-ID"] = msg_id
+        msg["From"] = formataddr((sender_name, sender_email))
+        msg["To"] = recipient
+        msg["Subject"] = subject
+        msg["X-Priority"] = "1"
+        msg["X-MSMail-Priority"] = "High"
+        msg["Importance"] = "High"
+
+        # footer fields
+        now_tz = datetime.now(ZoneInfo("America/Toronto"))
+        sent_str = now_tz.strftime("%Y-%m-%d %H:%M:%S America/Toronto")
+        epoch_ms = int(now_tz.timestamp() * 1000)
+        mid_clean = msg_id.strip("<>").split("@", 1)[0]
+
+        # full HTML body (single block)
+        html_body = f"""
+    <div style="font-family: monospace;">
+      <table role="presentation" width="100%" height="20px" cellpadding="8px" cellspacing="0" border="0">
+        <!-- Top Banner -->
+        <tbody><tr style="font-family: Georgia, 'Times New Roman', Times, serif;font-size:20px;font-weight:600;background-color:#333;">
+          <td align="left" style="color:#EFEFEF;letter-spacing:12px;">INTCOMM</td>
+          <td align="right" style="color:{status_color};letter-spacing:4px;">{status_text}</td>
+        </tr>
+
+        <!-- Message Title -->
+        <tr width="100%" cellpadding="6px" style="font-family: Tahoma, Geneva, sans-serif;text-align:left;font-size:14px;font-weight:600;color:#333;">
+          <td colspan="2">
+            {title}
+          </td>
+        </tr>
+
+        <!-- Message Content -->
+        <tr width="100%" cellpadding="6px" style="font-family: Tahoma, Geneva, sans-serif;text-align:left;font-size:11px;font-weight:400;line-height:1.5;color:#333;">
+          <td colspan="2">
+            {message}
+          </td>
+        </tr>
+
+        <!-- UNUSED SPACER ROW -->
+        <tr width="100%" height="25px"><td colspan="2"> </td></tr>
+      </tbody></table>
+
+      <!-- Footer -->
+      <table role="presentation" width="400px" height="20px" cellpadding="4" cellspacing="0" border="0" style="font-family: Tahoma, Geneva, sans-serif;">
+        <!-- DOCINT -->
+        <tbody><tr style="background-color:#333;">
+          <td colspan="2" style="color:#efefef;font-size:12px;font-weight:600;">DOCINT</td>
+        </tr>
+
+        <tr style="background-color:#E9E9E5;">
+          <td width="30px" style="color:#333;font-size:10px;font-weight:600;">SENT</td>
+
+          <td width="10px" style="color:#333;font-size:10px;font-weight:600;">→</td>
+          <td style="color:#333;font-size:11px;font-weight:400;">{sent_str}</td>
+        </tr>
+
+        <tr style="background-color:#F2F2F0;">
+          <td width="30px" style="color:#333;font-size:10px;font-weight:600;">EPOCH</td>
+          <td width="10px" style="color:#333;font-size:10px;font-weight:600;">→</td>
+          <td style="color:#333;font-size:11px;font-weight:400;">{epoch_ms} (ms since 1970/01/01 0:00 UTC)</td>
+        </tr>
+
+        <tr style="background-color:#E9E9E5;">
+          <td width="30px" style="color:#333;font-size:10px;font-weight:600;">m.ID</td>
+          <td width="10px" style="color:#333;font-size:10px;font-weight:600;">→</td>
+          <td style="color:#333;font-size:11px;font-weight:400;">{mid_clean}</td>
+        </tr>
+      </tbody></table>
+    </div>
+    """
+
+        msg.add_alternative(html_body, subtype="html")
+
+        ctx = ssl.create_default_context()
+        with smtplib.SMTP_SSL(host, port, context=ctx, timeout=10) as s:
+            if user and pwd:
+                s.login(user, pwd)
+            s.send_message(msg)
+
+        return msg_id
+    
     def cancel_stale_orders(self) -> List[Tuple[str, str]]:
         """
         Cancel orders that are too old or need repricing
@@ -111,6 +239,10 @@ class Alec:
         
         Returns:
             Number of orders cancelled
+            
+        This entire function is useless. It requires a manual trigger by me, which i dont have. Futher, there is no point in
+        sending myself an alert email for something i have to manually do. Fuck Ai. I dont have time to fix this now, but seeing as
+        I am the trigger, I can leave it in with no risk. Hence this note. I'll deal with it later.
         """
         cancelled_count = 0
         
@@ -126,11 +258,27 @@ class Alec:
                 if self._cancel_order(order_id, symbol):
                     cancelled_count += 1
                     
-            self._send_alert(f"Emergency cancelled {cancelled_count} orders")
+            try:
+                send_email(
+                    subject="[ STATCON3 ] Alma executed a corrective exit.",
+                    status="STATCON3",
+                    title="API Connection to KuCoin Failed",
+                    message=f"<p><b>Alma was unable to fetch data from KuCoin via the API, the reported error was:</b><br><i>{e}</i></p><p>This exit was coded in to prevent stalling, infinite loops, and other outcomes that prevent Monit from knowing Alma is stuck. Monit <b><i>should</i></b> restart Alma.</p><p>Please ensure that this is the case by logging onto the server and using the command:<br><i>sudo monit status alma</i></p>",
+                )
+            except:
+                pass
             
         except Exception as e:
             self.logger.error(f"Failed to cancel all orders: {e}")
-            self._send_alert(f"FAILED to cancel all orders: {e}")
+            try:
+                send_email(
+                    subject="[ STATCON1 ] Alma executed a corrective exit.",
+                    status="STATCON1",
+                    title="API Connection to KuCoin Failed",
+                    message=f"<p><b>Alma was unable to fetch data from KuCoin via the API, the reported error was:</b><br><i>{e}</i></p><p>This exit was coded in to prevent stalling, infinite loops, and other outcomes that prevent Monit from knowing Alma is stuck. Monit <b><i>should</i></b> restart Alma.</p><p>Please ensure that this is the case by logging onto the server and using the command:<br><i>sudo monit status alma</i></p>",
+                )
+            except:
+                pass
             
         return cancelled_count
     
@@ -375,29 +523,3 @@ class Alec:
             return 'risk'
         else:
             return 'manual'
-    
-    def _send_alert(self, message: str):
-        """
-        Send email alert
-        
-        Args:
-            message: Alert message
-        """
-        if not ALERT_EMAIL_ENABLED:
-            return
-            
-        try:
-            msg = MIMEText(message)
-            msg['Subject'] = f"❌ Termination Officer Alert - {get_email_date()}"
-            msg['From'] = ALERT_EMAIL_ADDRESS
-            msg['To'] = ALERT_EMAIL_RECIPIENT
-            msg['Date'] = get_email_date()
-            
-            server = smtplib.SMTP_SSL(ALERT_EMAIL_SMTP_SERVER, ALERT_EMAIL_SMTP_PORT)
-            server.login(ALERT_EMAIL_ADDRESS, ALERT_EMAIL_PASSWORD)
-            server.sendmail(ALERT_EMAIL_ADDRESS, [ALERT_EMAIL_RECIPIENT], msg.as_string())
-            server.quit()
-            
-            self.logger.info("Alert email sent")
-        except Exception as e:
-            self.logger.error(f"Failed to send alert email: {e}")
