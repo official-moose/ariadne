@@ -55,6 +55,12 @@ MARKET_IMPACT: float = 0.10                 # 10% component in Trading scoring
 OPPORTUNITY_MOD: float = 0.05               #  5% bonus applied to the overall score
 MIN_LIQUIDITY_SCORE: float = 50.0           # Minimum score (0-100) to consider a pair
 
+# 🔸 Cancellation Considerations ===================================
+
+ORDER_REFRESH_SECONDS = 900                 # 15 minutes
+STALE_ORDER_HOURS = 6                       # 6 hours
+MAX_SPREAD_DRIFT_PCT = 0.02                 # 2%
+PRICE_STAGNANT_MINUTES = 10                 # 10 minutes
 
 
 MAX_EXPOSURE_PER_PAIR: float = 0.1          # 10% of total capital
