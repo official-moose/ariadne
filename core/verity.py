@@ -1,19 +1,21 @@
-#>> A R I A N D E v6
-#>> last update: 2025 | Sept. 5
-#>>
-#>> Applied IO (Intelligence Officer) (Metrics)
-#>> mm/core/verity.py
-#>>
-#>> Performance and risk metrics tracking
-#>> Statistical analysis of trading operations
-#>> Provides insights for optimization
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]      
-#>>----------------------------------------------------------------
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250917.01
+#===================================================================
+# last update: 2025 | Sept. 17                  Production ready ✅
+#===================================================================
+# Verity - Applied IO (Intelligence Officer) (Metrics)
+# mm/core/verity.py
+#
+# Performance and risk metrics tracking
+# Statistical analysis of trading operations
+# Provides insights for optimization
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✖ PERSISTANT RUNTIME  ✖ MONIT MANAGED
+#===================================================================
 
-# Build|20250905.01
+
 
 import logging
 import time
