@@ -47,7 +47,7 @@ from mm.core.verity import IntelOps
 from mm.utils.seldon_engine.lamar import SigInt
 from mm.core.alec import Alec
 from mm.utils.nexus_6.rachael import Replicant
-from mm.utils.heartbeat import Heartbeat
+from mm.utils.helpers.wintermute import update_heartbeat
 
 # 🔸 load env for this process =====================================
 
@@ -254,6 +254,6 @@ class Ariadne:
             Database.save_state()
 
         if self.cycle_count % 6 == 0:  # ~ every 2 minutes if cycle ~20s
-            Heartbeat.stamp()
+            update_heartbeat("ariadne", conn)
 
         self.cycle_count += 1
