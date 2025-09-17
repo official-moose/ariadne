@@ -181,6 +181,9 @@ class Ariadne:
             current_orders = self.client.get_orders()
             self.logger.info("Get open orders -> Fetched.")
             
+            if not current_orders:
+            self.logger.info("No open orders, moving on to production cycle.")
+            
             for order in current_orders.copy():
                 print("Cycling through open orders.") 
                 order_id = order["id"]
@@ -212,6 +215,8 @@ class Ariadne:
 
     # 🔸 SELL CYCLE ====================================================
             
+            self.logger.info("Starting sell cycle...")
+        
             petra = Petra(self.client)
             proposals = petra.prepare_sell_orders(Helen.get_positions())
 
