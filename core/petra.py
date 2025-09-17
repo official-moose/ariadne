@@ -1,7 +1,7 @@
 #===================================================================
-# ?? A R I A N D E           bot version 6.1 file build 20250917.01
+# 🍁 A R I A N D E           bot version 6.1 file build 20250917.01
 #===================================================================
-# last update: 2025 | Sept. 17                  Production ready ?
+# last update: 2025 | Sept. 17                  Production ready ✅
 #===================================================================
 # Petra - Sales Manager
 # mm/core/petra.py
@@ -12,25 +12,10 @@
 #
 # [520] [741] [8]
 #===================================================================
-# ?? THE COMMANDER            ? PERSISTANT RUNTIME  ? MONIT MANAGED
+# 🜁 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
 #===================================================================
 
-#>> A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 9                ❌ PRODUCTION READY
-#>>
-#>> Sales Manager
-#>> mm/core/petra.py
-#>>
-#>> Responsible for selling inventory positions
-#>> Identifies profitable exit opportunities  
-#>> Places limit sell orders with proper spread
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]        💫 PERSISTANT RUNTIME  ➰ MONIT MANAGED     
-#>>----------------------------------------------------------------
-
-# Build|20250909.01
+# 🔸 Standard Library Imports ======================================
 
 import os
 import json
@@ -67,7 +52,7 @@ except Exception:
     def is_live_mode() -> bool:
         return current_mode() == "live"
 
-# ────────────────────────── Config / Paths ────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Config / Paths â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 DSN = os.getenv("PG_DSN", "dbname=ariadne user=postgres host=localhost")
 CHANNEL_READY  = "proposals.ready.petra"
 CHANNEL_DENIED = "proposals.denied.petra"
@@ -140,13 +125,13 @@ class Petra:
 
         logger.info("Petra initialized | mode=%s | quote=%s", current_mode(), self.cfg.quote)
 
-    # ─────────────────────────── Main loop ────────────────────────────
+    # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Main loop â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     def run_forever(self):
         self.running = True
         last_hb = 0.0
         cycle = 0
 
-        logger.info("Petra loop starting…")
+        logger.info("Petra loop startingâ€¦")
         while self.running:
             now = time.time()
             if now - last_hb >= HEARTBEAT_SEC:
@@ -171,7 +156,7 @@ class Petra:
 
         logger.info("Petra loop stopped.")
 
-    # ────────────────────── Notifications routing ─────────────────────
+    # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Notifications routing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     def _route_notify(self, channel: str, payload: str):
         data = self._parse_payload(payload)
 
@@ -195,7 +180,7 @@ class Petra:
                     pass
             return d
 
-    # ──────────────────────── Handlers ────────────────────────────────
+    # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Handlers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     def _on_ready(self, data: Dict[str, Any]):
         pid = data.get("proposal_id")
         if not pid:
@@ -231,12 +216,12 @@ class Petra:
             )
         except Exception as e:
             logger.error("order placement failed proposal=%s: %s", pid, e)
-            # Unwind any sim asset hold via Helen (live mode → no-op)
+            # Unwind any sim asset hold via Helen (live mode â†’ no-op)
             self._safe_helen_cancel(reason="placement_failed", proposal_id=pid)
             self._fail_proposal(pid, reason="placement_failed")
             return
 
-        # Link asset hold → order in SIM (live reserves are internal to exchange)
+        # Link asset hold â†’ order in SIM (live reserves are internal to exchange)
         self._safe_helen_link(order_id=order_id, proposal_id=pid)
 
         # Persist order intent via Andi (TQT)
@@ -264,7 +249,7 @@ class Petra:
         self._log_route(pid, status=typ, info=data)
         # no further action
 
-    # ─────────────────────── Proposal plumbing ────────────────────────
+    # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Proposal plumbing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     def _fetch_proposal(self, pid: int) -> Optional[Dict[str, Any]]:
         self.ops_cur.execute("""
             SELECT id, symbol, side, price_intent, size_intent, status
@@ -297,7 +282,7 @@ class Petra:
         except Exception as e:
             logger.warning("router log insert failed p=%s: %s", pid, e)
 
-    # ────────────────────────── Helpers ───────────────────────────────
+    # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     def _risk_ok(self, prop: Dict[str, Any]) -> bool:
         try:
             notional = float(prop["price_intent"]) * float(prop["size_intent"])
@@ -316,7 +301,7 @@ class Petra:
         m = current_mode()
         if m in ("halted", "maintenance"):
             return
-        # Intentionally left minimal; Lamar handles routing → vets → approvals.
+        # Intentionally left minimal; Lamar handles routing â†’ vets â†’ approvals.
 
     def _safe_andi_queue(self, **kw):
         try:
@@ -340,7 +325,7 @@ class Petra:
                     return
                 except TypeError:
                     pass
-                # legacy: requires hold_id (Helen maps proposal→hold on her side or ignores)
+                # legacy: requires hold_id (Helen maps proposalâ†’hold on her side or ignores)
                 try:
                     self.helen.link_asset_hold_to_order(None, order_id)  # best-effort
                 except Exception:
@@ -360,7 +345,7 @@ class Petra:
         except Exception as e:
             logger.debug("helen on_cancel skipped: %s", e)
 
-    # ───────────────────────── Heartbeats ─────────────────────────────
+    # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Heartbeats â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     def _heartbeat(self, cycle_count: int):
         try:
             self.ops_cur.execute("""
@@ -376,7 +361,7 @@ class Petra:
         except Exception as e:
             logger.warning("heartbeat failed: %s", e)
 
-    # ─────────────────────── Signal handlers ──────────────────────────
+    # â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Signal handlers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     def _sig_term(self, *_):
         self.running = False
         try:
@@ -391,11 +376,11 @@ class Petra:
         logger.info("Petra stopped (SIGTERM/SIGINT).")
 
     def _sig_hup(self, *_):
-        # lightweight “reload”: toggle log level; mode is read on each use via current_mode()
+        # lightweight â€œreloadâ€: toggle log level; mode is read on each use via current_mode()
         new = logging.DEBUG if logger.level != logging.DEBUG else logging.INFO
         logger.setLevel(new)
-        logger.info("Petra received SIGHUP → log level now %s", logging.getLevelName(new))
+        logger.info("Petra received SIGHUP â†’ log level now %s", logging.getLevelName(new))
 
-# ─────────────────────────── Entrypoint ───────────────────────────────
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Entrypoint â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 if __name__ == "__main__":
     Petra().run_forever()
