@@ -15,6 +15,8 @@
 # 🔰 THE COMMANDER            ✖ PERSISTANT RUNTIME  ✖ MONIT MANAGED
 #===================================================================
 
+# 🔸 Standard Library Imports ======================================
+
 import logging
 import json
 from mm.utils.seldon_engine import signals
@@ -22,10 +24,11 @@ from mm.utils.seldon_engine.onchain import get_onchain_score
 from mm.utils.seldon_engine.seldon_config import LOGGING, SCORING_PATH, WEIGHTS
 from mm.utils.helpers.inara import get_mode
 
+# 🔸 Application Imports ===========================================
 
-logger = logging.getLogger("Quorra")
+logger = logging.getLogger("Quorra") 
 
-class RiskClient:
+class SeldonEngine:
     def __init__(self):
         self.weights = WEIGHTS
 
@@ -33,11 +36,13 @@ class RiskClient:
         symbol = f"{base.upper()}-{quote.upper()}"
         mode = get_mode()
 
-        # Get on-chain score and unpack breakdown
+        # 🔹 Get on-chain score and unpack breakdown ===============
+        
         onchain_result = get_onchain_score(symbol)
         onchain_total = onchain_result.get("onchain_score", 0)
 
-        # Gather signal results (dicts with subscores + final)
+        # 🔹 Gather signal results (dicts with subscores + final) ==
+        
         signals_data = {
             "trend": signals.trend_strength(symbol),
             "volatility": signals.volatility_status(symbol),
@@ -48,13 +53,13 @@ class RiskClient:
             "candlestick": signals.candle_alerts(symbol),
         }
 
-        # Attach onchain as dict
+        # 🔹 Attach onchain as dict ================================
         signals_data["onchain"] = {
             **onchain_result,
             "final": onchain_total
         }
 
-        # Compute weighted score using .get("final") values
+        # 🔹 Compute weighted score using .get("final") values =====
         weighted_score = 0
         for key, val in signals_data.items():
             score = val.get("final", 0)
