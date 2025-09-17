@@ -916,10 +916,3 @@ class TickstickRepo:
         finally:
             conn.close()
 
-# ══════════════════════════════════════════════════════════════════════════
-#  SECTION 16: CONVENIENCE SINGLETONS
-# ══════════════════════════════════════════════════════════════════════════
-
-# Global instances for easy access
-# market = Market()
-mailer = EmailClient()
