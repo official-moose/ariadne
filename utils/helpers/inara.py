@@ -1,18 +1,20 @@
-#>> 🍁 A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 15               ✅ PRODUCTION READY
-#>>
-#>> mode checker
-#>> mm/utils/helpers/inara.py
-#>>
-#>> determines what mode to operate in - simulation or live
-#>> central logic disseminating her decision to the other files 
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]                                       🤖 DROID
-#>>────────────────────────────────────────────────────────────────
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250915.02
+#===================================================================
+# last update: 2025 | Sept. 15                  Production ready ✅
+#===================================================================
+# Inara
+# mm/utils/helpers/inara.py
+#
+# Determines what mode to operate in - simulation or live
+# Central logic disseminating her decision to the other files
+#
+# [520] [741] [8]
+#===================================================================
+# 🔰 THE COMMANDER            ✖ PERSISTANT RUNTIME  ✖ MONIT MANAGED
+#===================================================================
 
-# Build|20250915.02
+# 🔸 Standard Library Imports ======================================
 
 import logging
 import os
@@ -30,17 +32,19 @@ from typing import Literal, Optional
 from functools import lru_cache
 from dotenv import load_dotenv
 
-# local application imports
+# 🔸 local application imports =====================================
+
 import mm.config.marcus as marcus
 
-# load env for this process
+# 🔸 load env for this process =====================================
 load_dotenv("mm/data/secrets/.env")
 
 logger = logging.getLogger(__name__)
 
 USERCODE = "INA"  # this file's identity
 
-# Allowed operational modes
+# 🔸 Allowed operational modes =====================================
+
 ALLOWED_MODES: set[str] = {
     "simulation",
     "live",
@@ -50,7 +54,7 @@ ALLOWED_MODES: set[str] = {
     "shadow",
 }
 
-# Current runtime mode (mutable)
+# 🔸 Current runtime mode (mutable) ================================
 _mode: str = "simulation"
 
 STATE_DIR = os.path.join(os.path.dirname(__file__), "../../data/state")
