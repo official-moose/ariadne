@@ -44,7 +44,7 @@ from mm.core.helen import Helen
 from mm.core.malcolm import Malcolm
 from mm.core.julius import Julius
 from mm.core.verity import IntelOps
-from mm.core.lamar import Lamar
+from mm.utils.seldon_engine.lamar import SigInt
 from mm.core.alec import Alec
 from mm.utils.nexus_6.rachael import Replicant
 from mm.utils.database import Database
@@ -208,7 +208,7 @@ class Ariadne:
         proposals = petra.prepare_sell_orders(Helen.get_positions())
 
         for proposal in proposals:
-            response = Lamar.listen(proposal)
+            response = SigInt.listen(proposal)
             if response == "expired":
                 score = SigmaOps(proposal).score_pair()
                 if score >= 95:
@@ -230,7 +230,7 @@ class Ariadne:
         buy_proposals = malcolm.prepare_buy_orders(scored_pairs)
 
         for proposal in buy_proposals:
-            response = Lamar.listen(proposal)
+            response = SigInt.listen(proposal)
             if response == "expired":
                 score = SigmaOps(proposal).score_pair()
                 if score >= 95:
