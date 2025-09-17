@@ -281,4 +281,4 @@ if __name__ == "__main__":
         
         bot.run()
     except Exception as e:
-        self.logger.info("Crash: ", e)
+        print("Crash: ", e)
