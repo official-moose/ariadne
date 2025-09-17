@@ -15,7 +15,7 @@
 # 🔰 THE COMMANDER            ✖ PERSISTANT RUNTIME  ✖ MONIT MANAGED
 #===================================================================
 
-
+# 🔸 Standard Library Imports ======================================
 
 import logging
 import time
@@ -24,9 +24,9 @@ from typing import Dict, List, Optional, Any
 from datetime import datetime, timedelta
 from collections import defaultdict, deque
 
-# ── Logger Setup ──────────────────────────────────────────────────────
+# 🔸 Logger Setup ==================================================
 
-logger = logging.getLogger(‘ariadne.metrics’)
+logger = logging.getLogger('ariadne.metrics')
 
 class Verity:
 “””
@@ -44,16 +44,19 @@ def __init__(self, history_limit: int = 10000):
     self.logger = logger
     self.history_limit = history_limit
     
-    # Core metric storage
+    # 🔹 Core metric storage =======================================
+    
     self.metrics: Dict[str, deque] = defaultdict(lambda: deque(maxlen=history_limit))
     self.counters: Dict[str, int] = defaultdict(int)
     
-    # Summary statistics cache
+    # 🔹 Summary statistics cache ==================================
+    
     self.stats_cache: Dict[str, Dict] = {}
     self.cache_timestamp: float = 0
     self.cache_ttl: float = 60  # 1 minute cache
     
-    # Trading-specific metrics
+    # 🔹 Trading-specific metrics ==================================
+    
     self.trades: List[Dict] = []
     self.daily_metrics: Dict[str, Dict] = defaultdict(dict)
     self.session_start: float = time.time()
@@ -75,7 +78,8 @@ def record_metric(self, name: str, value: float, timestamp: Optional[float] = No
         'timestamp': timestamp
     })
     
-    # Invalidate cache
+    # 🔹 Invalidate cache ==========================================
+    
     self.stats_cache.pop(name, None)
     
 def increment_counter(self, name: str, amount: int = 1):
@@ -99,7 +103,8 @@ def get_stats(self, metric_name: str, window_seconds: Optional[int] = None) -> D
     Returns:
         Dict with min, max, avg, count, last
     """
-    # Check cache first
+    # 🔹 Check cache first =========================================
+    
     cache_key = f"{metric_name}_{window_seconds}"
     if cache_key in self.stats_cache and time.time() - self.cache_timestamp < self.cache_ttl:
         return self.stats_cache[cache_key]
@@ -116,7 +121,8 @@ def get_stats(self, metric_name: str, window_seconds: Optional[int] = None) -> D
     
     data = list(self.metrics[metric_name])
     
-    # Filter by time window if specified
+    # 🔹 Filter by time window if specified ========================
+    
     if window_seconds:
         cutoff = time.time() - window_seconds
         data = [d for d in data if d['timestamp'] > cutoff]
@@ -133,7 +139,8 @@ def get_stats(self, metric_name: str, window_seconds: Optional[int] = None) -> D
     
     values = [d['value'] for d in data]
     
-    # Calculate standard deviation
+    # 🔹 Calculate standard deviation ==============================
+    
     avg = sum(values) / len(values)
     variance = sum((x - avg) ** 2 for x in values) / len(values)
     std_dev = variance ** 0.5
@@ -147,7 +154,8 @@ def get_stats(self, metric_name: str, window_seconds: Optional[int] = None) -> D
         'std_dev': std_dev
     }
     
-    # Cache result
+    # 🔹 Cache result ==============================================
+    
     self.stats_cache[cache_key] = stats
     self.cache_timestamp = time.time()
     
@@ -163,11 +171,13 @@ def record_trade(self, trade: Dict):
     trade['timestamp'] = time.time()
     self.trades.append(trade)
     
-    # Update counters
+    # 🔹 Update counters ===========================================
+    
     self.increment_counter(f"trades_{trade['side']}")
     self.increment_counter("trades_total")
     
-    # Record P&L if available
+    # 🔹 Record P&L if available ===================================
+    
     if 'pnl' in trade:
         self.record_metric('trade_pnl', trade['pnl'])
         if trade['pnl'] > 0:
@@ -182,11 +192,13 @@ def get_performance_summary(self) -> Dict:
     Returns:
         Dict with performance metrics
     """
-    # Calculate uptime
+    # 🔹 Calculate uptime ==========================================
+    
     uptime_seconds = time.time() - self.session_start
     uptime_hours = uptime_seconds / 3600
     
-    # Trade statistics
+    # 🔹 Trade statistics ==========================================
+    
     total_trades = self.counters['trades_total']
     winning_trades = self.counters['winning_trades']
     losing_trades = self.counters['losing_trades']
@@ -195,7 +207,8 @@ def get_performance_summary(self) -> Dict:
     if total_trades > 0:
         win_rate = winning_trades / total_trades
     
-    # P&L statistics
+    # 🔹 P&L statistics ============================================
+    
     pnl_stats = self.get_stats('trade_pnl')
     loop_stats = self.get_stats('loop_time')
     equity_stats = self.get_stats('total_equity')
@@ -240,7 +253,9 @@ def get_hourly_metrics(self, hours: int = 24) -> Dict[str, List]:
     cutoff = time.time() - (hours * 3600)
     
     for metric_name, data in self.metrics.items():
-        # Group by hour
+        
+        # 🔹 Group by hour =========================================
+        
         hourly_buckets = defaultdict(list)
         
         for point in data:
@@ -250,7 +265,8 @@ def get_hourly_metrics(self, hours: int = 24) -> Dict[str, List]:
                 )
                 hourly_buckets[hour].append(point['value'])
         
-        # Calculate hourly averages
+        # 🔹 Calculate hourly averages =============================
+        
         for hour in sorted(hourly_buckets.keys()):
             values = hourly_buckets[hour]
             hourly_data[metric_name].append({
@@ -289,7 +305,8 @@ def export_metrics(self, filepath: str):
             'metrics': {}
         }
         
-        # Convert deques to lists for JSON serialization
+    # 🔹 Convert deques to lists for JSON serialization ============
+    
         for name, data in self.metrics.items():
             export_data['metrics'][name] = list(data)
         
@@ -303,7 +320,9 @@ def export_metrics(self, filepath: str):
 
 def reset_daily_metrics(self):
     """Reset daily tracking (call at UTC midnight)"""
-    # Store yesterday's data
+    
+    # 🔹 Store yesterday's data ====================================
+    
     yesterday = (datetime.utcnow() - timedelta(days=1)).strftime('%Y-%m-%d')
     self.daily_metrics[yesterday] = {
         'trades': self.counters['trades_total'],
@@ -311,11 +330,13 @@ def reset_daily_metrics(self):
         'win_rate': self.counters['winning_trades'] / max(1, self.counters['trades_total'])
     }
     
-    # Reset counters
+    # 🔹 Reset counters ============================================
+    
     for key in ['trades_total', 'trades_buy', 'trades_sell', 'winning_trades', 'losing_trades']:
         self.counters[key] = 0
         
-    # Clear today's trades
+    # 🔹 Clear today's trades ======================================
+    
         cutoff = datetime.utcnow().replace(hour=0, minute=0, second=0).timestamp()
         self.trades = [t for t in self.trades if t['timestamp'] < cutoff]
         
