@@ -48,6 +48,7 @@ from mm.utils.seldon_engine.lamar import SigInt
 from mm.core.alec import Alec
 from mm.utils.nexus_6.rachael import Replicant
 from mm.utils.helpers.wintermute import update_heartbeat
+from mm.utils.tqdm.agnes import setup_logger
 
 # 🔸 load env for this process =====================================
 
