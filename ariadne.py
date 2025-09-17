@@ -182,7 +182,7 @@ class Ariadne:
             self.logger.info("Get open orders -> Fetched.")
             
             if not current_orders:
-            self.logger.info("No open orders, moving on to production cycle.")
+                self.logger.info("No open orders, moving on to production cycle.")
             
             for order in current_orders.copy():
                 print("Cycling through open orders.") 
