@@ -28,11 +28,9 @@ from collections import defaultdict, deque
 
 logger = logging.getLogger('ariadne.metrics')
 
-class Verity:
+class IntelOps:
 # 💬 Tracks and analyzes all performance and risk metrics
 
-
-```
 def __init__(self, history_limit: int = 10000):
     """
     Initialize metrics tracking
