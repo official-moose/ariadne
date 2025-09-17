@@ -270,7 +270,7 @@ class Ariadne:
 # ⚡ Entry Point ⚡ ==================================================
             
 if __name__ == "__main__":
-    self.logger.info("Main block entered.")
+    print("Main block entered.")
 
     try:
         from mm.utils.helpers import inara
