@@ -267,3 +267,8 @@ class Ariadne:
 
             self.cycle_count += 1
             time.sleep(20)
+            
+if __name__ == "__main__":
+    from mm.utils.helpers import inara
+    bot = Ariadne(inara, logger)
+    bot.run()
