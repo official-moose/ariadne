@@ -172,6 +172,7 @@ class Ariadne:
         self.mode = self.inara.get_mode()
         self.client = self.inara.get_trading_client()
         self.logger.info(f"Mode: {self.mode}, Client: {self.client}")
+        print("Start-up: Logging initialized.")
 
 # 🔸 OPEN ORDERS RISK ASSESSMENT====================================
         
