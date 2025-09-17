@@ -268,7 +268,20 @@ class Ariadne:
             self.cycle_count += 1
             time.sleep(20)
             
+# ⚡ Entry Point ⚡ ==================================================
+            
+print("👀 File loaded")
+
 if __name__ == "__main__":
-    from mm.utils.helpers import inara
-    bot = Ariadne(inara, logger)
-    bot.run()
+    print("🚀 Main block entered")
+
+    try:
+        from mm.utils.helpers import inara
+        print("🔌 Inara imported")
+
+        bot = Ariadne(inara, logger)
+        print("⚙️ Ariadne instantiated")
+
+        bot.run()
+    except Exception as e:
+        print("💥 CRASH:", e)
