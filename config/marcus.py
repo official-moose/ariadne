@@ -1,7 +1,7 @@
 #===================================================================
-# 🍁 A R I A N D E           bot version 6.1 file build 20250904.01
+# 🍁 A R I A N D E           bot version 6.1 file build 20250917.01
 #===================================================================
-# last update: 2025 | Sept. 4                   Production ready ✅
+# last update: 2025 | Sept. 17                  Production ready ✅
 #===================================================================
 # Marcus
 # mm/config/marcus.py
