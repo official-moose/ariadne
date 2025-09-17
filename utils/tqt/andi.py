@@ -39,7 +39,6 @@ sys.path.append('/root/Echelon/valentrix')
 
 from mm.utils.helpers.wintermute import (
     get_logger,
-    send_alert,
     now_pack,
     write_pid_file,
     cleanup_pid_file,
