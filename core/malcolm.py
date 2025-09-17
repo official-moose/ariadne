@@ -1,19 +1,20 @@
-#>> A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 9                ❌ PRODUCTION READY
-#>>
-#>> Purchasing Manager
-#>> mm/core/malcolm.py
-#>>
-#>> Responsible for entering buy orders 
-#>> Accepts filtered pairs from Dr. Calvin
-#>> Honors balances and risk thresholds
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]        💫 PERSISTANT RUNTIME  ➰ MONIT MANAGED
-#>>----------------------------------------------------------------
+#===================================================================
+# ?? A R I A N D E           bot version 6.1 file build 20250917.01
+#===================================================================
+# last update: 2025 | Sept. 17                  Production ready ?
+#===================================================================
+# Malcolm - Purchasing Manager
+# mm/core/malcolm.py
+#
+# Responsible for entering buy orders 
+# Accepts filtered pairs from Dr. Calvin
+# Honors balances and risk thresholds
+#
+# [520] [741] [8]
+#===================================================================
+# ?? THE COMMANDER            ? PERSISTANT RUNTIME  ? MONIT MANAGED
+#===================================================================
 
-# Build|20250909.01
 
 import os
 import json
@@ -29,7 +30,7 @@ from typing import Optional, Dict, Any
 import psycopg2
 
 from mm.config import marcus
-from mm.core.grayson import Grayson
+from mm.core.grayson import RiskOps
 from mm.core.julius import Julius
 from mm.conn.conn_kucoin import KucoinClient
 from mm.utils.tqt import andi
@@ -95,7 +96,7 @@ class Malcolm:
         self.cfg = cfg
         self.client = client or KucoinClient()
         self.julius = Julius(self.client)
-        self.grayson = Grayson()
+        self.grayson = RiskOps()
 
         # LISTEN connection (autocommit ON)
         self.listen_conn = psycopg2.connect(DSN)
