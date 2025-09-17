@@ -1,7 +1,7 @@
 #===================================================================
-# 🍁 A R I A N D E           bot version 6.1 file build 20250915.02
+# 🍁 A R I A N D E           bot version 6.1 file build 20250917.01
 #===================================================================
-# last update: 2025 | Sept. 15                  Production ready ✅
+# last update: 2025 | Sept. 17                  Production ready ✅
 #===================================================================
 # Inara
 # mm/utils/helpers/inara.py
