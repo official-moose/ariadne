@@ -28,7 +28,7 @@ from mm.utils.helpers import inara
 
 logger = logging.getLogger("Quorra") 
 
-class SeldonEngine:
+class SigmaOps:
     def __init__(self):
         self.weights = WEIGHTS
         self.mode = inara.get_mode()
