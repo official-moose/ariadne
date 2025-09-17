@@ -51,7 +51,7 @@ class Caps:
     max_drawdown_pct: float = getattr(marcus, "MAX_DRAWDOWN_PCT", 0.10)
 
 
-class Grayson:
+class RiskOps:
     def __init__(self, client: Optional[KucoinClient] = None, cfg: Caps = Caps()):
         self.cfg = cfg
         self.client = client or KucoinClient()
