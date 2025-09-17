@@ -41,8 +41,7 @@ load_dotenv("mm/data/secrets/.env")
 from mm.config.marcus import (
     ORDER_REFRESH_SECONDS, STALE_ORDER_HOURS,
     MAX_SPREAD_DRIFT_PCT, PRICE_STAGNANT_MINUTES,
-    ALERT_EMAIL_ENABLED, ALERT_EMAIL_ADDRESS,
-    ALERT_EMAIL_RECIPIENT, QUOTE_CURRENCY
+    QUOTE_CURRENCY
 )
 
 # ── Logger Setup ──────────────────────────────────────────────────────
