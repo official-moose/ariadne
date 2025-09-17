@@ -168,98 +168,102 @@ class Ariadne:
  # 🔸 STARTUP =======================================================
 
     def run(self):
-        self.logger.info("Starting cycle...")
-        self.mode = self.inara.get_mode()
-        self.client = self.inara.get_trading_client()
-        self.logger.info(f"Mode: {self.mode}, Client: {self.client}")
-        print("Start-up: Logging initialized.")
+        import time
 
-# 🔸 OPEN ORDERS RISK ASSESSMENT====================================
-        
-        current_orders = self.client.get_open_orders()
+        while True:
+            self.logger.info("Starting cycle...")
+            self.mode = self.inara.get_mode()
+            self.client = self.inara.get_trading_client()
+            self.logger.info(f"Mode: {self.mode}, Client: {self.client}")
+            print("Start-up: Logging initialized.")
 
-        for order in current_orders.copy():
-            print("Cycling through open orders.")
-            order_id = order["id"]
+    # 🔸 OPEN ORDERS RISK ASSESSMENT====================================
             
-            grayson = RiskOps(order)
-            if not grayson.compliant():
-                Alec.cancel_orders_for_pair(order)
-                self.logger.info(f"Order {order_id} canceled by Grayson.")
-                continue
+            current_orders = self.client.get_open_orders()
 
-            score = ValueOps.score_pair(order)
-            if score < 75:
-                Alec.cancel_orders_for_pair(order)
-                self.logger.info(f"Order {order_id} canceled by Dr. Calvin (score {score}).")
-                continue
+            for order in current_orders.copy():
+                print("Cycling through open orders.")
+                order_id = order["id"]
+                
+                grayson = RiskOps(order)
+                if not grayson.compliant():
+                    Alec.cancel_orders_for_pair(order)
+                    self.logger.info(f"Order {order_id} canceled by Grayson.")
+                    continue
 
-            risk_client = SigmaOps(order)
-            score2 = risk_client.score_pair()
-            if score2 >= 80:
-                continue
-            elif 70 <= score2 < 80:
-                Replicant(order).process()
-                current_orders.remove(order)
-                continue
-            else:
-                Alec.cancel_orders_for_pair(order)
-                self.logger.info(f"Order {order_id} canceled by Quorra (score {score2}).")
-                continue
+                score = ValueOps.score_pair(order)
+                if score < 75:
+                    Alec.cancel_orders_for_pair(order)
+                    self.logger.info(f"Order {order_id} canceled by Dr. Calvin (score {score}).")
+                    continue
 
-# 🔸 SELL CYCLE ====================================================
-        
-        petra = Petra(self.client)
-        proposals = petra.prepare_sell_orders(Helen.get_positions())
+                risk_client = SigmaOps(order)
+                score2 = risk_client.score_pair()
+                if score2 >= 80:
+                    continue
+                elif 70 <= score2 < 80:
+                    Replicant(order).process()
+                    current_orders.remove(order)
+                    continue
+                else:
+                    Alec.cancel_orders_for_pair(order)
+                    self.logger.info(f"Order {order_id} canceled by Quorra (score {score2}).")
+                    continue
 
-        for proposal in proposals:
-            response = SigInt.listen(proposal)
-            if response == "expired":
-                score = SigmaOps(proposal).score_pair()
-                if score >= 95:
-                    petra.resubmit(proposal)
-            elif response == "denied":
-                score = SigmaOps(proposal).score_pair()
-                if score <= 75:
-                    self.logger.warning(f"Proposal denied and below threshold: {proposal}")
-            elif response == "approved":
-                self.client.place_order(proposal)
+    # 🔸 SELL CYCLE ====================================================
+            
+            petra = Petra(self.client)
+            proposals = petra.prepare_sell_orders(Helen.get_positions())
 
-# 🔸 BUY CYCLE =====================================================
-        
-        best_pairs = Helen.get_best_pairs()
-        best_pairs = [p for p in best_pairs if RiskOps(p).compliant()]
-        scored_pairs = [(p, SigmaOps(p).score_pair()) for p in best_pairs]
+            for proposal in proposals:
+                response = SigInt.listen(proposal)
+                if response == "expired":
+                    score = SigmaOps(proposal).score_pair()
+                    if score >= 95:
+                        petra.resubmit(proposal)
+                elif response == "denied":
+                    score = SigmaOps(proposal).score_pair()
+                    if score <= 75:
+                        self.logger.warning(f"Proposal denied and below threshold: {proposal}")
+                elif response == "approved":
+                    self.client.place_order(proposal)
 
-        malcolm = Malcolm(self.client)
-        buy_proposals = malcolm.prepare_buy_orders(scored_pairs)
+    # 🔸 BUY CYCLE =====================================================
+            
+            best_pairs = Helen.get_best_pairs()
+            best_pairs = [p for p in best_pairs if RiskOps(p).compliant()]
+            scored_pairs = [(p, SigmaOps(p).score_pair()) for p in best_pairs]
 
-        for proposal in buy_proposals:
-            response = SigInt.listen(proposal)
-            if response == "expired":
-                score = SigmaOps(proposal).score_pair()
-                if score >= 95:
-                    malcolm.resubmit(proposal)
-            elif response == "denied":
-                score = SigmaOps(proposal).score_pair()
-                if score <= 75:
-                    self.logger.warning(f"Proposal denied and below threshold: {proposal}")
-            elif response == "approved":
-                self.client.place_order(proposal)
-                Database.record_order(proposal)
+            malcolm = Malcolm(self.client)
+            buy_proposals = malcolm.prepare_buy_orders(scored_pairs)
 
-# 🔸 HOUSEKEEPING CYCLE ============================================
+            for proposal in buy_proposals:
+                response = SigInt.listen(proposal)
+                if response == "expired":
+                    score = SigmaOps(proposal).score_pair()
+                    if score >= 95:
+                        malcolm.resubmit(proposal)
+                elif response == "denied":
+                    score = SigmaOps(proposal).score_pair()
+                    if score <= 75:
+                        self.logger.warning(f"Proposal denied and below threshold: {proposal}")
+                elif response == "approved":
+                    self.client.place_order(proposal)
+                    Database.record_order(proposal)
 
-        if self.mode == "simulation":
-            Julius().sweep_stale_holds()
-            Helen.sweep_stale_holds()
+    # 🔸 HOUSEKEEPING CYCLE ============================================
 
-        IntelOps(self.client).scan()
+            if self.mode == "simulation":
+                Julius().sweep_stale_holds()
+                Helen.sweep_stale_holds()
 
-        if self.cycle_count % 10 == 0:
-            Database.save_state()
+            IntelOps(self.client).scan()
 
-        if self.cycle_count % 6 == 0:  # ~ every 2 minutes if cycle ~20s
-            update_heartbeat("ariadne", conn)
+            if self.cycle_count % 10 == 0:
+                Database.save_state()
 
-        self.cycle_count += 1
+            if self.cycle_count % 6 == 0:  # ~ every 2 minutes if cycle ~20s
+                update_heartbeat("ariadne", conn)
+
+            self.cycle_count += 1
+            time.sleep(20)
