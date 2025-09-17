@@ -64,9 +64,6 @@ class SimClient:
     
     def __init__(self, db_path: str = None, db_lock=None):
         """Initialize with live client for market data and optional db lock for thread safety."""
-        # db_path kept for compatibility but ignored (we use PostgreSQL)
-        self.db_path = db_path or SIMULATION_DB_PATH
-        self.db_lock = db_lock if db_lock else threading.RLock()  # Default to RLock if none provided
         self.live_client = KucoinClient()
         self._symbols = self.live_client._symbols
 
