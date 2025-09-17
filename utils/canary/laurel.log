@@ -20933,3 +20933,4 @@
 2025-09-17 10:03:51,206 ERROR laurel: Failed to check heartbeats: 'default'
 2025-09-17 10:04:21,220 ERROR laurel: Failed to check heartbeats: 'default'
 2025-09-17 10:04:51,246 ERROR laurel: Failed to check heartbeats: 'default'
+2025-09-17 10:04:52,570 INFO laurel: Hourly report sent: All normal
