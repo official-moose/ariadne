@@ -36,14 +36,14 @@ from dotenv import load_dotenv
 # 🔸 local application imports =====================================
 
 import mm.config.marcus as marcus
-from mm.core.drcalvin import Level_I
-from mm.core.grayson import Grayson
-from mm.utils.seldon_engine.quorra import SeldonEngine
+from mm.core.drcalvin import ValueOps
+from mm.core.grayson import RiskOps
+from mm.utils.seldon_engine.quorra import SigmaOps
 from mm.core.petra import Petra
 from mm.core.helen import Helen
 from mm.core.malcolm import Malcolm
 from mm.core.julius import Julius
-from mm.core.verity import Verity
+from mm.core.verity import IntelOps
 from mm.core.lamar import Lamar
 from mm.core.alec import Alec
 from mm.utils.nexus_6.rachael import Replicant
@@ -177,19 +177,19 @@ class Ariadne:
         for order in current_orders.copy():
             order_id = order["id"]
 
-            grayson = Grayson(order)
+            grayson = RiskOps(order)
             if not grayson.compliant():
                 Alec.cancel_orders_for_pair(order)
                 self.logger.info(f"Order {order_id} canceled by Grayson.")
                 continue
 
-            score = DrCalvin.score_pair(order)
+            score = ValueOps.score_pair(order)
             if score < 75:
                 Alec.cancel_orders_for_pair(order)
                 self.logger.info(f"Order {order_id} canceled by Dr. Calvin (score {score}).")
                 continue
 
-            risk_client = Quorra(order)
+            risk_client = SigmaOps(order)
             score2 = risk_client.score_pair()
             if score2 >= 80:
                 continue
@@ -210,11 +210,11 @@ class Ariadne:
         for proposal in proposals:
             response = Lamar.listen(proposal)
             if response == "expired":
-                score = Quorra(proposal).score_pair()
+                score = SigmaOps(proposal).score_pair()
                 if score >= 95:
                     petra.resubmit(proposal)
             elif response == "denied":
-                score = Quorra(proposal).score_pair()
+                score = SigmaOps(proposal).score_pair()
                 if score <= 75:
                     self.logger.warning(f"Proposal denied and below threshold: {proposal}")
             elif response == "approved":
@@ -223,8 +223,8 @@ class Ariadne:
 # 🔸 BUY CYCLE =====================================================
         
         best_pairs = Helen.get_best_pairs()
-        best_pairs = [p for p in best_pairs if Grayson(p).compliant()]
-        scored_pairs = [(p, Quorra(p).score_pair()) for p in best_pairs]
+        best_pairs = [p for p in best_pairs if RiskOps(p).compliant()]
+        scored_pairs = [(p, SigmaOps(p).score_pair()) for p in best_pairs]
 
         malcolm = Malcolm(self.client)
         buy_proposals = malcolm.prepare_buy_orders(scored_pairs)
@@ -232,11 +232,11 @@ class Ariadne:
         for proposal in buy_proposals:
             response = Lamar.listen(proposal)
             if response == "expired":
-                score = Quorra(proposal).score_pair()
+                score = SigmaOps(proposal).score_pair()
                 if score >= 95:
                     malcolm.resubmit(proposal)
             elif response == "denied":
-                score = Quorra(proposal).score_pair()
+                score = SigmaOps(proposal).score_pair()
                 if score <= 75:
                     self.logger.warning(f"Proposal denied and below threshold: {proposal}")
             elif response == "approved":
@@ -249,7 +249,7 @@ class Ariadne:
             Julius().sweep_stale_holds()
             Helen.sweep_stale_holds()
 
-        Verity(self.client).scan()
+        IntelOps(self.client).scan()
 
         if self.cycle_count % 10 == 0:
             Database.save_state()
