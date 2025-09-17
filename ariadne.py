@@ -179,8 +179,9 @@ class Ariadne:
         current_orders = self.client.get_open_orders()
 
         for order in current_orders.copy():
+            print("Cycling through open orders.")
             order_id = order["id"]
-
+            
             grayson = RiskOps(order)
             if not grayson.compliant():
                 Alec.cancel_orders_for_pair(order)
