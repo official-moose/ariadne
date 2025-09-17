@@ -47,7 +47,7 @@ from mm.config.marcus import (
     MIN_LIQUIDITY_SCORE
 )
 
-class Level_I:
+class ValueOps:
     def __init__(self, config):
         self.cfg = config
         self.mode = inara.get_mode()
