@@ -22,7 +22,7 @@ import json
 from mm.utils.seldon_engine import signals
 from mm.utils.seldon_engine.onchain import get_onchain_score
 from mm.utils.seldon_engine.seldon_config import LOGGING, SCORING_PATH, WEIGHTS
-from mm.utils.helpers.inara import get_mode
+from mm.utils.helpers import inara
 
 # 🔸 Application Imports ===========================================
 
@@ -31,6 +31,8 @@ logger = logging.getLogger("Quorra")
 class SeldonEngine:
     def __init__(self):
         self.weights = WEIGHTS
+        self.mode = inara.get_mode()
+        self.client = inara.get_trading_client()
 
     def intuit(self, base: str, quote: str) -> float:
         symbol = f"{base.upper()}-{quote.upper()}"
