@@ -175,7 +175,6 @@ class Ariadne:
             self.mode = self.inara.get_mode()
             self.client = self.inara.get_trading_client()
             self.logger.info(f"Mode: {self.mode}, Client: {self.client}")
-            print("Start-up: Logging initialized.")
 
     # 🔸 OPEN ORDERS RISK ASSESSMENT====================================
             
@@ -270,18 +269,16 @@ class Ariadne:
             
 # ⚡ Entry Point ⚡ ==================================================
             
-print("👀 File loaded")
-
 if __name__ == "__main__":
-    print("🚀 Main block entered")
+    self.logger.info("Main block entered.")
 
     try:
         from mm.utils.helpers import inara
-        print("🔌 Inara imported")
+        self.logger.info("Inara consulted.")
 
         bot = Ariadne(inara, logger)
-        print("⚙️ Ariadne instantiated")
-
+        self.logger.info("Ariadne Instantiated.")
+        
         bot.run()
     except Exception as e:
-        print("💥 CRASH:", e)
+        self.logger.info("Crash: ", e)
