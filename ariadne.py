@@ -269,16 +269,18 @@ class Ariadne:
             
 # ⚡ Entry Point ⚡ ==================================================
             
+print("✔ File loaded")
+
 if __name__ == "__main__":
-    print("Main block entered.")
+    print("🚀 Main block entered")
 
     try:
         from mm.utils.helpers import inara
-        self.logger.info("Inara consulted.")
+        print("🔌 Inara imported")
 
         bot = Ariadne(inara, logger)
-        self.logger.info("Ariadne Instantiated.")
-        
+        print("⚙️ Ariadne instantiated")
+
         bot.run()
     except Exception as e:
-        print("Crash: ", e)
+        print("💥 CRASH:", e)
