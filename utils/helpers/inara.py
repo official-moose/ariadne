@@ -39,7 +39,7 @@ import mm.config.marcus as marcus
 # 🔸 load env for this process =====================================
 load_dotenv("mm/data/secrets/.env")
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("ariadne")
 
 USERCODE = "INA"  # this file's identity
 
