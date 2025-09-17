@@ -29,7 +29,7 @@ from typing import Optional, Dict, Any
 import psycopg2
 
 from mm.config import marcus
-from mm.core.grayson import Grayson
+from mm.core.grayson import RiskOps
 from mm.conn.conn_kucoin import KucoinClient
 from mm.utils.tqt import andi
 
