@@ -1,19 +1,19 @@
-#>> 🍁 A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 2                ✅ PRODUCTION READY
-#>>
-#>> simulation client
-#>> mm/conn/sim_kucoin.py
-#>>
-#>> Simulation client that mimics KucoinClient interface. 
-#>> Uses live market data + simulated wallet/orders 
-#>> Virtual 'paper trading'   
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]
-#>>────────────────────────────────────────────────────────────────
-
-# Build|20250902.01
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250917.01
+#===================================================================
+# last update: 2025 | Sept. 17                  Production ready ✅
+#===================================================================
+# Simulation Client
+# mm/conn/sim_kucoin.py
+#
+# Simulation client that mimics KucoinClient interface. 
+# Uses live market data + simulated wallet/orders 
+# Virtual 'paper trading'  
+#
+# [520] [741] [8]
+#===================================================================
+# 🜁 THE COMMANDER            ✔ PERSISTANT RUNTIME  ✔ MONIT MANAGED
+#===================================================================
 
 import logging
 import time
@@ -25,7 +25,6 @@ import psycopg2.extras
 
 # Import the live client for market data
 from mm.conn.conn_kucoin import KucoinClient
-from mm.config.marcus import SIMULATION_DB_PATH  # For compatibility, though we use PostgreSQL
 
 logger = logging.getLogger("ariadne.sim")
 
