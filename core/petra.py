@@ -1,3 +1,20 @@
+#===================================================================
+# ?? A R I A N D E           bot version 6.1 file build 20250917.01
+#===================================================================
+# last update: 2025 | Sept. 17                  Production ready ?
+#===================================================================
+# Petra - Sales Manager
+# mm/core/petra.py
+#
+# Responsible for selling inventory positions
+# Identifies profitable exit opportunities  
+# Places limit sell orders with proper spread
+#
+# [520] [741] [8]
+#===================================================================
+# ?? THE COMMANDER            ? PERSISTANT RUNTIME  ? MONIT MANAGED
+#===================================================================
+
 #>> A R I A N D E [v 6.1]
 #>> last update: 2025 | Sept. 9                ❌ PRODUCTION READY
 #>>
