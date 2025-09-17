@@ -23,17 +23,17 @@ from mm.utils.helpers.inara import get_mode
 logger = logging.getLogger(__name__)
 
 # Incoming channels
-CHAN_VET = "proposals.vet_changed"
-CHAN_EXPIRED = "proposals.expired"
-CHAN_HOLD_CREATED = "holds.created"  # Julius/Helen notify back when hold is ready
+CHAN_VET = "proposals_vet_changed"
+CHAN_EXPIRED = "proposals_expired"
+CHAN_HOLD_CREATED = "holds_created"  # Julius/Helen notify back when hold is ready
 
 # Outgoing channels
-CHAN_CREATE_HOLD_J = "holds.create.julius"
-CHAN_CREATE_HOLD_H = "holds.create.helen"
-CHAN_READY_M = "proposals.ready.malcolm"
-CHAN_READY_P = "proposals.ready.petra"
-CHAN_DENIED_M = "proposals.denied.malcolm"
-CHAN_DENIED_P = "proposals.denied.petra"
+CHAN_CREATE_HOLD_J = "holds_create_julius"
+CHAN_CREATE_HOLD_H = "holds_create_helen"
+CHAN_READY_M = "proposals_ready_malcolm"
+CHAN_READY_P = "proposals_ready_petra"
+CHAN_DENIED_M = "proposals_denied_malcolm"
+CHAN_DENIED_P = "proposals_denied_petra"
 
 class SigInt: 
     def __init__(self):
