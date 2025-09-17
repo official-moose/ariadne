@@ -24,6 +24,7 @@ import importlib
 import smtplib
 import ssl
 import uuid
+import logging
 from datetime import datetime
 from email.message import EmailMessage
 from email.utils import formataddr
@@ -49,6 +50,8 @@ from mm.core.alec import Alec
 from mm.utils.nexus_6.rachael import Replicant
 from mm.utils.helpers.wintermute import update_heartbeat
 from mm.utils.tqdm.agnes import setup_logger
+
+logger = setup_logger("ariadne", level=logging.INFO)
 
 # 🔸 load env for this process =====================================
 
