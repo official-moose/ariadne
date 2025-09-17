@@ -202,8 +202,14 @@ class Alec:
         # Check if order is too old
         if created_at > 0:
             age_seconds = time.time() - (created_at / 1000)  # Convert ms to seconds
+
+            # Refresh threshold (short-term)
             if age_seconds > ORDER_REFRESH_SECONDS:
                 return f"stale - {age_seconds/3600:.1f} hours old"
+
+            # Absolute cutoff (long-term)
+            if age_seconds > (STALE_ORDER_HOURS * 3600):
+                return f"stale - exceeded {STALE_ORDER_HOURS} hour limit"
         
         # Check for price drift
         current_market = self._get_current_market(symbol)
