@@ -101,7 +101,7 @@ class Petra:
 
         self.cfg = cfg
         self.client = client or KucoinClient()
-        self.grayson = Grayson()
+        self.grayson = RiskOps()
         self.helen = Helen(self.client) if Helen else None
 
         # LISTEN connection (autocommit ON)
