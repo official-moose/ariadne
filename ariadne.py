@@ -178,8 +178,9 @@ class Ariadne:
 
     # 🔸 OPEN ORDERS RISK ASSESSMENT====================================
             
-            current_orders = self.client.get_open_orders()
-
+            current_orders = self.client.get_orders()
+            self.logger.info("Get open orders -> Fetched.")
+            
             for order in current_orders.copy():
                 print("Cycling through open orders.") 
                 order_id = order["id"]
