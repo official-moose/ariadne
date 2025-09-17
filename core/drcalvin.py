@@ -28,6 +28,7 @@ logger = logging.getLogger("Ariadne")
 
 # 🔸 Application Imports ===========================================
 
+from mm.utils.helpers import inara
 from mm.config.marcus import (
     QUOTE_CURRENCY,
     MIN_24H_VOLUME,
@@ -49,6 +50,8 @@ from mm.config.marcus import (
 class Level_I:
     def __init__(self, config):
         self.cfg = config
+        self.mode = inara.get_mode()
+        self.client = inara.get_trading_client()
         
 # 🔸 Prefilter =====================================================
 
