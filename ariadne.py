@@ -217,7 +217,7 @@ class Ariadne:
             
             self.logger.info("Starting sell cycle...")
         
-            petra = Petra(self.client)
+            petra = Petra()
             proposals = petra.prepare_sell_orders(Helen.get_positions())
 
             for proposal in proposals:
