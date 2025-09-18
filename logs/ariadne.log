@@ -27437,3 +27437,13 @@ Stating the risk assessment phase.
 2025-09-18 19:55:06    [ Ariadne ] [INFO] Risk assessment complete. Entering the sell phase.
 2025-09-18 19:55:06    [ Ariadne ] [INFO] Starting sell cycle...
 2025-09-18 19:55:07    [ ariadne ] [INFO] Trading client initialized (simulation)
+2025-09-18 19:55:37    [ Ariadne ] [INFO] Starting cycle...
+2025-09-18 19:55:38    [ ariadne ] [INFO] Trading client initialized (simulation)
+2025-09-18 19:55:38    [ Ariadne ] [INFO] Mode: simulation, Client: <mm.conn.sim_kucoin.SimClient object at 0x7fec7e392830>
+2025-09-18 19:55:38    [ Ariadne ] [INFO] Stating the risk assessment phase.
+
+2025-09-18 19:55:38    [ Ariadne ] [INFO] Get open orders -> Fetched.
+2025-09-18 19:55:38    [ Ariadne ] [INFO] No open orders, moving on to production cycle.
+2025-09-18 19:55:38    [ Ariadne ] [INFO] Risk assessment complete. Entering the sell phase.
+2025-09-18 19:55:38    [ Ariadne ] [INFO] Starting sell cycle...
+2025-09-18 19:55:38    [ ariadne ] [INFO] Trading client initialized (simulation)
