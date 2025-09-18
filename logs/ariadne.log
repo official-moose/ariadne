@@ -27396,3 +27396,9 @@ DSYNC-USDT
 2025-09-18 08:19:03    [ ariadne ] [INFO] Get open orders -> Fetched.
 2025-09-18 08:19:03    [ ariadne ] [INFO] No open orders, moving on to production cycle.
 2025-09-18 08:19:03    [ ariadne ] [INFO] Starting sell cycle...
+2025-09-18 18:23:50    [ ariadne ] [INFO] Starting cycle...
+2025-09-18 18:23:50    [ ariadne ] [INFO] Trading client initialized (simulation)
+2025-09-18 18:23:50    [ ariadne ] [INFO] Mode: simulation, Client: <mm.conn.sim_kucoin.SimClient object at 0x7f3cb95de410>
+2025-09-18 18:23:50    [ ariadne ] [INFO] Get open orders -> Fetched.
+2025-09-18 18:23:50    [ ariadne ] [INFO] No open orders, moving on to production cycle.
+2025-09-18 18:23:50    [ ariadne ] [INFO] Starting sell cycle...
