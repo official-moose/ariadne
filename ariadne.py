@@ -95,7 +95,7 @@ class Ariadne:
             self.logger.info(f"Mode: {self.mode}, Client: {self.client}")
 
     # 🔸 OPEN ORDERS RISK ASSESSMENT====================================
-            logger.info("\nStating the risk assessment phase.")
+            logger.info("Stating the risk assessment phase.\n")
         
             current_orders = self.client.get_orders()
             self.logger.info("Get open orders -> Fetched.")
