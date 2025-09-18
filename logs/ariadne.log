@@ -27485,3 +27485,17 @@ Stating the risk assessment phase.
 2025-09-18 20:15:43    [ Ariadne ] [INFO] Petra initializing...
 2025-09-18 20:15:44    [ ariadne ] [INFO] Trading client initialized (simulation)
 2025-09-18 20:15:44    [ Ariadne ] [INFO] Petra mode: simulation
+2025-09-18 20:24:47    [ Ariadne ] [INFO] Starting cycle...
+2025-09-18 20:24:48    [ ariadne ] [INFO] Trading client initialized (simulation)
+2025-09-18 20:24:48    [ Ariadne ] [INFO] Mode: simulation, Client: <mm.conn.sim_kucoin.SimClient object at 0x7ffa4e78a860>
+2025-09-18 20:24:48    [ Ariadne ] [INFO] ▪▪▪▪▪▪▪▪→ Complete.
+
+2025-09-18 20:24:48    [ Ariadne ] [INFO] Stating the risk assessment phase.
+2025-09-18 20:24:48    [ Ariadne ] [INFO] Get open orders -> Fetched.
+2025-09-18 20:24:48    [ Ariadne ] [INFO] No open orders, moving on to production cycle.
+2025-09-18 20:24:48    [ Ariadne ] [INFO] ▪▪▪▪▪▪▪▪→ Complete.
+
+2025-09-18 20:24:48    [ Ariadne ] [INFO] Loading Petra, beginning the sell cycle.
+2025-09-18 20:24:48    [ Ariadne ] [INFO] Petra initializing...
+2025-09-18 20:24:48    [ ariadne ] [INFO] Trading client initialized (simulation)
+2025-09-18 20:24:48    [ Ariadne ] [INFO] Petra mode: simulation
