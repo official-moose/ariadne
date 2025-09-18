@@ -163,7 +163,7 @@ def insert_rows(conn, timestamp, tickers):
                 float(t.get("takerFeeRate", 0)) if t.get("takerFeeRate") else None,
                 float(t.get("makerFeeRate", 0)) if t.get("makerFeeRate") else None,
                 float(t.get("takerCoefficient", 0)) if t.get("takerCoefficient") else None,
-                float(t.get("makerCoefficient", 0)) if t.get("makerCoefficient") else None
+                float(t.get("makerCoefficient", 0)) if t.get("makerCoefficient") else None 
             ]
             
             rows.append(tuple(row))
