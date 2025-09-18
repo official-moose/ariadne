@@ -137,8 +137,6 @@ class Ariadne:
             logger.info("▪▪▪▪▪▪▪▪→ Complete.\n")
             logger.info("Loading Petra, beginning the sell cycle.")
         
-            self.logger.info("Starting sell cycle...")
-        
             petra = Petra()
             proposals = petra.prepare_sell_orders(Helen.get_positions())
 
