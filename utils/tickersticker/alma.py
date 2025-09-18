@@ -166,7 +166,7 @@ def insert_rows(conn, timestamp, tickers):
                 float(t.get("makerCoefficient", 0)) if t.get("makerCoefficient") else None
             ]
             
-                rows.append(tuple(row))
+            rows.append(tuple(row))
         
         except Exception as e:
             print(f"[PARSE ERROR] {t.get('symbol', '?')} → {e}")
