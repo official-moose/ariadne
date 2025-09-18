@@ -24,16 +24,19 @@ logger = logging.getLogger(__name__)
 
 # Incoming channels
 CHAN_VET = "proposals_vet_changed"
-CHAN_EXPIRED = "proposals_expired"
-CHAN_HOLD_CREATED = "holds_created"  # Julius/Helen notify back when hold is ready
+CHAN_HOLD_CREATED = "order_hold_created"
 
 # Outgoing channels
-CHAN_CREATE_HOLD_J = "holds_create_julius"
-CHAN_CREATE_HOLD_H = "holds_create_helen"
-CHAN_READY_M = "proposals_ready_malcolm"
-CHAN_READY_P = "proposals_ready_petra"
-CHAN_DENIED_M = "proposals_denied_malcolm"
-CHAN_DENIED_P = "proposals_denied_petra"
+CHAN_BANK_VET = "bank_vet_req"
+CHAN_INV_VET = "inventory_vet_req"
+CHAN_RISK_VET = "risk_vet_req"
+CHAN_FIN_VET = "final_vet_req"
+CHAN_BID_APP = "proposals_approved_malcolm"
+CHAN_BID_DEN = "proposals_denied_malcolm"
+CHAN_BID_EXP = "proposals_expired_malcolm"
+CHAN_ASK_APP = "proposals_approved_petra"
+CHAN_ASK_DEN = "proposals_denied_petra"
+CHAN_ASK_EXP = "proposals_expired_petra"
 
 class SigInt: 
     def __init__(self):
