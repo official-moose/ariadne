@@ -2103,3 +2103,4 @@ DEBUG: process_name raw='wintermute', lowered='wintermute'
 [2025-09-18 05:16:45] INFO: [PARTITION] Created 3 new partitions
 [2025-09-18 05:16:45] INFO: [DROP] Dropped old partition tickstick_2025_09_18_03
 [2025-09-18 05:16:45] INFO: [PARTITION] Dropped 1 old partitions
+[2025-09-18 05:23:55] INFO: [SHUTDOWN] Received signal 15, shutting down gracefully...
