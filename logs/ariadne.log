@@ -27417,3 +27417,4 @@ DSYNC-USDT
 2025-09-18 19:53:07    [ Ariadne ] [INFO] No open orders, moving on to production cycle.
 2025-09-18 19:53:07    [ Ariadne ] [ERROR] Risk assessment complete. Entering the sell phase.
 2025-09-18 19:53:07    [ Ariadne ] [INFO] Starting sell cycle...
+2025-09-18 19:53:07    [ ariadne ] [INFO] Trading client initialized (simulation)
