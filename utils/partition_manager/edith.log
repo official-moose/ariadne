@@ -779,3 +779,8 @@
 [2025-09-18 05:37:05] INFO: [CREATE] Created partition tickstick_2025_09_18_07
 [2025-09-18 05:37:05] INFO: [CREATE] Created partition tickstick_2025_09_18_08
 [2025-09-18 05:37:05] INFO: [PARTITION] Created 3 new partitions
+[2025-09-18 06:37:06] INFO: [PARTITION] Running partition management (cycle 7)
+[2025-09-18 06:37:06] INFO: [CREATE] Created partition tickstick_2025_09_18_07
+[2025-09-18 06:37:06] INFO: [CREATE] Created partition tickstick_2025_09_18_08
+[2025-09-18 06:37:06] INFO: [CREATE] Created partition tickstick_2025_09_18_09
+[2025-09-18 06:37:06] INFO: [PARTITION] Created 3 new partitions
