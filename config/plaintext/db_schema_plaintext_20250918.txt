@@ -1,0 +1,1148 @@
+DATABASE SCHEMA
+==================================================
+Generated: 2025-09-18T02:32:39.805666
+
+TABLE LIST
+--------------------
+ 1. accounts
+ 2. asset_hold_ledger
+ 3. asset_holds
+ 4. asset_prices
+ 5. heartbeats
+ 6. inventory_limits
+ 7. journal_entries
+ 8. ledger_entries
+ 9. order_cancel
+10. orders
+11. performance_metrics
+12. positions
+13. proposal_router_log
+14. proposals
+15. realism_history
+16. risk_metrics
+17. sim_balances
+18. sim_order_cancel
+19. sim_orders
+20. sim_positions
+21. sim_trades
+22. sim_transactions
+23. symbol_info
+24. system_events
+25. system_state
+26. tax_lots
+27. tickstick
+28. tickstick_2025_09_18_01
+29. tickstick_2025_09_18_02
+30. tickstick_2025_09_18_03
+31. tickstick_2025_09_18_04
+32. tickstick_2025_09_18_05
+33. trades
+34. transaction_queue
+35. wallet_hold_ledger
+36. wallet_holds
+
+Total: 36 tables
+
+============================================================
+
+TABLE: accounts
+===============
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('accounts_id_seq'::regclass)
+  name                      text NOT NULL
+  type                      text NOT NULL
+  parent_account_id         integer
+  created_at                timestamp without time zone DEFAULT now()
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  accounts_pkey (PRIMARY KEY)
+  accounts_name_key (UNIQUE)
+  accounts_parent_account_id_fkey (FOREIGN KEY)
+  2200_17388_1_not_null (CHECK)
+  2200_17388_2_not_null (CHECK)
+  2200_17388_3_not_null (CHECK)
+
+INDEXES:
+  accounts_pkey
+    CREATE UNIQUE INDEX accounts_pkey ON public.accounts USING btree (id)
+  accounts_name_key
+    CREATE UNIQUE INDEX accounts_name_key ON public.accounts USING btree (name)
+
+------------------------------------------------------------
+
+TABLE: asset_hold_ledger
+========================
+COLUMNS:
+  id                        bigint NOT NULL DEFAULT nextval('asset_hold_ledger_id_seq'::regclass)
+  hold_id                   text
+  event_type                text NOT NULL
+  delta_qty                 numeric
+  qty_remaining_after       numeric
+  actor                     text
+  source                    text
+  reason                    text
+  order_id                  text
+  correlation_id            text
+  created_at                timestamp with time zone DEFAULT now()
+  deleted                   boolean DEFAULT false
+  deleted_at                timestamp with time zone
+
+CONSTRAINTS:
+  asset_hold_ledger_event_type_check (CHECK)
+  asset_hold_ledger_pkey (PRIMARY KEY)
+  2200_23860_1_not_null (CHECK)
+  2200_23860_3_not_null (CHECK)
+
+INDEXES:
+  asset_hold_ledger_pkey
+    CREATE UNIQUE INDEX asset_hold_ledger_pkey ON public.asset_hold_ledger USING btree (id)
+  idx_asset_hold_ledger_hold_id
+    CREATE INDEX idx_asset_hold_ledger_hold_id ON public.asset_hold_ledger USING btree (hold_id)
+  idx_asset_hold_ledger_event_type
+    CREATE INDEX idx_asset_hold_ledger_event_type ON public.asset_hold_ledger USING btree (event_type)
+
+------------------------------------------------------------
+
+TABLE: asset_holds
+==================
+COLUMNS:
+  hold_id                   text NOT NULL
+  symbol                    text NOT NULL
+  asset                     text NOT NULL
+  qty_total                 numeric NOT NULL
+  qty_remaining             numeric NOT NULL
+  status                    text NOT NULL
+  order_id                  text
+  origin                    text
+  reason                    text
+  created_at                timestamp with time zone DEFAULT now()
+  updated_at                timestamp with time zone DEFAULT now()
+  deleted                   boolean DEFAULT false
+  deleted_at                timestamp with time zone
+
+CONSTRAINTS:
+  asset_holds_status_check (CHECK)
+  asset_holds_pkey (PRIMARY KEY)
+  2200_23843_1_not_null (CHECK)
+  2200_23843_2_not_null (CHECK)
+  2200_23843_3_not_null (CHECK)
+  2200_23843_4_not_null (CHECK)
+  2200_23843_5_not_null (CHECK)
+  2200_23843_6_not_null (CHECK)
+
+INDEXES:
+  asset_holds_pkey
+    CREATE UNIQUE INDEX asset_holds_pkey ON public.asset_holds USING btree (hold_id)
+  idx_asset_holds_status
+    CREATE INDEX idx_asset_holds_status ON public.asset_holds USING btree (status)
+  idx_asset_holds_order
+    CREATE INDEX idx_asset_holds_order ON public.asset_holds USING btree (order_id)
+  idx_asset_holds_asset_status
+    CREATE INDEX idx_asset_holds_asset_status ON public.asset_holds USING btree (asset, status)
+  idx_asset_holds_symbol_status
+    CREATE INDEX idx_asset_holds_symbol_status ON public.asset_holds USING btree (symbol, status)
+  idx_asset_holds_deleted
+    CREATE INDEX idx_asset_holds_deleted ON public.asset_holds USING btree (deleted)
+
+------------------------------------------------------------
+
+TABLE: asset_prices
+===================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('asset_prices_id_seq'::regclass)
+  timestamp                 timestamp without time zone NOT NULL
+  symbol                    text NOT NULL
+  price_usd                 numeric NOT NULL
+  price_cad                 numeric
+  source                    text
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  asset_prices_pkey (PRIMARY KEY)
+  2200_17436_1_not_null (CHECK)
+  2200_17436_2_not_null (CHECK)
+  2200_17436_3_not_null (CHECK)
+  2200_17436_4_not_null (CHECK)
+
+INDEXES:
+  asset_prices_pkey
+    CREATE UNIQUE INDEX asset_prices_pkey ON public.asset_prices USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: heartbeats
+=================
+COLUMNS:
+  process_name              text NOT NULL
+  last_heartbeat            timestamp without time zone NOT NULL
+  status                    text DEFAULT 'ok'::text
+  startup_time              timestamp without time zone
+  pid                       integer
+  cycle_count               bigint DEFAULT 0
+  metadata                  jsonb
+
+CONSTRAINTS:
+  heartbeats_pkey (PRIMARY KEY)
+  2200_17508_1_not_null (CHECK)
+  2200_17508_2_not_null (CHECK)
+
+INDEXES:
+  heartbeats_pkey
+    CREATE UNIQUE INDEX heartbeats_pkey ON public.heartbeats USING btree (process_name)
+
+------------------------------------------------------------
+
+TABLE: inventory_limits
+=======================
+COLUMNS:
+  asset                     text NOT NULL
+  capped                    boolean NOT NULL DEFAULT false
+  capped_at                 timestamp with time zone
+  reason                    text
+  updated_by                text
+  updated_at                timestamp with time zone DEFAULT now()
+
+CONSTRAINTS:
+  inventory_limits_pkey (PRIMARY KEY)
+  2200_23873_1_not_null (CHECK)
+  2200_23873_2_not_null (CHECK)
+
+INDEXES:
+  inventory_limits_pkey
+    CREATE UNIQUE INDEX inventory_limits_pkey ON public.inventory_limits USING btree (asset)
+  idx_inventory_limits_capped
+    CREATE INDEX idx_inventory_limits_capped ON public.inventory_limits USING btree (capped)
+
+------------------------------------------------------------
+
+TABLE: journal_entries
+======================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('journal_entries_id_seq'::regclass)
+  timestamp                 timestamp without time zone NOT NULL
+  description               text NOT NULL
+  source                    text
+  reference_id              integer
+  reference_type            text
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  journal_entries_pkey (PRIMARY KEY)
+  2200_17406_1_not_null (CHECK)
+  2200_17406_2_not_null (CHECK)
+  2200_17406_3_not_null (CHECK)
+
+INDEXES:
+  journal_entries_pkey
+    CREATE UNIQUE INDEX journal_entries_pkey ON public.journal_entries USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: ledger_entries
+=====================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('ledger_entries_id_seq'::regclass)
+  journal_id                integer
+  account_id                integer
+  amount                    numeric NOT NULL
+  currency                  text NOT NULL
+  type                      text NOT NULL
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  ledger_entries_pkey (PRIMARY KEY)
+  ledger_entries_journal_id_fkey (FOREIGN KEY)
+  ledger_entries_account_id_fkey (FOREIGN KEY)
+  2200_17416_1_not_null (CHECK)
+  2200_17416_4_not_null (CHECK)
+  2200_17416_5_not_null (CHECK)
+  2200_17416_6_not_null (CHECK)
+
+INDEXES:
+  ledger_entries_pkey
+    CREATE UNIQUE INDEX ledger_entries_pkey ON public.ledger_entries USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: order_cancel
+===================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('order_cancel_id_seq'::regclass)
+  order_id                  integer NOT NULL
+  cancelled_at              timestamp without time zone NOT NULL
+  reason                    text NOT NULL
+  price_at_cancel           numeric
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  order_cancel_pkey (PRIMARY KEY)
+  2200_17348_1_not_null (CHECK)
+  2200_17348_2_not_null (CHECK)
+  2200_17348_3_not_null (CHECK)
+  2200_17348_4_not_null (CHECK)
+
+INDEXES:
+  order_cancel_pkey
+    CREATE UNIQUE INDEX order_cancel_pkey ON public.order_cancel USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: orders
+=============
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('orders_id_seq'::regclass)
+  timestamp                 timestamp without time zone NOT NULL
+  symbol                    text NOT NULL
+  side                      text NOT NULL
+  price                     numeric NOT NULL
+  size                      numeric NOT NULL
+  exchange_order_id         text NOT NULL
+  order_type                text DEFAULT 'limit'::text
+  time_in_force             text DEFAULT 'GTC'::text
+  client_order_id           text
+  status                    text DEFAULT 'open'::text
+  last_updated              timestamp without time zone DEFAULT now()
+  metadata                  jsonb
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  orders_pkey (PRIMARY KEY)
+  2200_17333_1_not_null (CHECK)
+  2200_17333_2_not_null (CHECK)
+  2200_17333_3_not_null (CHECK)
+  2200_17333_4_not_null (CHECK)
+  2200_17333_5_not_null (CHECK)
+  2200_17333_6_not_null (CHECK)
+  2200_17333_7_not_null (CHECK)
+
+INDEXES:
+  orders_pkey
+    CREATE UNIQUE INDEX orders_pkey ON public.orders USING btree (id)
+  idx_orders_latest
+    CREATE INDEX idx_orders_latest ON public.orders USING btree (status, symbol)
+
+------------------------------------------------------------
+
+TABLE: performance_metrics
+==========================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('performance_metrics_id_seq'::regclass)
+  timestamp                 timestamp without time zone NOT NULL
+  period                    text NOT NULL
+  total_trades              integer NOT NULL
+  winning_trades            integer NOT NULL
+  losing_trades             integer NOT NULL
+  total_pnl                 numeric NOT NULL
+  avg_win                   numeric
+  avg_loss                  numeric
+  win_rate                  numeric
+  metadata                  jsonb
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  performance_metrics_pkey (PRIMARY KEY)
+  2200_17486_1_not_null (CHECK)
+  2200_17486_2_not_null (CHECK)
+  2200_17486_3_not_null (CHECK)
+  2200_17486_4_not_null (CHECK)
+  2200_17486_5_not_null (CHECK)
+  2200_17486_6_not_null (CHECK)
+  2200_17486_7_not_null (CHECK)
+
+INDEXES:
+  performance_metrics_pkey
+    CREATE UNIQUE INDEX performance_metrics_pkey ON public.performance_metrics USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: positions
+================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('positions_id_seq'::regclass)
+  last_trade_id             integer
+  symbol                    text NOT NULL
+  base_currency             text NOT NULL
+  quote_currency            text NOT NULL
+  size                      numeric NOT NULL
+  cost_basis                numeric NOT NULL
+  entry_price               numeric NOT NULL
+  current_value             numeric
+  unrealized_pnl            numeric
+  realized_pnl              numeric DEFAULT 0
+  created_at                timestamp without time zone NOT NULL DEFAULT now()
+  updated_at                timestamp without time zone DEFAULT now()
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  positions_pkey (PRIMARY KEY)
+  2200_17374_1_not_null (CHECK)
+  2200_17374_3_not_null (CHECK)
+  2200_17374_4_not_null (CHECK)
+  2200_17374_5_not_null (CHECK)
+  2200_17374_6_not_null (CHECK)
+  2200_17374_7_not_null (CHECK)
+  2200_17374_8_not_null (CHECK)
+  2200_17374_12_not_null (CHECK)
+
+INDEXES:
+  positions_pkey
+    CREATE UNIQUE INDEX positions_pkey ON public.positions USING btree (id)
+  idx_positions_latest
+    CREATE INDEX idx_positions_latest ON public.positions USING btree (symbol)
+
+------------------------------------------------------------
+
+TABLE: proposal_router_log
+==========================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('proposal_router_log_id_seq'::regclass)
+  proposal_id               integer NOT NULL
+  routed_to                 text NOT NULL
+  routed_at                 timestamp with time zone DEFAULT now()
+  notes                     text
+
+CONSTRAINTS:
+  proposal_router_log_pkey (PRIMARY KEY)
+  2200_23885_1_not_null (CHECK)
+  2200_23885_2_not_null (CHECK)
+  2200_23885_3_not_null (CHECK)
+
+INDEXES:
+  proposal_router_log_pkey
+    CREATE UNIQUE INDEX proposal_router_log_pkey ON public.proposal_router_log USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: proposals
+================
+COLUMNS:
+  prop_id                   text NOT NULL
+  symbol                    text NOT NULL
+  side                      text NOT NULL
+  price_intent              numeric
+  size_intent               numeric
+  fees_est                  numeric
+  creator                   text NOT NULL
+  created_at                timestamp with time zone DEFAULT now()
+  invt_vet                  text
+  invt_stamp                timestamp with time zone
+  risk_vet                  text
+  risk_stamp                timestamp with time zone
+  bank_vet                  text
+  bank_stamp                timestamp with time zone
+  status                    text NOT NULL DEFAULT 'pending'::text
+  decision_stamp            timestamp with time zone
+  decision_notes            text
+
+CONSTRAINTS:
+  proposals_side_check (CHECK)
+  proposals_invt_vet_check (CHECK)
+  proposals_risk_vet_check (CHECK)
+  proposals_bank_vet_check (CHECK)
+  proposals_status_check (CHECK)
+  proposals_pkey (PRIMARY KEY)
+  2200_23827_1_not_null (CHECK)
+  2200_23827_2_not_null (CHECK)
+  2200_23827_3_not_null (CHECK)
+  2200_23827_7_not_null (CHECK)
+  2200_23827_15_not_null (CHECK)
+
+INDEXES:
+  proposals_pkey
+    CREATE UNIQUE INDEX proposals_pkey ON public.proposals USING btree (prop_id)
+
+TRIGGERS:
+  proposals_before_insert (BEFORE INSERT)
+  trg_proposal_insert (AFTER INSERT)
+  trg_proposal_vet_update (AFTER UPDATE)
+  trg_proposal_expired (AFTER UPDATE)
+
+------------------------------------------------------------
+
+TABLE: realism_history
+======================
+COLUMNS:
+  order_id                  text NOT NULL
+  symbol                    text NOT NULL
+  realism_type              text NOT NULL
+  applied_at                timestamp without time zone NOT NULL
+  details                   jsonb
+
+CONSTRAINTS:
+  realism_history_pkey (PRIMARY KEY)
+  2200_17898_1_not_null (CHECK)
+  2200_17898_2_not_null (CHECK)
+  2200_17898_3_not_null (CHECK)
+  2200_17898_4_not_null (CHECK)
+
+INDEXES:
+  realism_history_pkey
+    CREATE UNIQUE INDEX realism_history_pkey ON public.realism_history USING btree (order_id)
+  idx_realism_symbol_time
+    CREATE INDEX idx_realism_symbol_time ON public.realism_history USING btree (symbol, applied_at DESC)
+
+------------------------------------------------------------
+
+TABLE: risk_metrics
+===================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('risk_metrics_id_seq'::regclass)
+  timestamp                 timestamp without time zone NOT NULL
+  total_equity              numeric NOT NULL
+  total_exposure            numeric NOT NULL
+  max_drawdown              numeric
+  sharpe_ratio              numeric
+  open_positions            integer
+  daily_pnl                 numeric
+  metadata                  jsonb
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  risk_metrics_pkey (PRIMARY KEY)
+  2200_17476_1_not_null (CHECK)
+  2200_17476_2_not_null (CHECK)
+  2200_17476_3_not_null (CHECK)
+  2200_17476_4_not_null (CHECK)
+
+INDEXES:
+  risk_metrics_pkey
+    CREATE UNIQUE INDEX risk_metrics_pkey ON public.risk_metrics USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: sim_balances
+===================
+COLUMNS:
+  currency                  text NOT NULL
+  available                 numeric NOT NULL
+  hold                      numeric NOT NULL DEFAULT 0
+  last_updated              timestamp without time zone DEFAULT now()
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  sim_balances_pkey (PRIMARY KEY)
+  2200_17298_1_not_null (CHECK)
+  2200_17298_2_not_null (CHECK)
+  2200_17298_3_not_null (CHECK)
+
+INDEXES:
+  sim_balances_pkey
+    CREATE UNIQUE INDEX sim_balances_pkey ON public.sim_balances USING btree (currency)
+
+------------------------------------------------------------
+
+TABLE: sim_order_cancel
+=======================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('sim_order_cancel_id_seq'::regclass)
+  order_id                  integer NOT NULL
+  cancelled_at              timestamp without time zone NOT NULL
+  reason                    text NOT NULL
+  price_at_cancel           numeric
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  sim_order_cancel_pkey (PRIMARY KEY)
+  2200_17272_1_not_null (CHECK)
+  2200_17272_2_not_null (CHECK)
+  2200_17272_3_not_null (CHECK)
+  2200_17272_4_not_null (CHECK)
+
+INDEXES:
+  sim_order_cancel_pkey
+    CREATE UNIQUE INDEX sim_order_cancel_pkey ON public.sim_order_cancel USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: sim_orders
+=================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('sim_orders_id_seq'::regclass)
+  timestamp                 timestamp without time zone NOT NULL
+  symbol                    text NOT NULL
+  side                      text NOT NULL
+  price                     numeric NOT NULL
+  size                      numeric NOT NULL
+  sim_order_id              text NOT NULL
+  order_type                text DEFAULT 'limit'::text
+  time_in_force             text DEFAULT 'GTC'::text
+  client_order_id           text
+  status                    text DEFAULT 'open'::text
+  last_updated              timestamp without time zone DEFAULT now()
+  metadata                  jsonb
+  deleted                   boolean DEFAULT false
+  deleted_at                timestamp without time zone
+
+CONSTRAINTS:
+  sim_orders_pkey (PRIMARY KEY)
+  2200_17257_1_not_null (CHECK)
+  2200_17257_2_not_null (CHECK)
+  2200_17257_3_not_null (CHECK)
+  2200_17257_4_not_null (CHECK)
+  2200_17257_5_not_null (CHECK)
+  2200_17257_6_not_null (CHECK)
+  2200_17257_7_not_null (CHECK)
+
+INDEXES:
+  sim_orders_pkey
+    CREATE UNIQUE INDEX sim_orders_pkey ON public.sim_orders USING btree (id)
+  idx_sim_orders_latest
+    CREATE INDEX idx_sim_orders_latest ON public.sim_orders USING btree (status, symbol)
+  idx_sim_orders_status_deleted
+    CREATE INDEX idx_sim_orders_status_deleted ON public.sim_orders USING btree (status, deleted)
+
+------------------------------------------------------------
+
+TABLE: sim_positions
+====================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('sim_positions_id_seq'::regclass)
+  last_trade_id             integer
+  symbol                    text NOT NULL
+  base_currency             text NOT NULL
+  quote_currency            text NOT NULL
+  size                      numeric NOT NULL
+  cost_basis                numeric NOT NULL
+  entry_price               numeric NOT NULL
+  current_value             numeric
+  unrealized_pnl            numeric
+  realized_pnl              numeric DEFAULT 0
+  created_at                timestamp without time zone NOT NULL DEFAULT now()
+  updated_at                timestamp without time zone DEFAULT now()
+  deleted                   boolean DEFAULT false
+  hold                      numeric DEFAULT 0
+
+CONSTRAINTS:
+  sim_positions_pkey (PRIMARY KEY)
+  2200_17309_1_not_null (CHECK)
+  2200_17309_3_not_null (CHECK)
+  2200_17309_4_not_null (CHECK)
+  2200_17309_5_not_null (CHECK)
+  2200_17309_6_not_null (CHECK)
+  2200_17309_7_not_null (CHECK)
+  2200_17309_8_not_null (CHECK)
+  2200_17309_12_not_null (CHECK)
+
+INDEXES:
+  sim_positions_pkey
+    CREATE UNIQUE INDEX sim_positions_pkey ON public.sim_positions USING btree (id)
+  idx_sim_positions_latest
+    CREATE INDEX idx_sim_positions_latest ON public.sim_positions USING btree (symbol)
+
+------------------------------------------------------------
+
+TABLE: sim_trades
+=================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('sim_trades_id_seq'::regclass)
+  order_id                  integer
+  liquidity_type            text NOT NULL
+  fill_timestamp            timestamp without time zone NOT NULL
+  fill_price                numeric NOT NULL
+  fill_size                 numeric NOT NULL
+  fee_amount                numeric DEFAULT 0
+  fee_currency              text
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  sim_trades_pkey (PRIMARY KEY)
+  sim_trades_order_id_fkey (FOREIGN KEY)
+  2200_17282_1_not_null (CHECK)
+  2200_17282_3_not_null (CHECK)
+  2200_17282_4_not_null (CHECK)
+  2200_17282_5_not_null (CHECK)
+  2200_17282_6_not_null (CHECK)
+
+INDEXES:
+  sim_trades_pkey
+    CREATE UNIQUE INDEX sim_trades_pkey ON public.sim_trades USING btree (id)
+  idx_sim_trades_latest
+    CREATE INDEX idx_sim_trades_latest ON public.sim_trades USING btree (fill_timestamp)
+
+------------------------------------------------------------
+
+TABLE: sim_transactions
+=======================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('sim_transactions_id_seq'::regclass)
+  timestamp                 timestamp without time zone NOT NULL
+  type                      text NOT NULL
+  currency                  text NOT NULL
+  amount                    numeric NOT NULL
+  balance_before            numeric NOT NULL
+  balance_after             numeric NOT NULL
+  reference_id              integer
+  reference_type            text
+  notes                     text
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  sim_transactions_pkey (PRIMARY KEY)
+  2200_17323_1_not_null (CHECK)
+  2200_17323_2_not_null (CHECK)
+  2200_17323_3_not_null (CHECK)
+  2200_17323_4_not_null (CHECK)
+  2200_17323_5_not_null (CHECK)
+  2200_17323_6_not_null (CHECK)
+  2200_17323_7_not_null (CHECK)
+
+INDEXES:
+  sim_transactions_pkey
+    CREATE UNIQUE INDEX sim_transactions_pkey ON public.sim_transactions USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: symbol_info
+==================
+COLUMNS:
+  symbol                    character varying(20) NOT NULL
+  base_currency             character varying(10)
+  quote_currency            character varying(10)
+  base_increment            numeric
+  price_increment           numeric
+  base_min_size             numeric
+  quote_min_size            numeric
+
+CONSTRAINTS:
+  symbol_info_pkey (PRIMARY KEY)
+  2200_23790_1_not_null (CHECK)
+
+INDEXES:
+  symbol_info_pkey
+    CREATE UNIQUE INDEX symbol_info_pkey ON public.symbol_info USING btree (symbol)
+
+------------------------------------------------------------
+
+TABLE: system_events
+====================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('system_events_id_seq'::regclass)
+  timestamp                 timestamp without time zone NOT NULL
+  event_type                text NOT NULL
+  severity                  text NOT NULL
+  component                 text NOT NULL
+  message                   text NOT NULL
+  metadata                  jsonb
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  system_events_pkey (PRIMARY KEY)
+  2200_17466_1_not_null (CHECK)
+  2200_17466_2_not_null (CHECK)
+  2200_17466_3_not_null (CHECK)
+  2200_17466_4_not_null (CHECK)
+  2200_17466_5_not_null (CHECK)
+  2200_17466_6_not_null (CHECK)
+
+INDEXES:
+  system_events_pkey
+    CREATE UNIQUE INDEX system_events_pkey ON public.system_events USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: system_state
+===================
+COLUMNS:
+  key                       text NOT NULL
+  value                     jsonb NOT NULL
+  updated_at                timestamp without time zone DEFAULT now()
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  system_state_pkey (PRIMARY KEY)
+  2200_17456_1_not_null (CHECK)
+  2200_17456_2_not_null (CHECK)
+
+INDEXES:
+  system_state_pkey
+    CREATE UNIQUE INDEX system_state_pkey ON public.system_state USING btree (key)
+
+------------------------------------------------------------
+
+TABLE: tax_lots
+===============
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('tax_lots_id_seq'::regclass)
+  acquisition_date          date NOT NULL
+  symbol                    text NOT NULL
+  quantity                  numeric NOT NULL
+  cost_basis_cad            numeric NOT NULL
+  cost_basis_per_unit       numeric NOT NULL
+  disposal_date             date
+  disposal_price            numeric
+  realized_gain_loss        numeric
+  status                    text DEFAULT 'open'::text
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  tax_lots_pkey (PRIMARY KEY)
+  2200_17446_1_not_null (CHECK)
+  2200_17446_2_not_null (CHECK)
+  2200_17446_3_not_null (CHECK)
+  2200_17446_4_not_null (CHECK)
+  2200_17446_5_not_null (CHECK)
+  2200_17446_6_not_null (CHECK)
+
+INDEXES:
+  tax_lots_pkey
+    CREATE UNIQUE INDEX tax_lots_pkey ON public.tax_lots USING btree (id)
+
+------------------------------------------------------------
+
+TABLE: tickstick
+================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
+  timestamp                 bigint NOT NULL
+  symbol                    text NOT NULL
+  symbol_name               text
+  buy                       numeric
+  sell                      numeric
+  last                      numeric
+  best_bid_size             numeric
+  best_ask_size             numeric
+  change_rate               numeric
+  change_price              numeric
+  high                      numeric
+  low                       numeric
+  vol                       numeric
+  vol_value                 numeric
+  average_price             numeric
+  taker_fee_rate            numeric
+  maker_fee_rate            numeric
+  taker_coefficient         numeric
+  maker_coefficient         numeric
+
+CONSTRAINTS:
+  2200_17251_1_not_null (CHECK)
+  2200_17251_2_not_null (CHECK)
+  2200_17251_3_not_null (CHECK)
+
+INDEXES:
+  idx_tickstick_latest
+    CREATE INDEX idx_tickstick_latest ON ONLY public.tickstick USING btree (symbol, "timestamp" DESC)
+
+------------------------------------------------------------
+
+TABLE: tickstick_2025_09_18_01
+==============================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
+  timestamp                 bigint NOT NULL
+  symbol                    text NOT NULL
+  symbol_name               text
+  buy                       numeric
+  sell                      numeric
+  last                      numeric
+  best_bid_size             numeric
+  best_ask_size             numeric
+  change_rate               numeric
+  change_price              numeric
+  high                      numeric
+  low                       numeric
+  vol                       numeric
+  vol_value                 numeric
+  average_price             numeric
+  taker_fee_rate            numeric
+  maker_fee_rate            numeric
+  taker_coefficient         numeric
+  maker_coefficient         numeric
+
+CONSTRAINTS:
+  2200_25561_1_not_null (CHECK)
+  2200_25561_2_not_null (CHECK)
+  2200_25561_3_not_null (CHECK)
+
+INDEXES:
+  tickstick_2025_09_18_01_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_18_01_symbol_timestamp_idx ON public.tickstick_2025_09_18_01 USING btree (symbol, "timestamp" DESC)
+
+------------------------------------------------------------
+
+TABLE: tickstick_2025_09_18_02
+==============================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
+  timestamp                 bigint NOT NULL
+  symbol                    text NOT NULL
+  symbol_name               text
+  buy                       numeric
+  sell                      numeric
+  last                      numeric
+  best_bid_size             numeric
+  best_ask_size             numeric
+  change_rate               numeric
+  change_price              numeric
+  high                      numeric
+  low                       numeric
+  vol                       numeric
+  vol_value                 numeric
+  average_price             numeric
+  taker_fee_rate            numeric
+  maker_fee_rate            numeric
+  taker_coefficient         numeric
+  maker_coefficient         numeric
+
+CONSTRAINTS:
+  2200_25568_1_not_null (CHECK)
+  2200_25568_2_not_null (CHECK)
+  2200_25568_3_not_null (CHECK)
+
+INDEXES:
+  tickstick_2025_09_18_02_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_18_02_symbol_timestamp_idx ON public.tickstick_2025_09_18_02 USING btree (symbol, "timestamp" DESC)
+
+------------------------------------------------------------
+
+TABLE: tickstick_2025_09_18_03
+==============================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
+  timestamp                 bigint NOT NULL
+  symbol                    text NOT NULL
+  symbol_name               text
+  buy                       numeric
+  sell                      numeric
+  last                      numeric
+  best_bid_size             numeric
+  best_ask_size             numeric
+  change_rate               numeric
+  change_price              numeric
+  high                      numeric
+  low                       numeric
+  vol                       numeric
+  vol_value                 numeric
+  average_price             numeric
+  taker_fee_rate            numeric
+  maker_fee_rate            numeric
+  taker_coefficient         numeric
+  maker_coefficient         numeric
+
+CONSTRAINTS:
+  2200_25575_1_not_null (CHECK)
+  2200_25575_2_not_null (CHECK)
+  2200_25575_3_not_null (CHECK)
+
+INDEXES:
+  tickstick_2025_09_18_03_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_18_03_symbol_timestamp_idx ON public.tickstick_2025_09_18_03 USING btree (symbol, "timestamp" DESC)
+
+------------------------------------------------------------
+
+TABLE: tickstick_2025_09_18_04
+==============================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
+  timestamp                 bigint NOT NULL
+  symbol                    text NOT NULL
+  symbol_name               text
+  buy                       numeric
+  sell                      numeric
+  last                      numeric
+  best_bid_size             numeric
+  best_ask_size             numeric
+  change_rate               numeric
+  change_price              numeric
+  high                      numeric
+  low                       numeric
+  vol                       numeric
+  vol_value                 numeric
+  average_price             numeric
+  taker_fee_rate            numeric
+  maker_fee_rate            numeric
+  taker_coefficient         numeric
+  maker_coefficient         numeric
+
+CONSTRAINTS:
+  2200_25583_1_not_null (CHECK)
+  2200_25583_2_not_null (CHECK)
+  2200_25583_3_not_null (CHECK)
+
+INDEXES:
+  tickstick_2025_09_18_04_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_18_04_symbol_timestamp_idx ON public.tickstick_2025_09_18_04 USING btree (symbol, "timestamp" DESC)
+
+------------------------------------------------------------
+
+TABLE: tickstick_2025_09_18_05
+==============================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
+  timestamp                 bigint NOT NULL
+  symbol                    text NOT NULL
+  symbol_name               text
+  buy                       numeric
+  sell                      numeric
+  last                      numeric
+  best_bid_size             numeric
+  best_ask_size             numeric
+  change_rate               numeric
+  change_price              numeric
+  high                      numeric
+  low                       numeric
+  vol                       numeric
+  vol_value                 numeric
+  average_price             numeric
+  taker_fee_rate            numeric
+  maker_fee_rate            numeric
+  taker_coefficient         numeric
+  maker_coefficient         numeric
+
+CONSTRAINTS:
+  2200_25590_1_not_null (CHECK)
+  2200_25590_2_not_null (CHECK)
+  2200_25590_3_not_null (CHECK)
+
+INDEXES:
+  tickstick_2025_09_18_05_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_18_05_symbol_timestamp_idx ON public.tickstick_2025_09_18_05 USING btree (symbol, "timestamp" DESC)
+
+------------------------------------------------------------
+
+TABLE: trades
+=============
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('trades_id_seq'::regclass)
+  order_id                  integer
+  liquidity_type            text NOT NULL
+  exchange_trade_id         text NOT NULL
+  fill_timestamp            timestamp without time zone NOT NULL
+  fill_price                numeric NOT NULL
+  fill_size                 numeric NOT NULL
+  fee_amount                numeric NOT NULL
+  fee_currency              text NOT NULL
+  side                      text NOT NULL
+  symbol                    text NOT NULL
+  deleted                   boolean DEFAULT false
+
+CONSTRAINTS:
+  trades_pkey (PRIMARY KEY)
+  trades_order_id_fkey (FOREIGN KEY)
+  2200_17358_1_not_null (CHECK)
+  2200_17358_3_not_null (CHECK)
+  2200_17358_4_not_null (CHECK)
+  2200_17358_5_not_null (CHECK)
+  2200_17358_6_not_null (CHECK)
+  2200_17358_7_not_null (CHECK)
+  2200_17358_8_not_null (CHECK)
+  2200_17358_9_not_null (CHECK)
+  2200_17358_10_not_null (CHECK)
+  2200_17358_11_not_null (CHECK)
+
+INDEXES:
+  trades_pkey
+    CREATE UNIQUE INDEX trades_pkey ON public.trades USING btree (id)
+  idx_trades_latest
+    CREATE INDEX idx_trades_latest ON public.trades USING btree (fill_timestamp)
+
+------------------------------------------------------------
+
+TABLE: transaction_queue
+========================
+COLUMNS:
+  id                        integer NOT NULL DEFAULT nextval('transaction_queue_id_seq'::regclass)
+  event_type                text NOT NULL
+  exchange_ref              text NOT NULL
+  raw_data                  jsonb NOT NULL
+  created_at                timestamp without time zone DEFAULT now()
+  processed                 boolean DEFAULT false
+  processed_at              timestamp without time zone
+  error_count               integer DEFAULT 0
+  last_error                text
+
+CONSTRAINTS:
+  transaction_queue_pkey (PRIMARY KEY)
+  2200_17496_1_not_null (CHECK)
+  2200_17496_2_not_null (CHECK)
+  2200_17496_3_not_null (CHECK)
+  2200_17496_4_not_null (CHECK)
+
+INDEXES:
+  transaction_queue_pkey
+    CREATE UNIQUE INDEX transaction_queue_pkey ON public.transaction_queue USING btree (id)
+  idx_queue_processing
+    CREATE INDEX idx_queue_processing ON public.transaction_queue USING btree (processed, error_count)
+
+------------------------------------------------------------
+
+TABLE: wallet_hold_ledger
+=========================
+COLUMNS:
+  id                        bigint NOT NULL DEFAULT nextval('wallet_hold_ledger_id_seq'::regclass)
+  hold_id                   text NOT NULL
+  event_type                text NOT NULL
+  delta_amount              numeric
+  amount_remaining_after    numeric
+  actor                     text
+  source                    text
+  reason                    text
+  order_id                  text
+  correlation_id            text
+  created_at                timestamp with time zone DEFAULT now()
+  deleted                   boolean DEFAULT false
+  deleted_at                timestamp with time zone
+
+CONSTRAINTS:
+  wallet_hold_ledger_event_type_check (CHECK)
+  wallet_hold_ledger_pkey (PRIMARY KEY)
+  2200_23813_1_not_null (CHECK)
+  2200_23813_2_not_null (CHECK)
+  2200_23813_3_not_null (CHECK)
+
+INDEXES:
+  wallet_hold_ledger_pkey
+    CREATE UNIQUE INDEX wallet_hold_ledger_pkey ON public.wallet_hold_ledger USING btree (id)
+  idx_wallet_hold_ledger_hold_id
+    CREATE INDEX idx_wallet_hold_ledger_hold_id ON public.wallet_hold_ledger USING btree (hold_id)
+  idx_wallet_hold_ledger_event_type
+    CREATE INDEX idx_wallet_hold_ledger_event_type ON public.wallet_hold_ledger USING btree (event_type)
+
+------------------------------------------------------------
+
+TABLE: wallet_holds
+===================
+COLUMNS:
+  hold_id                   text NOT NULL
+  symbol                    text NOT NULL
+  side                      text NOT NULL
+  asset                     text NOT NULL
+  amount_total              numeric NOT NULL
+  amount_remaining          numeric NOT NULL
+  status                    text NOT NULL
+  order_id                  text
+  origin                    text
+  reason                    text
+  created_at                timestamp with time zone DEFAULT now()
+  updated_at                timestamp with time zone DEFAULT now()
+  deleted                   boolean DEFAULT false
+  deleted_at                timestamp with time zone
+
+CONSTRAINTS:
+  wallet_holds_side_check (CHECK)
+  wallet_holds_status_check (CHECK)
+  wallet_holds_pkey (PRIMARY KEY)
+  2200_23795_1_not_null (CHECK)
+  2200_23795_2_not_null (CHECK)
+  2200_23795_3_not_null (CHECK)
+  2200_23795_4_not_null (CHECK)
+  2200_23795_5_not_null (CHECK)
+  2200_23795_6_not_null (CHECK)
+  2200_23795_7_not_null (CHECK)
+
+INDEXES:
+  wallet_holds_pkey
+    CREATE UNIQUE INDEX wallet_holds_pkey ON public.wallet_holds USING btree (hold_id)
+  idx_wallet_holds_status
+    CREATE INDEX idx_wallet_holds_status ON public.wallet_holds USING btree (status)
+  idx_wallet_holds_order
+    CREATE INDEX idx_wallet_holds_order ON public.wallet_holds USING btree (order_id)
+  idx_wallet_holds_asset_status
+    CREATE INDEX idx_wallet_holds_asset_status ON public.wallet_holds USING btree (asset, status)
+  idx_wallet_holds_symbol_status
+    CREATE INDEX idx_wallet_holds_symbol_status ON public.wallet_holds USING btree (symbol, status)
+  idx_wallet_holds_deleted
+    CREATE INDEX idx_wallet_holds_deleted ON public.wallet_holds USING btree (deleted)
+
+------------------------------------------------------------
+

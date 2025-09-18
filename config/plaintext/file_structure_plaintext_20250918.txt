@@ -1,0 +1,128 @@
+PROJECT FILE STRUCTURE
+==================================================
+Generated: 2025-09-18T02:32:39.766414
+
+mm/
+├── __init__.py
+└── ariadne.py
+├── core/
+│   ├── __init__.py
+│   ├── alec.py
+│   ├── ash.py
+│   ├── christian.py
+│   ├── drcalvin.py
+│   ├── grayson.py
+│   ├── helen.py
+│   ├── julius.py
+│   ├── malcolm.py
+│   ├── naomi.py
+│   ├── petra.py
+│   └── verity.py
+├── conn/
+│   ├── __init__.py
+│   ├── conn_kucoin.py
+│   └── sim_kucoin.py
+├── config/
+│   ├── __init__.py
+│   └── marcus.py
+│   ├── monit/
+│   │   ├── alma
+│   │   ├── edith
+│   │   └── laurel
+│   ├── bash/
+│   │   ├── alma.sh
+│   │   ├── edith.sh
+│   │   └── laurel.sh
+│   ├── plaintext/
+│   │   ├── About me.txt
+│   │   ├── Best Practices.txt
+│   │   ├── code_pages_plaintext_20250916.txt
+│   │   ├── db_schema_plaintext_20250916.txt
+│   │   ├── file_structure_plaintext_20250916.txt
+│   │   ├── file_structure_plaintext_20250918.txt
+│   │   ├── personalities_mapping_plaintext_20250916.txt
+│   │   ├── transcript - current.txt
+│   │   └── transcript - old.txt
+├── assets/
+│   └── email_signature_logo.png
+├── logs/
+│   ├── __init__.py
+│   ├── ariadne.log
+│   └── petra.log
+├── data/
+│   └── __init__.py
+│   ├── source/
+│   │   └── __init__.py
+│   ├── state/
+│   │   ├── __init__.py
+│   │   ├── sim_state.json
+│   │   └── state.json
+│   ├── secrets/
+│   │   ├── .env
+│   │   └── __init__.py
+├── utils/
+│   └── __init__.py
+│   ├── tickersticker/
+│   │   ├── __init__.py
+│   │   ├── alma.log
+│   │   ├── alma.pid
+│   │   ├── alma.py
+│   │   ├── alma_heartbeats.log
+│   │   ├── alma_notes.log
+│   │   └── heartbeats.log
+│   ├── market_state/
+│   │   ├── viki.py
+│   │   └── viki_config.py
+│   ├── tqdm/
+│   │   ├── __init__.py
+│   │   └── agnes.py
+│   ├── helpers/
+│   │   ├── __init__.py
+│   │   ├── inara.py
+│   │   └── wintermute.py
+│   ├── soc/
+│   │   ├── __init__.py
+│   │   ├── hari.py
+│   │   └── petra.pid
+│   ├── partition_manager/
+│   │   ├── __init__.py
+│   │   ├── edith.log
+│   │   ├── edith.pid
+│   │   ├── edith.py
+│   │   └── partition_manager.log
+│   ├── seldon_engine/
+│   │   ├── __init__.py
+│   │   ├── lamar.py
+│   │   ├── onchain.py
+│   │   ├── quorra.py
+│   │   ├── seldon_config.py
+│   │   └── signals.py
+│   ├── tools/
+│   │   ├── __init__.py
+│   │   ├── clear_override.py
+│   │   └── dashboard.py
+│   │   ├── scripts/
+│   │   │   ├── __init__.py
+│   │   │   ├── alert_verify.py
+│   │   │   ├── check_status.py
+│   │   │   ├── colors.py
+│   │   │   ├── nomnom.py
+│   │   │   ├── plaintext.py
+│   │   │   ├── reset_simulation.py
+│   │   │   ├── standalone_emailer.py
+│   │   │   └── view_schemas.py
+│   ├── tqt/
+│   │   ├── __init__.py
+│   │   ├── andi.log
+│   │   ├── andi.py
+│   │   ├── andi_notes.log
+│   │   └── karin.py
+│   ├── canary/
+│   │   ├── __init__.py
+│   │   ├── laurel.log
+│   │   ├── laurel.pid
+│   │   └── laurel.py
+│   ├── nexus_6/
+│   │   ├── rachael.log
+│   │   └── rachael.py
+│   │   ├── memories/
