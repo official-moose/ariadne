@@ -95,7 +95,7 @@ class Ariadne:
             self.logger.info(f"Mode: {self.mode}, Client: {self.client}")
 
     # 🔸 OPEN ORDERS RISK ASSESSMENT====================================
-            logger.warning("Stating the risk assessment phase.")
+            logger.info("\nStating the risk assessment phase.")
         
             current_orders = self.client.get_orders()
             self.logger.info("Get open orders -> Fetched.")
@@ -133,7 +133,7 @@ class Ariadne:
                     continue
 
     # 🔸 SELL CYCLE ====================================================
-            logger.debug("Risk assessment complete. Entering the sell phase.")
+            logger.info("Risk assessment complete. Entering the sell phase.")
         
             self.logger.info("Starting sell cycle...")
         
