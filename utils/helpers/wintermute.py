@@ -1,18 +1,18 @@
-#>> A R I A N D E [v 6.1]
-#>> last update: 2025 | Sept. 03
-#>>
-#>> wintermute
-#>> mm/utils/helpers/wintermute.py
-#>>
-#>> Central hub for all common helpers, methods, and facilitators
-#>> The one source of truth for shared functionality
-#>>
-#>> Auth'd -> Commander
-#>>
-#>> [520] [741] [8]
-#>>────────────────────────────────────────────────────────────────
-
-# Build|20250903.01
+#===================================================================
+# 🍁 A R I A N D E           bot version 6.1 file build 20250917.01
+#===================================================================
+# last update: 2025 | Sept. 17                  Production ready ✅
+#===================================================================
+# wintermute
+# mm/utils/helpers/wintermute.py
+#
+# Central hub for all common helpers, methods, and facilitators
+# The one source of truth for shared functionality
+#
+# [520] [741] [8]
+#===================================================================
+# 🜁 THE COMMANDER            ✖ PERSISTANT RUNTIME  ✖ MONIT MANAGED
+#===================================================================
 
 from __future__ import annotations
 
