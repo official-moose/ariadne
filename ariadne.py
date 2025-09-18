@@ -134,7 +134,8 @@ class Ariadne:
                     continue
 
     # 🔸 SELL CYCLE ====================================================
-            logger.info("Risk assessment complete. Entering the sell phase.")
+            logger.info("▪▪▪▪▪▪▪▪→ Complete.\n")
+            logger.info("Loading Petra, beginning the sell cycle.")
         
             self.logger.info("Starting sell cycle...")
         
