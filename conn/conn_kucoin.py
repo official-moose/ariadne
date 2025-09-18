@@ -431,6 +431,35 @@ class KucoinClient:
         except Exception as e:
             logger.error(f"Error fetching detailed balances: {e}")
             return {}
+        
+    def get_positions(self, account_type: str = "trade"):
+        """
+        Returns all assets currently held (positions) for the given account type.
+        A position is defined as any asset with available > 0 or hold > 0.
+        
+        Args:
+            account_type (str): KuCoin account type, e.g. 'trade', 'main', 'margin'
+        
+        Returns:
+            dict: { 'USDT': {'available': x, 'hold': y, 'total': z}, ... }
+        """
+        try:
+            balances = self.get_account_balances_detailed(account_type=account_type)
+            positions = {}
+            for currency, info in balances.items():
+                available = float(info.get("available", 0.0))
+                hold = float(info.get("hold", 0.0))
+                total = available + hold
+                if total > 0:
+                    positions[currency] = {
+                        "available": available,
+                        "hold": hold,
+                        "total": total
+                    }
+            return positions
+        except Exception as e:
+            logger.error(f"Error fetching positions: {e}")
+            return {}
     
     def get_orders(self, symbol: str = None, status: str = "active"):
         """Get orders from exchange."""
