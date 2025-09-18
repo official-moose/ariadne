@@ -68,7 +68,7 @@ class TqdmLogHandler(logging.Handler):
             self.handleError(record)
 
 def init_logging(LOG_SELF=True, LOG_MAIN=True, SCREEN_OUT=True, LOGGER="Julius"):
-    fmt = '%(asctime)s    [ %s ] [%%(levelname)s] %%(message)s' % LOGGER
+    fmt = '%(asctime)s    [ %(name)s ] [%(levelname)s] %(message)s'
     formatter = logging.Formatter(fmt, datefmt='%Y-%m-%d %H:%M:%S')
 
     logger = logging.getLogger(LOGGER)
