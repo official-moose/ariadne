@@ -38,7 +38,6 @@ import psycopg2.extras
 sys.path.append('/root/Echelon/valentrix')
 
 from mm.utils.helpers.wintermute import (
-    get_logger,
     now_pack,
     write_pid_file,
     cleanup_pid_file,
@@ -73,10 +72,18 @@ ASSET_SWEEP_AGE_MIN = 10    # minutes for assets.sweep
 
 shutdown_requested = False
 
-# 🔸 Loggers =======================================================
+# 🔹 Advanced Logger ===============================================
 
-log = get_logger("andi", LOG_FILE)
-notes = get_logger("andi.notes", NOTES_FILE)
+from mm.utils.helpers.wintermute import init_logging
+
+logger = init_logging(
+    LOG_SELF=True,
+    LOG_MAIN=True,
+    SCREEN_OUT=True,
+    LOGGER="Julius"  
+)
+
+# === End === 
 
 # 🔸 Signal Handlers ===============================================
 
