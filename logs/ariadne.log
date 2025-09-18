@@ -27428,3 +27428,12 @@ DSYNC-USDT
 2025-09-18 19:54:26    [ Ariadne ] [INFO] Starting sell cycle...
 2025-09-18 19:54:27    [ ariadne ] [INFO] Trading client initialized (simulation)
 2025-09-18 19:55:06    [ Ariadne ] [INFO] Starting cycle...
+2025-09-18 19:55:06    [ ariadne ] [INFO] Trading client initialized (simulation)
+2025-09-18 19:55:06    [ Ariadne ] [INFO] Mode: simulation, Client: <mm.conn.sim_kucoin.SimClient object at 0x7f750438a830>
+2025-09-18 19:55:06    [ Ariadne ] [INFO] 
+Stating the risk assessment phase.
+2025-09-18 19:55:06    [ Ariadne ] [INFO] Get open orders -> Fetched.
+2025-09-18 19:55:06    [ Ariadne ] [INFO] No open orders, moving on to production cycle.
+2025-09-18 19:55:06    [ Ariadne ] [INFO] Risk assessment complete. Entering the sell phase.
+2025-09-18 19:55:06    [ Ariadne ] [INFO] Starting sell cycle...
+2025-09-18 19:55:07    [ ariadne ] [INFO] Trading client initialized (simulation)
