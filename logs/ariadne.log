@@ -27390,3 +27390,9 @@ DSYNC-USDT
 2025-08-26 07:59:07,698 - DEBUG - Checking TRUMP-USDT buy: order=8.25054000, bid=8.29000000, ask=8.29100000
 2025-08-26 07:59:08,522 - DEBUG - Checking TREE-USDT buy: order=0.29093800, bid=0.29230000, ask=0.29240000
 2025-08-26 07:59:09,376 - DEBUG - Checking LTC-USDT buy: order=110.00720000, bid=110.57000000, ask=110.58000000
+2025-09-18 08:19:02    [ ariadne ] [INFO] Starting cycle...
+2025-09-18 08:19:03    [ ariadne ] [INFO] Trading client initialized (simulation)
+2025-09-18 08:19:03    [ ariadne ] [INFO] Mode: simulation, Client: <mm.conn.sim_kucoin.SimClient object at 0x7f39f378f130>
+2025-09-18 08:19:03    [ ariadne ] [INFO] Get open orders -> Fetched.
+2025-09-18 08:19:03    [ ariadne ] [INFO] No open orders, moving on to production cycle.
+2025-09-18 08:19:03    [ ariadne ] [INFO] Starting sell cycle...
