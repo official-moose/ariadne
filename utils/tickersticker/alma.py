@@ -166,16 +166,6 @@ def insert_rows(conn, timestamp, tickers):
                 float(t.get("makerCoefficient", 0)) if t.get("makerCoefficient") else None
             ]
             
-            # Bounds check for numeric overflow
-            MAX_VAL = 999999999999
-            skip = False
-            for i, val in enumerate(row):
-                if isinstance(val, (int, float)) and val > MAX_VAL:
-                    print(f"[OVERFLOW SKIP] {symbol} field index {i} = {val}")
-                    skip = True
-                    break
-
-            if not skip:
                 rows.append(tuple(row))
         
         except Exception as e:
