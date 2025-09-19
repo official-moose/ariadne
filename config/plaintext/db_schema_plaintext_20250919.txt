@@ -1,6 +1,6 @@
 DATABASE SCHEMA
 ==================================================
-Generated: 2025-09-19T03:39:36.705490
+Generated: 2025-09-19T21:43:49.545619
 
 TABLE LIST
 --------------------
@@ -31,11 +31,11 @@ TABLE LIST
 25. system_state
 26. tax_lots
 27. tickstick
-28. tickstick_2025_09_19_02
-29. tickstick_2025_09_19_03
-30. tickstick_2025_09_19_04
-31. tickstick_2025_09_19_05
-32. tickstick_2025_09_19_06
+28. tickstick_2025_09_19_20
+29. tickstick_2025_09_19_21
+30. tickstick_2025_09_19_22
+31. tickstick_2025_09_19_23
+32. tickstick_2025_09_20_00
 33. trades
 34. transaction_queue
 35. wallet_hold_ledger
@@ -825,7 +825,7 @@ INDEXES:
 
 ------------------------------------------------------------
 
-TABLE: tickstick_2025_09_19_02
+TABLE: tickstick_2025_09_19_20
 ==============================
 COLUMNS:
   id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
@@ -850,17 +850,17 @@ COLUMNS:
   maker_coefficient         numeric
 
 CONSTRAINTS:
-  2200_26612_1_not_null (CHECK)
-  2200_26612_2_not_null (CHECK)
-  2200_26612_3_not_null (CHECK)
+  2200_27618_1_not_null (CHECK)
+  2200_27618_2_not_null (CHECK)
+  2200_27618_3_not_null (CHECK)
 
 INDEXES:
-  tickstick_2025_09_19_02_symbol_timestamp_idx
-    CREATE INDEX tickstick_2025_09_19_02_symbol_timestamp_idx ON public.tickstick_2025_09_19_02 USING btree (symbol, "timestamp" DESC)
+  tickstick_2025_09_19_20_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_19_20_symbol_timestamp_idx ON public.tickstick_2025_09_19_20 USING btree (symbol, "timestamp" DESC)
 
 ------------------------------------------------------------
 
-TABLE: tickstick_2025_09_19_03
+TABLE: tickstick_2025_09_19_21
 ==============================
 COLUMNS:
   id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
@@ -885,17 +885,17 @@ COLUMNS:
   maker_coefficient         numeric
 
 CONSTRAINTS:
-  2200_26671_1_not_null (CHECK)
-  2200_26671_2_not_null (CHECK)
-  2200_26671_3_not_null (CHECK)
+  2200_27674_1_not_null (CHECK)
+  2200_27674_2_not_null (CHECK)
+  2200_27674_3_not_null (CHECK)
 
 INDEXES:
-  tickstick_2025_09_19_03_symbol_timestamp_idx
-    CREATE INDEX tickstick_2025_09_19_03_symbol_timestamp_idx ON public.tickstick_2025_09_19_03 USING btree (symbol, "timestamp" DESC)
+  tickstick_2025_09_19_21_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_19_21_symbol_timestamp_idx ON public.tickstick_2025_09_19_21 USING btree (symbol, "timestamp" DESC)
 
 ------------------------------------------------------------
 
-TABLE: tickstick_2025_09_19_04
+TABLE: tickstick_2025_09_19_22
 ==============================
 COLUMNS:
   id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
@@ -920,17 +920,17 @@ COLUMNS:
   maker_coefficient         numeric
 
 CONSTRAINTS:
-  2200_26728_1_not_null (CHECK)
-  2200_26728_2_not_null (CHECK)
-  2200_26728_3_not_null (CHECK)
+  2200_27730_1_not_null (CHECK)
+  2200_27730_2_not_null (CHECK)
+  2200_27730_3_not_null (CHECK)
 
 INDEXES:
-  tickstick_2025_09_19_04_symbol_timestamp_idx
-    CREATE INDEX tickstick_2025_09_19_04_symbol_timestamp_idx ON public.tickstick_2025_09_19_04 USING btree (symbol, "timestamp" DESC)
+  tickstick_2025_09_19_22_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_19_22_symbol_timestamp_idx ON public.tickstick_2025_09_19_22 USING btree (symbol, "timestamp" DESC)
 
 ------------------------------------------------------------
 
-TABLE: tickstick_2025_09_19_05
+TABLE: tickstick_2025_09_19_23
 ==============================
 COLUMNS:
   id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
@@ -955,17 +955,17 @@ COLUMNS:
   maker_coefficient         numeric
 
 CONSTRAINTS:
-  2200_26783_1_not_null (CHECK)
-  2200_26783_2_not_null (CHECK)
-  2200_26783_3_not_null (CHECK)
+  2200_27785_1_not_null (CHECK)
+  2200_27785_2_not_null (CHECK)
+  2200_27785_3_not_null (CHECK)
 
 INDEXES:
-  tickstick_2025_09_19_05_symbol_timestamp_idx
-    CREATE INDEX tickstick_2025_09_19_05_symbol_timestamp_idx ON public.tickstick_2025_09_19_05 USING btree (symbol, "timestamp" DESC)
+  tickstick_2025_09_19_23_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_19_23_symbol_timestamp_idx ON public.tickstick_2025_09_19_23 USING btree (symbol, "timestamp" DESC)
 
 ------------------------------------------------------------
 
-TABLE: tickstick_2025_09_19_06
+TABLE: tickstick_2025_09_20_00
 ==============================
 COLUMNS:
   id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
@@ -990,13 +990,13 @@ COLUMNS:
   maker_coefficient         numeric
 
 CONSTRAINTS:
-  2200_26838_1_not_null (CHECK)
-  2200_26838_2_not_null (CHECK)
-  2200_26838_3_not_null (CHECK)
+  2200_27840_1_not_null (CHECK)
+  2200_27840_2_not_null (CHECK)
+  2200_27840_3_not_null (CHECK)
 
 INDEXES:
-  tickstick_2025_09_19_06_symbol_timestamp_idx
-    CREATE INDEX tickstick_2025_09_19_06_symbol_timestamp_idx ON public.tickstick_2025_09_19_06 USING btree (symbol, "timestamp" DESC)
+  tickstick_2025_09_20_00_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_20_00_symbol_timestamp_idx ON public.tickstick_2025_09_20_00 USING btree (symbol, "timestamp" DESC)
 
 ------------------------------------------------------------
 
