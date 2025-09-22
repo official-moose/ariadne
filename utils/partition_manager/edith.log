@@ -1440,3 +1440,10 @@
 [2025-09-22 04:37:56] INFO: [PARTITION] Created 3 new partitions
 [2025-09-22 04:37:56] INFO: [DROP] Dropped old partition tickstick_2025_09_22_02
 [2025-09-22 04:37:56] INFO: [PARTITION] Dropped 1 old partitions
+[2025-09-22 05:37:56] INFO: [PARTITION] Running partition management (cycle 577)
+[2025-09-22 05:37:56] INFO: [CREATE] Created partition tickstick_2025_09_22_06
+[2025-09-22 05:37:56] INFO: [CREATE] Created partition tickstick_2025_09_22_07
+[2025-09-22 05:37:56] INFO: [CREATE] Created partition tickstick_2025_09_22_08
+[2025-09-22 05:37:56] INFO: [PARTITION] Created 3 new partitions
+[2025-09-22 05:37:56] INFO: [DROP] Dropped old partition tickstick_2025_09_22_03
+[2025-09-22 05:37:56] INFO: [PARTITION] Dropped 1 old partitions
