@@ -460,6 +460,45 @@ class KucoinClient:
         except Exception as e:
             logger.error(f"Error fetching positions: {e}")
             return {}
+        
+    def get_positions(self, account_type: str = "trade"):
+        """
+        Returns all assets currently held (positions) from sim_positions table.
+        A position is defined as any asset with available > 0 or hold > 0.
+
+        Returns:
+            dict: { 'USDT': {'available': x, 'hold': y, 'total': z}, ... }
+        """
+        try:
+            conn = get_db_connection()
+            cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+
+            cur.execute("""
+                SELECT asset, available, hold 
+                FROM sim_positions 
+                WHERE available > 0 OR hold > 0
+            """)
+
+            rows = cur.fetchall()
+            cur.close()
+            conn.close()
+
+            positions = {}
+            for row in rows:
+                available = float(row['available'])
+                hold = float(row['hold'])
+                total = available + hold
+                positions[row['asset']] = {
+                    "available": available,
+                    "hold": hold,
+                    "total": total
+                }
+
+            return positions
+
+        except Exception as e:
+            logger.error(f"Error fetching sim positions: {e}")
+            return {}
     
     def get_orders(self, symbol: str = None, status: str = "active"):
         """Get orders from exchange."""
