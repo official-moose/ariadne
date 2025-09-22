@@ -2770,3 +2770,10 @@ DEBUG: process_name raw='wintermute', lowered='wintermute'
 [2025-09-22 02:37:55] INFO: [PARTITION] Created 3 new partitions
 [2025-09-22 02:37:55] INFO: [DROP] Dropped old partition tickstick_2025_09_22_00
 [2025-09-22 02:37:55] INFO: [PARTITION] Dropped 1 old partitions
+[2025-09-22 03:37:55] INFO: [PARTITION] Running partition management (cycle 565)
+[2025-09-22 03:37:55] INFO: [CREATE] Created partition tickstick_2025_09_22_04
+[2025-09-22 03:37:55] INFO: [CREATE] Created partition tickstick_2025_09_22_05
+[2025-09-22 03:37:55] INFO: [CREATE] Created partition tickstick_2025_09_22_06
+[2025-09-22 03:37:55] INFO: [PARTITION] Created 3 new partitions
+[2025-09-22 03:37:55] INFO: [DROP] Dropped old partition tickstick_2025_09_22_01
+[2025-09-22 03:37:55] INFO: [PARTITION] Dropped 1 old partitions
