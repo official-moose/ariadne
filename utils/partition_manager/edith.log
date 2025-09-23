@@ -1879,3 +1879,19 @@ LINE 4:                 FOR VALUES FROM (1758650400) TO (1758654000)...
 [2025-09-23 18:32:53] ERROR: [SIGNALS ERROR] Failed to drop partition signals_intel_2025_09_23_19: can't compare offset-naive and offset-aware datetimes | Raw: FOR VALUES FROM ('2025-09-23 15:00:00-04') TO ('2025-09-23 16:00:00-04')
 [2025-09-23 18:32:53] ERROR: [SIGNALS ERROR] Failed to drop partition signals_intel_2025_09_23_20: can't compare offset-naive and offset-aware datetimes | Raw: FOR VALUES FROM ('2025-09-23 16:00:00-04') TO ('2025-09-23 17:00:00-04')
 [2025-09-23 18:32:53] ERROR: [SIGNALS ERROR] Failed to drop partition signals_intel_2025_09_23_21: can't compare offset-naive and offset-aware datetimes | Raw: FOR VALUES FROM ('2025-09-23 17:00:00-04') TO ('2025-09-23 18:00:00-04')
+[2025-09-23 18:33:21] INFO: ======================================================================
+[2025-09-23 18:33:21] INFO: [INIT] EDITH starting as persistent background process
+[2025-09-23 18:33:21] INFO: [INIT] Database connection established
+[2025-09-23 18:33:21] INFO: [PARTITION] Running partition management (cycle 1)
+[2025-09-23 18:33:21] INFO: [CREATE] Created partition tickstick_2025_09_23_19
+[2025-09-23 18:33:21] INFO: [CREATE] Created partition tickstick_2025_09_23_20
+[2025-09-23 18:33:21] INFO: [CREATE] Created partition tickstick_2025_09_23_21
+[2025-09-23 18:33:21] INFO: [PARTITION] Created 3 new partitions
+[2025-09-23 18:33:21] INFO: [SIGNALS] Running signals_intel partition maintenance
+[2025-09-23 18:33:21] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_23_19
+[2025-09-23 18:33:21] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_23_20
+[2025-09-23 18:33:21] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_23_21
+[2025-09-23 18:33:21] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-23 18:33:21] ERROR: [SIGNALS ERROR] Failed to drop partition signals_intel_2025_09_23_19: can't compare offset-naive and offset-aware datetimes | Raw: FOR VALUES FROM ('2025-09-23 15:00:00-04') TO ('2025-09-23 16:00:00-04')
+[2025-09-23 18:33:21] ERROR: [SIGNALS ERROR] Failed to drop partition signals_intel_2025_09_23_20: can't compare offset-naive and offset-aware datetimes | Raw: FOR VALUES FROM ('2025-09-23 16:00:00-04') TO ('2025-09-23 17:00:00-04')
+[2025-09-23 18:33:21] ERROR: [SIGNALS ERROR] Failed to drop partition signals_intel_2025_09_23_21: can't compare offset-naive and offset-aware datetimes | Raw: FOR VALUES FROM ('2025-09-23 17:00:00-04') TO ('2025-09-23 18:00:00-04')
