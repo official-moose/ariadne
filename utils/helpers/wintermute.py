@@ -725,6 +725,38 @@ def bulk_insert(table: str, data: list, columns: list = None, conn=None) -> bool
     finally:
         if own_conn and conn:
             release_db_connection(conn)
+            
+def get_approved_sell_proposals(conn):
+    """Get all approved sell proposals ready for order placement"""
+    try:
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+        cur.execute("""
+            SELECT prop_id, symbol, price_intent, size_intent 
+            FROM proposals 
+            WHERE side = 'sell' AND status = 'approved'
+        """)
+        results = cur.fetchall()
+        cur.close()
+        return results
+    except Exception as e:
+        logger.error(f"Error getting approved sell proposals: {e}")
+        return []
+
+def get_approved_buy_proposals(conn):
+    """Get all approved buy proposals ready for order placement"""  
+    try:
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+        cur.execute("""
+            SELECT prop_id, symbol, price_intent, size_intent
+            FROM proposals 
+            WHERE side = 'buy' AND status = 'approved'
+        """)
+        results = cur.fetchall()
+        cur.close()
+        return results
+    except Exception as e:
+        logger.error(f"Error getting approved buy proposals: {e}")
+        return []
 
 # ══════════════════════════════════════════════════════════════════════════
 #  SECTION 9: RISK CALCULATIONS
