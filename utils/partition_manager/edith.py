@@ -167,27 +167,26 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create hourly partitions for Signals_Intel table"""
+    """Create partitions for the next N hours on signals_intel (ts is TIMESTAMPTZ)"""
     created_count = 0
     now = datetime.utcnow()
 
-    for h in range(0, hours_ahead):  # includes current hour
-        start_hour = (now + timedelta(hours=h)).replace(minute=0, second=0, microsecond=0)
-        end_hour = start_hour + timedelta(hours=1)
+    for h in range(1, hours_ahead + 1):
+        target_hour = (now + timedelta(hours=h)).replace(minute=0, second=0, microsecond=0)
+        hour_after = target_hour + timedelta(hours=1)
 
-        start_ts = int(start_hour.timestamp())
-        end_ts = int(end_hour.timestamp())
-
-        partition_name = f"signals_intel_{start_hour.strftime('%Y_%m_%d_%H')}"
+        partition_name = f"signals_intel_{target_hour.strftime('%Y_%m_%d_%H')}"
 
         try:
             cur.execute(f"""
                 CREATE TABLE IF NOT EXISTS {partition_name}
-                PARTITION OF "signals_intel"
-                FOR VALUES FROM ({start_ts}) TO ({end_ts});
+                PARTITION OF signals_intel
+                FOR VALUES FROM ('{target_hour.strftime('%Y-%m-%d %H:%M:%S+00')}') 
+                             TO ('{hour_after.strftime('%Y-%m-%d %H:%M:%S+00')}')
             """)
             created_count += 1
-            logger.info(f"[SIGNALS] Created partition {partition_name}")
+            logger.info(f"[SIGNALS CREATE] Created partition {partition_name}")
+
         except Exception as e:
             logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
 
