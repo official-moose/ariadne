@@ -168,45 +168,51 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create partitions for signals_intel table"""
+    """Create partitions for signals_intel table using ISO-8601 UTC bounds."""
     created_count = 0
-    
-    # Get current hour in Toronto timezone
+
+    # Local time for naming
     toronto_tz = pytz.timezone('America/Toronto')
     now_toronto = datetime.now(toronto_tz).replace(minute=0, second=0, microsecond=0)
-    
+
     for h in range(hours_ahead):
         start_time = now_toronto + timedelta(hours=h)
         end_time = start_time + timedelta(hours=1)
-        
+
         partition_name = f"signals_intel_{start_time.strftime('%Y_%m_%d_%H')}"
-        
-        # Convert to UTC for partition bounds (Postgres stores in UTC)
+
+        # Convert to UTC for storage
         start_utc = start_time.astimezone(pytz.UTC)
         end_utc = end_time.astimezone(pytz.UTC)
-        
+
+        # Use isoformat (includes timezone info like +00:00) instead of hardcoding +00
+        start_str = start_utc.isoformat()
+        end_str = end_utc.isoformat()
+
         try:
             cur.execute(f"""
                 CREATE TABLE IF NOT EXISTS {partition_name}
                 PARTITION OF signals_intel
-                FOR VALUES FROM ('{start_utc.strftime('%Y-%m-%d %H:%M:%S+00')}')
-                             TO   ('{end_utc.strftime('%Y-%m-%d %H:%M:%S+00')}')
+                FOR VALUES FROM ('{start_str}')
+                             TO   ('{end_str}')
             """)
             created_count += 1
             logger.info(f"[SIGNALS CREATE] {partition_name}")
+            logger.debug(f"[SIGNALS DEBUG] Created with range: {start_str} → {end_str}")
         except Exception as e:
             if "already exists" not in str(e):
                 logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
-    
+
     return created_count
 
+
 def drop_old_signals_partitions(cur) -> int:
-    """Drop signals_intel partitions older than 24 hours"""
+    """Drop signals_intel partitions older than 24 hours (UTC), defensively."""
     dropped_count = 0
-    
-    # Calculate cutoff as 24 hours ago in UTC
-    cutoff_utc = datetime.now(pytz.UTC) - timedelta(hours=24)
-    
+
+    # Use a 25-hour cutoff to avoid races or clock skew issues
+    cutoff_utc = datetime.now(pytz.UTC) - timedelta(hours=25)
+
     cur.execute("""
         SELECT child.relname, pg_get_expr(child.relpartbound, child.oid)
         FROM pg_inherits
@@ -215,21 +221,25 @@ def drop_old_signals_partitions(cur) -> int:
         WHERE parent.relname = 'signals_intel'
         ORDER BY child.relname
     """)
-    
+
     for partition_name, bound in cur.fetchall():
         try:
-            # Parse the FROM timestamp from partition bound
             from_str = bound.split("FROM (")[1].split(")")[0].strip("'")
-            from_dt = datetime.strptime(from_str, "%Y-%m-%d %H:%M:%S+00").replace(tzinfo=pytz.UTC)
-            
+
+            # Use fromisoformat to handle arbitrary timezones like -04 or +00
+            from_dt = datetime.fromisoformat(from_str).astimezone(pytz.UTC)
+
+            # DEBUG: log what we're checking
+            logger.debug(f"[SIGNALS DEBUG] {partition_name} FROM {from_dt.isoformat()} vs cutoff {cutoff_utc.isoformat()}")
+
             if from_dt < cutoff_utc:
                 cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
                 dropped_count += 1
                 logger.info(f"[SIGNALS DROP] Dropped {partition_name}")
-                
+
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to process {partition_name}: {e}")
-    
+            logger.error(f"[SIGNALS ERROR] Failed to process {partition_name} with bound {bound}: {e}")
+
     return dropped_count
 
 # ── Proposals Sweeper ─────────────────────────────────────────────────
