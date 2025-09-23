@@ -178,12 +178,12 @@ def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
         start_ts = int(start_hour.timestamp())
         end_ts = int(end_hour.timestamp())
 
-        partition_name = f"signalsintel_{start_hour.strftime('%Y_%m_%d_%H')}"
+        partition_name = f"signals_intel_{start_hour.strftime('%Y_%m_%d_%H')}"
 
         try:
             cur.execute(f"""
                 CREATE TABLE IF NOT EXISTS {partition_name}
-                PARTITION OF "Signals_Intel"
+                PARTITION OF "signals_intel"
                 FOR VALUES FROM ({start_ts}) TO ({end_ts});
             """)
             created_count += 1
@@ -205,7 +205,7 @@ def drop_old_signals_partitions(cur) -> int:
         FROM pg_inherits
         JOIN pg_class parent ON pg_inherits.inhparent = parent.oid
         JOIN pg_class child ON pg_inherits.inhrelid = child.oid
-        WHERE parent.relname = 'Signals_Intel'
+        WHERE parent.relname = 'signals_intel'
     """)
 
     partitions = cur.fetchall()
@@ -345,7 +345,7 @@ def main():
                         logger.info(f"[PARTITION] Dropped {dropped} old partitions")
                     
                     # Signals_Intel partition management
-                    logger.info(f"[SIGNALS] Running Signals_Intel partition maintenance")
+                    logger.info(f"[SIGNALS] Running signals_intel partition maintenance")
 
                     # [signals_intel] Create future partitions
                     signals_created = create_signals_partitions(cur, hours_ahead=3)
