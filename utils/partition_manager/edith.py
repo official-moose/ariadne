@@ -166,6 +166,67 @@ def drop_old_partitions(cur) -> int:
     
     return dropped_count
 
+def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
+    """Create hourly partitions for Signals_Intel table"""
+    created_count = 0
+    now = datetime.utcnow()
+
+    for h in range(0, hours_ahead):  # includes current hour
+        start_hour = (now + timedelta(hours=h)).replace(minute=0, second=0, microsecond=0)
+        end_hour = start_hour + timedelta(hours=1)
+
+        start_ts = int(start_hour.timestamp())
+        end_ts = int(end_hour.timestamp())
+
+        partition_name = f"signalsintel_{start_hour.strftime('%Y_%m_%d_%H')}"
+
+        try:
+            cur.execute(f"""
+                CREATE TABLE IF NOT EXISTS {partition_name}
+                PARTITION OF "Signals_Intel"
+                FOR VALUES FROM ({start_ts}) TO ({end_ts});
+            """)
+            created_count += 1
+            logger.info(f"[SIGNALS] Created partition {partition_name}")
+        except Exception as e:
+            logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
+
+    return created_count
+
+def drop_old_signals_partitions(cur) -> int:
+    """Drop Signals_Intel partitions older than 24 hours"""
+    dropped_count = 0
+    cutoff_time = datetime.utcnow() - timedelta(hours=24)
+
+    cur.execute("""
+        SELECT 
+            child.relname AS partition_name,
+            pg_get_expr(child.relpartbound, child.oid) AS partition_range
+        FROM pg_inherits
+        JOIN pg_class parent ON pg_inherits.inhparent = parent.oid
+        JOIN pg_class child ON pg_inherits.inhrelid = child.oid
+        WHERE parent.relname = 'Signals_Intel'
+    """)
+
+    partitions = cur.fetchall()
+
+    for partition_name, partition_range in partitions:
+        try:
+            to_str = partition_range.split('TO (')[1].split(')')[0].strip()
+            to_ts = int(to_str)
+            to_datetime = datetime.utcfromtimestamp(to_ts)
+
+            if to_datetime < cutoff_time:
+                cur.execute(f'DROP TABLE IF EXISTS {partition_name}')
+                dropped_count += 1
+                logger.info(f"[SIGNALS] Dropped old partition {partition_name}")
+
+        except Exception as e:
+            logger.error(f"[SIGNALS ERROR] Failed to drop partition {partition_name}: {e}")
+
+    return dropped_count
+
+
 # ── Proposals Sweeper ─────────────────────────────────────────────────
 def sweep_expired_proposals(cur, age_minutes: int = 10) -> int:
     """Mark proposals older than age_minutes and still pending as expired"""
