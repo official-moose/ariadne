@@ -167,34 +167,45 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create partitions for signals_intel: current hour + N-1 future hours (default: 3 total)."""
+    """Create partitions for signals_intel table"""
     created_count = 0
-    base = now_local("America/Toronto").replace(minute=0, second=0, microsecond=0)
-
-    for h in range(0, hours_ahead):  # 0 = current, 1 = +1h, 2 = +2h
-        start = base + timedelta(hours=h)
-        end = start + timedelta(hours=1)
-        pname = f"signals_intel_{start.strftime('%Y_%m_%d_%H')}"
-
+    
+    # Get current hour in Toronto timezone
+    toronto_tz = pytz.timezone('America/Toronto')
+    now_toronto = datetime.now(toronto_tz).replace(minute=0, second=0, microsecond=0)
+    
+    for h in range(hours_ahead):
+        start_time = now_toronto + timedelta(hours=h)
+        end_time = start_time + timedelta(hours=1)
+        
+        partition_name = f"signals_intel_{start_time.strftime('%Y_%m_%d_%H')}"
+        
+        # Convert to UTC for partition bounds (Postgres stores in UTC)
+        start_utc = start_time.astimezone(pytz.UTC)
+        end_utc = end_time.astimezone(pytz.UTC)
+        
         try:
             cur.execute(f"""
-                CREATE TABLE IF NOT EXISTS {pname}
+                CREATE TABLE IF NOT EXISTS {partition_name}
                 PARTITION OF signals_intel
-                FOR VALUES FROM ('{start.strftime('%Y-%m-%d %H:%M:%S%z')}')
-                             TO   ('{end.strftime('%Y-%m-%d %H:%M:%S%z')}')
+                FOR VALUES FROM ('{start_utc.strftime('%Y-%m-%d %H:%M:%S+00')}')
+                             TO   ('{end_utc.strftime('%Y-%m-%d %H:%M:%S+00')}')
             """)
             created_count += 1
-            logger.info(f"[SIGNALS CREATE] {pname} ({start} → {end})")
+            logger.info(f"[SIGNALS CREATE] {partition_name}")
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to create {pname}: {e}")
-
+            if "already exists" not in str(e):
+                logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
+    
     return created_count
 
 def drop_old_signals_partitions(cur) -> int:
-    """Drop signals_intel partitions older than 24h."""
+    """Drop signals_intel partitions older than 24 hours"""
     dropped_count = 0
-    cutoff = now_local("America/Toronto").replace(minute=0, second=0, microsecond=0) - timedelta(hours=24)
-
+    
+    # Calculate cutoff as 24 hours ago in UTC
+    cutoff_utc = datetime.now(pytz.UTC) - timedelta(hours=24)
+    
     cur.execute("""
         SELECT child.relname, pg_get_expr(child.relpartbound, child.oid)
         FROM pg_inherits
@@ -203,21 +214,22 @@ def drop_old_signals_partitions(cur) -> int:
         WHERE parent.relname = 'signals_intel'
         ORDER BY child.relname
     """)
-
-    for pname, bound in cur.fetchall():
+    
+    for partition_name, bound in cur.fetchall():
         try:
-            # Example bound: FOR VALUES FROM ('2025-09-23 14:00:00-04') TO ('2025-09-23 15:00:00-04')
-            from_raw = bound.split("FROM (")[1].split(")")[0].strip("'")
-            from_dt = datetime.strptime(from_raw, "%Y-%m-%d %H:%M:%S%z")
-
-            if from_dt < cutoff:
-                cur.execute(f"DROP TABLE IF EXISTS {pname} CASCADE")
+            # Parse the FROM timestamp from partition bound
+            from_str = bound.split("FROM (")[1].split(")")[0].strip("'")
+            from_dt = datetime.strptime(from_str, "%Y-%m-%d %H:%M:%S+00").replace(tzinfo=pytz.UTC)
+            
+            if from_dt < cutoff_utc:
+                cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
                 dropped_count += 1
-                logger.info(f"[SIGNALS DROP] Dropped old partition {pname}")
+                logger.info(f"[SIGNALS DROP] Dropped {partition_name}")
+                
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to drop {pname}: {e} | Raw: {bound}")
-
-    return dropped_count  
+            logger.error(f"[SIGNALS ERROR] Failed to process {partition_name}: {e}")
+    
+    return dropped_count
 
 # ── Proposals Sweeper ─────────────────────────────────────────────────
 def sweep_expired_proposals(cur, age_minutes: int = 10) -> int:
