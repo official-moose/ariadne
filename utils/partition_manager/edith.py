@@ -166,64 +166,61 @@ def drop_old_partitions(cur) -> int:
     
     return dropped_count
 
-def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    created_count = 0
-    base = now_local("America/Toronto").replace(minute=0, second=0, microsecond=0)
+from mm.utils.helpers.wintermute import now_pack, to_pack
 
-    for h in range(1, hours_ahead + 1):
+def create_signals_partitions(cur, hours_ahead: int = 2) -> int:
+    """Create partitions for signals_intel: current hour + N hours ahead."""
+    created_count = 0
+    base = now_pack("America/Toronto").dt.replace(minute=0, second=0, microsecond=0)
+
+    for h in range(0, hours_ahead + 1):  # include current hour
         start_dt = base + timedelta(hours=h)
         end_dt = start_dt + timedelta(hours=1)
 
-        start_pack = to_pack(start_dt, "America/Toronto")
-        end_pack   = to_pack(end_dt, "America/Toronto")
-
-        partition_name = f"signals_intel_{start_dt.strftime('%Y_%m_%d_%H')}"
+        part_name = f"signals_intel_{start_dt.strftime('%Y_%m_%d_%H')}"
 
         try:
             cur.execute(f"""
-                CREATE TABLE IF NOT EXISTS {partition_name}
+                CREATE TABLE IF NOT EXISTS {part_name}
                 PARTITION OF signals_intel
-                FOR VALUES FROM ('{start_pack.db}')
-                             TO ('{end_pack.db}')
+                FOR VALUES FROM ('{to_pack(start_dt, "America/Toronto").db}')
+                             TO ('{to_pack(end_dt, "America/Toronto").db}')
             """)
+            logger.info(f"[SIGNALS CREATE] {part_name} ({to_pack(start_dt).db} → {to_pack(end_dt).db})")
             created_count += 1
-            logger.info(f"[SIGNALS CREATE] {partition_name} ({start_pack.db} → {end_pack.db})")
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
+            logger.error(f"[SIGNALS ERROR] Failed to create {part_name}: {e}")
 
     return created_count
 
+
 def drop_old_signals_partitions(cur) -> int:
+    """Drop signals_intel partitions older than 24h."""
     dropped_count = 0
     cutoff = now_pack("America/Toronto").dt - timedelta(hours=24)
 
     cur.execute("""
-        SELECT 
-            child.relname AS partition_name,
-            pg_get_expr(child.relpartbound, child.oid) AS partition_range
-        FROM pg_inherits 
+        SELECT child.relname, pg_get_expr(child.relpartbound, child.oid)
+        FROM pg_inherits
         JOIN pg_class parent ON pg_inherits.inhparent = parent.oid
         JOIN pg_class child ON pg_inherits.inhrelid = child.oid
         WHERE parent.relname = 'signals_intel'
         ORDER BY child.relname
     """)
-    partitions = cur.fetchall()
-
-    for partition_name, partition_range in partitions:
+    for relname, bound in cur.fetchall():
         try:
-            # Example: FOR VALUES FROM ('2025-09-23 15:00:00-04:00') TO ('2025-09-23 16:00:00-04:00')
-            to_str = partition_range.split("TO (")[1].split(")")[0].strip().strip("'")
-            to_dt = datetime.fromisoformat(to_str)  # already offset-aware
+            raw_to = bound.split("TO (")[1].split(")")[0].strip().strip("'")
+            to_dt = datetime.fromisoformat(raw_to)
 
             if to_dt < cutoff:
-                cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
+                cur.execute(f"DROP TABLE IF EXISTS {relname} CASCADE")
+                logger.info(f"[SIGNALS DROP] {relname}")
                 dropped_count += 1
-                logger.info(f"[SIGNALS DROP] {partition_name} dropped (ended {to_dt})")
-
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to drop {partition_name}: {e} | Raw: {partition_range}")
+            logger.error(f"[SIGNALS ERROR] Failed to drop {relname}: {e} | Raw: {bound}")
 
     return dropped_count
+
 
 # ── Proposals Sweeper ─────────────────────────────────────────────────
 def sweep_expired_proposals(cur, age_minutes: int = 10) -> int:
