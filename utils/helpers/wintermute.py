@@ -1069,9 +1069,7 @@ def retry(fn: Callable[[], Any],
             time_sleep(sleep_for)
             delay *= 2.0
 
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 14: TICKSTICK REPOSITORY (Alma's cache)
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 Tickstick Repo ======================================
 
 class TickstickRepo:
     """
@@ -1109,4 +1107,24 @@ class TickstickRepo:
                 return self._norm_row(dict(row))
         finally:
             conn.close()
+            
+# 🔸 Proposals ======================================
+
+def create_proposal(conn, symbol: str, side: str, price_intent: float, size_intent: float, fees_est: float, creator: str):
+    try:
+        cur = conn.cursor()
+        
+        cur.execute("""
+            INSERT INTO proposals 
+            (symbol, side, price_intent, size_intent, fees_est, creator, status)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """, (symbol, side, price_intent, size_intent, fees_est, creator, 'pending'))
+        
+        conn.commit()
+        cur.close()
+        
+    except Exception as e:
+        logger.error(f"Error creating proposal: {e}")
+        conn.rollback()
+        raise
 
