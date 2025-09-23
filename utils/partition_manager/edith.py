@@ -168,61 +168,67 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create partitions for signals_intel based on UTC epoch timestamps."""
+    """Create partitions for the next N hours"""
     created_count = 0
-    now = datetime.utcnow().replace(minute=0, second=0, microsecond=0)
-
-    for h in range(hours_ahead):
-        start_dt = now + timedelta(hours=h)
-        end_dt = start_dt + timedelta(hours=1)
-
-        start_ts = int(start_dt.timestamp())
-        end_ts = int(end_dt.timestamp())
-
-        partition_name = f"signals_intel_{start_dt.strftime('%Y_%m_%d_%H')}"
-
+    now = datetime.utcnow()
+    
+    for h in range(1, hours_ahead + 1):
+        target_hour = (now + timedelta(hours=h)).replace(minute=0, second=0, microsecond=0)
+        hour_after = target_hour + timedelta(hours=1)
+        
+        start_ts = int(target_hour.timestamp())
+        end_ts = int(hour_after.timestamp())
+        
+        partition_name = f"signals_intel_{target_hour.strftime('%Y_%m_%d_%H')}"
+        
         try:
             cur.execute(f"""
                 CREATE TABLE IF NOT EXISTS {partition_name}
                 PARTITION OF signals_intel
-                FOR VALUES FROM ({start_ts}) TO ({end_ts});
+                FOR VALUES FROM ({start_ts}) TO ({end_ts})
             """)
             created_count += 1
-            logger.info(f"[SIGNALS CREATE] {partition_name}")
+            logger.info(f"[CREATE] Created partition {partition_name}")
+            
+        except psycopg2.errors.DuplicateTable:
+            logger.debug(f"[EXISTS] Partition {partition_name} already exists")
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
-
+            logger.error(f"[ERROR] Failed to create partition {partition_name}: {e}")
+    
     return created_count
 
 def drop_old_signals_partitions(cur) -> int:
-    """Drop signals_intel partitions older than 24 hours (epoch-based)."""
+    """Drop partitions older than 24 hours"""
     dropped_count = 0
     cutoff_time = datetime.utcnow() - timedelta(hours=24)
-    cutoff_epoch = int(cutoff_time.timestamp())
-
+    
     cur.execute("""
-        SELECT child.relname AS partition_name,
-               pg_get_expr(child.relpartbound, child.oid) AS partition_range
+        SELECT 
+            child.relname AS partition_name,
+            pg_get_expr(child.relpartbound, child.oid) AS partition_range
         FROM pg_inherits
         JOIN pg_class parent ON pg_inherits.inhparent = parent.oid
         JOIN pg_class child ON pg_inherits.inhrelid = child.oid
         WHERE parent.relname = 'signals_intel'
-        ORDER BY child.relname;
+        ORDER BY child.relname
     """)
-
-    for partition_name, partition_range in cur.fetchall():
+    
+    partitions = cur.fetchall()
+    
+    for partition_name, partition_range in partitions:
         try:
-            to_str = partition_range.split("TO (")[1].split(")")[0].strip()
+            to_str = partition_range.split('TO (')[1].split(')')[0].strip("'")
             to_ts = int(to_str)
-
-            if to_ts < cutoff_epoch:
-                cur.execute(f"DROP TABLE IF EXISTS {partition_name} CASCADE;")
+            to_datetime = datetime.utcfromtimestamp(to_ts)
+            
+            if to_datetime < cutoff_time:
+                cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
                 dropped_count += 1
-                logger.info(f"[SIGNALS DROP] Dropped {partition_name}")
-
+                logger.info(f"[DROP] Dropped old partition {partition_name}")
+                
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to parse or drop {partition_name}: {e}")
-
+            logger.error(f"[ERROR] Failed to parse partition {partition_name}: {e}")
+    
     return dropped_count
 
 # ── Proposals Sweeper ─────────────────────────────────────────────────
