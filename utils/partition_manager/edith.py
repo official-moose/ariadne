@@ -334,16 +334,29 @@ def main():
                 if cycle_count % PARTITION_CYCLES == 1 or cycle_count == 1:
                     logger.info(f"[PARTITION] Running partition management (cycle {cycle_count})")
                     
-                    # Create future partitions
+                    # [tickstick] Create future partitions
                     created = create_future_partitions(cur, hours_ahead=FUTURE_HOURS)
                     if created > 0:
                         logger.info(f"[PARTITION] Created {created} new partitions")
                     
-                    # Drop old partitions
+                    # [tickstick] Drop old partitions
                     dropped = drop_old_partitions(cur)
                     if dropped > 0:
                         logger.info(f"[PARTITION] Dropped {dropped} old partitions")
-                
+                    
+                    # Signals_Intel partition management
+                    logger.info(f"[SIGNALS] Running Signals_Intel partition maintenance")
+
+                    # [signals_intel] Create future partitions
+                    signals_created = create_signals_partitions(cur, hours_ahead=3)
+                    if signals_created > 0:
+                        logger.info(f"[SIGNALS] Created {signals_created} new partitions")
+
+                    # [signals_intel] Drop old partitions
+                    signals_dropped = drop_old_signals_partitions(cur)
+                    if signals_dropped > 0:
+                        logger.info(f"[SIGNALS] Dropped {signals_dropped} old partitions")
+
                 # Commit changes
                 conn.commit()
                 cur.close()
