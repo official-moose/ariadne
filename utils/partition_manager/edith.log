@@ -1692,3 +1692,4 @@
 [2025-09-23 16:38:15] INFO: [PARTITION] Created 3 new partitions
 [2025-09-23 16:38:15] INFO: [DROP] Dropped old partition tickstick_2025_09_23_14
 [2025-09-23 16:38:15] INFO: [PARTITION] Dropped 1 old partitions
+[2025-09-23 16:51:50] INFO: [SHUTDOWN] Received signal 15, shutting down gracefully...
