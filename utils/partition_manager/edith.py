@@ -193,7 +193,7 @@ def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
     return created_count
 
 def drop_old_signals_partitions(cur) -> int:
-    """Drop Signals_Intel partitions older than 24 hours"""
+    """Drop signals_intel partitions older than 24 hours"""
     dropped_count = 0
     cutoff_time = datetime.utcnow() - timedelta(hours=24)
 
@@ -205,26 +205,25 @@ def drop_old_signals_partitions(cur) -> int:
         JOIN pg_class parent ON pg_inherits.inhparent = parent.oid
         JOIN pg_class child ON pg_inherits.inhrelid = child.oid
         WHERE parent.relname = 'signals_intel'
+        ORDER BY child.relname
     """)
-
     partitions = cur.fetchall()
 
     for partition_name, partition_range in partitions:
         try:
-            to_str = partition_range.split('TO (')[1].split(')')[0].strip()
-            to_ts = int(to_str)
-            to_datetime = datetime.utcfromtimestamp(to_ts)
+            # partition_range looks like: FOR VALUES FROM ('2025-09-23 16:00:00+00') TO ('2025-09-23 17:00:00+00')
+            to_str = partition_range.split("TO (")[1].split(")")[0].strip().strip("'")
+            to_datetime = datetime.fromisoformat(to_str)
 
             if to_datetime < cutoff_time:
-                cur.execute(f'DROP TABLE IF EXISTS {partition_name}')
+                cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
                 dropped_count += 1
-                logger.info(f"[SIGNALS] Dropped old partition {partition_name}")
+                logger.info(f"[SIGNALS DROP] Dropped old partition {partition_name}")
 
         except Exception as e:
             logger.error(f"[SIGNALS ERROR] Failed to drop partition {partition_name}: {e}")
 
     return dropped_count
-
 
 # ── Proposals Sweeper ─────────────────────────────────────────────────
 def sweep_expired_proposals(cur, age_minutes: int = 10) -> int:
