@@ -484,11 +484,16 @@ def notional(qty: Decimal, price: Decimal) -> Decimal:
 
 # 🔸 Fee Calculations ======================================
 
-def calculate_fees(symbol: str, price: float, qty: float) -> float:
+def calculate_fees(symbol: str, price: float, qty: float, side: str) -> float:
     from mm.conn.conn_kucoin import KucoinClient
     
     client = KucoinClient()
-    fee_rate = client.taker_fee(symbol)["value"]
+    
+    if side == 'maker':
+        fee_rate = client.maker_fee(symbol)["value"]
+    else:
+        fee_rate = client.taker_fee(symbol)["value"]
+    
     notional = price * qty
     return fee_rate * notional
 
