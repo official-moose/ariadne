@@ -218,6 +218,7 @@ def drop_old_signals_partitions(cur) -> int:
     logger.error("Selected tables from the database.")
     
     partitions = cur.fetchall()
+    logger.error(f"Set partitions to {partitions}")
     
     for partition_name, partition_range in partitions:
         try:
