@@ -1713,3 +1713,4 @@
 
 [2025-09-23 17:08:25] ERROR: [ERROR] Proposal sweep failed: current transaction is aborted, commands ignored until end of transaction block
 
+[2025-09-23 17:10:49] INFO: [SHUTDOWN] Received signal 15, shutting down gracefully...
