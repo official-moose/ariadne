@@ -31,7 +31,7 @@ from zoneinfo import ZoneInfo
 
 from mm.utils.helpers.wintermute import update_heartbeat
 import mm.config.marcus as marcus
-from mm.utils.helpers.wintermute import send_email
+from mm.utils.helpers.wintermute import send_email, now_local, to_pack, now_pack
 
 # ── Constants ─────────────────────────────────────────────────────────
 LOG_FILE = "/root/Echelon/valentrix/mm/utils/partition_manager/edith.log"
@@ -167,37 +167,35 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create partitions for the next N hours on signals_intel (ts is TIMESTAMPTZ)"""
     created_count = 0
-    now = datetime.utcnow()
+    base = now_local("America/Toronto").replace(minute=0, second=0, microsecond=0)
 
     for h in range(1, hours_ahead + 1):
-        target_hour = (now + timedelta(hours=h)).replace(minute=0, second=0, microsecond=0)
-        hour_after = target_hour + timedelta(hours=1)
+        start_dt = base + timedelta(hours=h)
+        end_dt = start_dt + timedelta(hours=1)
 
-        partition_name = f"signals_intel_{target_hour.strftime('%Y_%m_%d_%H')}"
+        start_pack = to_pack(start_dt, "America/Toronto")
+        end_pack   = to_pack(end_dt, "America/Toronto")
+
+        partition_name = f"signals_intel_{start_dt.strftime('%Y_%m_%d_%H')}"
 
         try:
             cur.execute(f"""
                 CREATE TABLE IF NOT EXISTS {partition_name}
                 PARTITION OF signals_intel
-                FOR VALUES FROM ('{target_hour.strftime('%Y-%m-%d %H:%M:%S+00')}') 
-                             TO ('{hour_after.strftime('%Y-%m-%d %H:%M:%S+00')}')
+                FOR VALUES FROM ('{start_pack.db}')
+                             TO ('{end_pack.db}')
             """)
             created_count += 1
-            logger.info(f"[SIGNALS CREATE] Created partition {partition_name}")
-
+            logger.info(f"[SIGNALS CREATE] {partition_name} ({start_pack.db} → {end_pack.db})")
         except Exception as e:
             logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
 
     return created_count
 
-from datetime import datetime
-
 def drop_old_signals_partitions(cur) -> int:
-    """Drop signals_intel partitions older than 24 hours"""
     dropped_count = 0
-    cutoff_time = datetime.utcnow() - timedelta(hours=24)
+    cutoff = now_pack("America/Toronto").dt - timedelta(hours=24)
 
     cur.execute("""
         SELECT 
@@ -213,22 +211,17 @@ def drop_old_signals_partitions(cur) -> int:
 
     for partition_name, partition_range in partitions:
         try:
-            # Extract the TO (...) value
+            # Example: FOR VALUES FROM ('2025-09-23 15:00:00-04:00') TO ('2025-09-23 16:00:00-04:00')
             to_str = partition_range.split("TO (")[1].split(")")[0].strip().strip("'")
+            to_dt = datetime.fromisoformat(to_str)  # already offset-aware
 
-            # Ensure timezone offset is in ±HH:MM format
-            if len(to_str) > 3 and (to_str[-3] in ["+", "-"]):
-                to_str = to_str + ":00"
-
-            to_datetime = datetime.fromisoformat(to_str)
-
-            if to_datetime < cutoff_time:
+            if to_dt < cutoff:
                 cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
                 dropped_count += 1
-                logger.info(f"[SIGNALS DROP] Dropped old partition {partition_name}")
+                logger.info(f"[SIGNALS DROP] {partition_name} dropped (ended {to_dt})")
 
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to drop partition {partition_name}: {e} | Raw: {partition_range}")
+            logger.error(f"[SIGNALS ERROR] Failed to drop {partition_name}: {e} | Raw: {partition_range}")
 
     return dropped_count
 
