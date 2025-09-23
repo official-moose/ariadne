@@ -23,3 +23,5 @@
 [2025-09-23 17:11:07] WARNING: [SKIP] GAIN-USDT: float() argument must be a string or a real number, not 'NoneType'
 [2025-09-23 17:11:44] WARNING: [SKIP] XAN-USDT: float() argument must be a string or a real number, not 'NoneType'
 [2025-09-23 17:11:44] WARNING: [SKIP] XAN-USDT: float() argument must be a string or a real number, not 'NoneType'
+[2025-09-23 17:13:17] INFO: [SAVE] Captured 1306 signal rows @ 2025-09-23 13:05:37
+[2025-09-23 17:13:17] INFO: [SAVE] Captured 1306 signal rows @ 2025-09-23 13:05:37
