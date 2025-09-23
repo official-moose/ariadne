@@ -168,12 +168,12 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create partitions for the next N hours (signals_intel)"""
+    """Create partitions for the next N hours"""
     created_count = 0
-    now_toronto = now_local("America/Toronto").replace(minute=0, second=0, microsecond=0)
+    now = datetime.utcnow()
     
-    for h in range(hours_ahead):
-        target_hour = now_toronto + timedelta(hours=h)
+    for h in range(1, hours_ahead + 1):
+        target_hour = (now + timedelta(hours=h)).replace(minute=0, second=0, microsecond=0)
         hour_after = target_hour + timedelta(hours=1)
         
         start_ts = int(target_hour.timestamp())
@@ -188,17 +188,17 @@ def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
                 FOR VALUES FROM ({start_ts}) TO ({end_ts})
             """)
             created_count += 1
-            logger.info(f"[SIGNALS CREATE] {partition_name}")
+            logger.info(f"[SIGNALS CREATE] Created partition {partition_name}")
             
         except psycopg2.errors.DuplicateTable:
-            logger.debug(f"[SIGNALS EXISTS] {partition_name} already exists")
+            logger.debug(f"[SIGNALS EXISTS] Partition {partition_name} already exists")
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
+            logger.error(f"[SIGNALS ERROR] Failed to create partition {partition_name}: {e}")
     
     return created_count
 
 def drop_old_signals_partitions(cur) -> int:
-    """Drop signals_intel partitions older than 24 hours"""
+    """Drop partitions older than 24 hours"""
     dropped_count = 0
     cutoff_time = datetime.utcnow() - timedelta(hours=24)
     
@@ -224,13 +224,12 @@ def drop_old_signals_partitions(cur) -> int:
             if to_datetime < cutoff_time:
                 cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
                 dropped_count += 1
-                logger.info(f"[SIGNALS DROP] Dropped {partition_name}")
+                logger.info(f"[SIGNALS DROP] Dropped old partition {partition_name}")
                 
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to parse {partition_name}: {e}")
+            logger.error(f"[SIGNALS ERROR] Failed to parse partition {partition_name}: {e}")
     
     return dropped_count
-
 # ── Proposals Sweeper ─────────────────────────────────────────────────
 def sweep_expired_proposals(cur, age_minutes: int = 10) -> int:
     """Mark proposals older than age_minutes and still pending as expired"""
