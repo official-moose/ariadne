@@ -3177,3 +3177,13 @@ LINE 4:                 FOR VALUES FROM (1758661200) TO (1758664800)
 [2025-09-23 21:46:33] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_23_23
 [2025-09-23 21:46:33] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_00
 [2025-09-23 21:46:33] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-23 22:46:33] INFO: [PARTITION] Running partition management (cycle 19)
+[2025-09-23 22:46:33] INFO: [CREATE] Created partition tickstick_2025_09_23_23
+[2025-09-23 22:46:33] INFO: [CREATE] Created partition tickstick_2025_09_24_00
+[2025-09-23 22:46:33] INFO: [CREATE] Created partition tickstick_2025_09_24_01
+[2025-09-23 22:46:33] INFO: [PARTITION] Created 3 new partitions
+[2025-09-23 22:46:33] INFO: [SIGNALS] Running signals_intel partition maintenance
+[2025-09-23 22:46:33] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_23_23
+[2025-09-23 22:46:33] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_00
+[2025-09-23 22:46:33] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_01
+[2025-09-23 22:46:33] INFO: [SIGNALS] Created 3 new partitions
