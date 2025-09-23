@@ -168,78 +168,60 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create partitions for signals_intel table using ISO-8601 UTC bounds."""
+    """Create partitions for signals_intel based on UTC epoch timestamps."""
     created_count = 0
-
-    # Local time for naming
-    toronto_tz = pytz.timezone('America/Toronto')
-    now_toronto = datetime.now(toronto_tz).replace(minute=0, second=0, microsecond=0)
+    now = datetime.utcnow().replace(minute=0, second=0, microsecond=0)
 
     for h in range(hours_ahead):
-        start_time = now_toronto + timedelta(hours=h)
-        end_time = start_time + timedelta(hours=1)
+        start_dt = now + timedelta(hours=h)
+        end_dt = start_dt + timedelta(hours=1)
 
-        partition_name = f"signals_intel_{start_time.strftime('%Y_%m_%d_%H')}"
+        start_ts = int(start_dt.timestamp())
+        end_ts = int(end_dt.timestamp())
 
-        # Convert to UTC for storage
-        start_utc = start_time.astimezone(pytz.UTC)
-        end_utc = end_time.astimezone(pytz.UTC)
-
-        # Use isoformat (includes timezone info like +00:00) instead of hardcoding +00
-        start_str = start_utc.isoformat(sep=' ')
-        end_str = end_utc.isoformat(sep=' ')
+        partition_name = f"signals_intel_{start_dt.strftime('%Y_%m_%d_%H')}"
 
         try:
             cur.execute(f"""
                 CREATE TABLE IF NOT EXISTS {partition_name}
                 PARTITION OF signals_intel
-                FOR VALUES FROM ('{start_str}')
-                             TO   ('{end_str}')
+                FOR VALUES FROM ({start_ts}) TO ({end_ts});
             """)
             created_count += 1
             logger.info(f"[SIGNALS CREATE] {partition_name}")
-            logger.debug(f"[SIGNALS DEBUG] Created with range: {start_str} → {end_str}")
         except Exception as e:
-            if "already exists" not in str(e):
-                logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
+            logger.error(f"[SIGNALS ERROR] Failed to create {partition_name}: {e}")
 
     return created_count
 
-
 def drop_old_signals_partitions(cur) -> int:
-    """Drop signals_intel partitions older than 24 hours (UTC), defensively."""
+    """Drop signals_intel partitions older than 24 hours (epoch-based)."""
     dropped_count = 0
-
-    # Use a 25-hour cutoff to avoid races or clock skew issues
-    cutoff_utc = datetime.now(pytz.UTC) - timedelta(hours=25)
+    cutoff_time = datetime.utcnow() - timedelta(hours=24)
+    cutoff_epoch = int(cutoff_time.timestamp())
 
     cur.execute("""
-        SELECT child.relname, pg_get_expr(child.relpartbound, child.oid)
+        SELECT child.relname AS partition_name,
+               pg_get_expr(child.relpartbound, child.oid) AS partition_range
         FROM pg_inherits
         JOIN pg_class parent ON pg_inherits.inhparent = parent.oid
         JOIN pg_class child ON pg_inherits.inhrelid = child.oid
         WHERE parent.relname = 'signals_intel'
-        ORDER BY child.relname
+        ORDER BY child.relname;
     """)
 
-    for partition_name, bound in cur.fetchall():
+    for partition_name, partition_range in cur.fetchall():
         try:
-            from_str = bound.split("FROM (")[1].split(")")[0].strip("'")
+            to_str = partition_range.split("TO (")[1].split(")")[0].strip()
+            to_ts = int(to_str)
 
-            # Fix timezone offset if missing colon (e.g. -04 → -04:00)
-            from_str_fixed = from_str if from_str[-3] == ':' else from_str[:-2] + ':' + from_str[-2:]
-
-            from_dt = datetime.fromisoformat(from_str_fixed).astimezone(pytz.UTC)
-
-            logger.debug(f"[SIGNALS DEBUG] {partition_name} FROM {from_dt.isoformat()} vs cutoff {cutoff_utc.isoformat()}")
-
-            if from_dt < cutoff_utc:
-                cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
+            if to_ts < cutoff_epoch:
+                cur.execute(f"DROP TABLE IF EXISTS {partition_name} CASCADE;")
                 dropped_count += 1
                 logger.info(f"[SIGNALS DROP] Dropped {partition_name}")
 
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to process {partition_name} with bound {bound}: {e}")
+            logger.error(f"[SIGNALS ERROR] Failed to parse or drop {partition_name}: {e}")
 
     return dropped_count
 
