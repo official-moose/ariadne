@@ -1801,3 +1801,4 @@
 
 [2025-09-23 18:21:19] ERROR: [ERROR] Cycle error: current transaction is aborted, commands ignored until end of transaction block
 
+[2025-09-23 18:22:19] INFO: [SHUTDOWN] Received signal 2, shutting down gracefully...
