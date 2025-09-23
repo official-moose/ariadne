@@ -1806,3 +1806,25 @@
 [2025-09-23 18:22:19] INFO: [SHUTDOWN] Received signal 2, shutting down gracefully...
 [2025-09-23 18:22:19] INFO: [SHUTDOWN] Received signal 2, shutting down gracefully...
 [2025-09-23 18:22:19] INFO: [SHUTDOWN] Received signal 2, shutting down gracefully...
+[2025-09-23 18:26:14] INFO: ======================================================================
+[2025-09-23 18:26:14] INFO: [INIT] EDITH starting as persistent background process
+[2025-09-23 18:26:14] INFO: [INIT] Database connection established
+[2025-09-23 18:26:14] INFO: [PARTITION] Running partition management (cycle 1)
+[2025-09-23 18:26:14] INFO: [CREATE] Created partition tickstick_2025_09_23_19
+[2025-09-23 18:26:14] INFO: [CREATE] Created partition tickstick_2025_09_23_20
+[2025-09-23 18:26:14] INFO: [CREATE] Created partition tickstick_2025_09_23_21
+[2025-09-23 18:26:14] INFO: [PARTITION] Created 3 new partitions
+[2025-09-23 18:26:14] INFO: [DROP] Dropped old partition tickstick_2025_09_23_15
+[2025-09-23 18:26:14] INFO: [DROP] Dropped old partition tickstick_2025_09_23_16
+[2025-09-23 18:26:14] INFO: [PARTITION] Dropped 2 old partitions
+[2025-09-23 18:26:14] INFO: [SIGNALS] Running signals_intel partition maintenance
+[2025-09-23 18:26:14] ERROR: [SIGNALS ERROR] Failed to create signals_intel_2025_09_23_18: specified value cannot be cast to type timestamp with time zone for column "ts"
+LINE 4:                 FOR VALUES FROM (1758650400) TO (1758654000)...
+                                         ^
+
+[2025-09-23 18:26:14] ERROR: [SIGNALS ERROR] Failed to create signals_intel_2025_09_23_19: current transaction is aborted, commands ignored until end of transaction block
+
+[2025-09-23 18:26:14] ERROR: [SIGNALS ERROR] Failed to create signals_intel_2025_09_23_20: current transaction is aborted, commands ignored until end of transaction block
+
+[2025-09-23 18:26:14] ERROR: [ERROR] Cycle error: current transaction is aborted, commands ignored until end of transaction block
+
