@@ -168,7 +168,6 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create partitions for the next N hours"""
     created_count = 0
     now = datetime.utcnow()
     
@@ -176,16 +175,14 @@ def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
         target_hour = (now + timedelta(hours=h)).replace(minute=0, second=0, microsecond=0)
         hour_after = target_hour + timedelta(hours=1)
         
-        start_ts = int(target_hour.timestamp())
-        end_ts = int(hour_after.timestamp())
-        
         partition_name = f"signals_intel_{target_hour.strftime('%Y_%m_%d_%H')}"
         
         try:
             cur.execute(f"""
                 CREATE TABLE IF NOT EXISTS {partition_name}
                 PARTITION OF signals_intel
-                FOR VALUES FROM ({start_ts}) TO ({end_ts})
+                FOR VALUES FROM ('{target_hour.strftime('%Y-%m-%d %H:%M:%S+00')}')
+                             TO ('{hour_after.strftime('%Y-%m-%d %H:%M:%S+00')}')
             """)
             created_count += 1
             logger.info(f"[SIGNALS CREATE] Created partition {partition_name}")
@@ -198,7 +195,6 @@ def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
     return created_count
 
 def drop_old_signals_partitions(cur) -> int:
-    """Drop partitions older than 24 hours"""
     dropped_count = 0
     cutoff_time = datetime.utcnow() - timedelta(hours=24)
     
@@ -217,11 +213,10 @@ def drop_old_signals_partitions(cur) -> int:
     
     for partition_name, partition_range in partitions:
         try:
-            to_str = partition_range.split('TO (')[1].split(')')[0].strip("'")
-            to_ts = int(to_str)
-            to_datetime = datetime.utcfromtimestamp(to_ts)
+            from_str = partition_range.split("FROM ('")[1].split("')")[0]
+            from_dt = datetime.strptime(from_str, "%Y-%m-%d %H:%M:%S+00")
             
-            if to_datetime < cutoff_time:
+            if from_dt < cutoff_time:
                 cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
                 dropped_count += 1
                 logger.info(f"[SIGNALS DROP] Dropped old partition {partition_name}")
@@ -230,6 +225,7 @@ def drop_old_signals_partitions(cur) -> int:
             logger.error(f"[SIGNALS ERROR] Failed to parse partition {partition_name}: {e}")
     
     return dropped_count
+
 # ── Proposals Sweeper ─────────────────────────────────────────────────
 def sweep_expired_proposals(cur, age_minutes: int = 10) -> int:
     """Mark proposals older than age_minutes and still pending as expired"""
