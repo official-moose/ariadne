@@ -199,8 +199,11 @@ def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
 
 def drop_old_signals_partitions(cur) -> int:
     """Drop partitions older than 24 hours"""
+    logger.error("Started drop function.")
     dropped_count = 0
+    logger.error("Set drop count to 0")
     cutoff_time = datetime.utcnow() - timedelta(hours=24)
+    logger.error(f"Set cutoff time to {cutoff_time}")
     
     cur.execute("""
         SELECT 
@@ -212,6 +215,7 @@ def drop_old_signals_partitions(cur) -> int:
         WHERE parent.relname = 'signals_intel'
         ORDER BY child.relname
     """)
+    logger.error("Selected tables from the database.")
     
     partitions = cur.fetchall()
     
