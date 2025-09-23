@@ -225,3 +225,5 @@ DETAIL:  Partition key of the failing row contains (ts) = (2025-09-23 15:32:48-0
 [2025-09-23 20:23:05] ERROR: [ERROR] connection already closed
 [2025-09-23 20:28:05] ERROR: [ERROR] connection already closed
 [2025-09-23 20:28:05] ERROR: [ERROR] connection already closed
+[2025-09-23 20:33:05] ERROR: [ERROR] connection already closed
+[2025-09-23 20:33:05] ERROR: [ERROR] connection already closed
