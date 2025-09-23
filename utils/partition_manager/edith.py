@@ -186,8 +186,8 @@ def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
         end_utc = end_time.astimezone(pytz.UTC)
 
         # Use isoformat (includes timezone info like +00:00) instead of hardcoding +00
-        start_str = start_utc.isoformat()
-        end_str = end_utc.isoformat()
+        start_str = start_utc.isoformat(sep=' ')
+        end_str = end_utc.isoformat(sep=' ')
 
         try:
             cur.execute(f"""
@@ -226,10 +226,11 @@ def drop_old_signals_partitions(cur) -> int:
         try:
             from_str = bound.split("FROM (")[1].split(")")[0].strip("'")
 
-            # Use fromisoformat to handle arbitrary timezones like -04 or +00
-            from_dt = datetime.fromisoformat(from_str).astimezone(pytz.UTC)
+            # Fix timezone offset if missing colon (e.g. -04 → -04:00)
+            from_str_fixed = from_str if from_str[-3] == ':' else from_str[:-2] + ':' + from_str[-2:]
 
-            # DEBUG: log what we're checking
+            from_dt = datetime.fromisoformat(from_str_fixed).astimezone(pytz.UTC)
+
             logger.debug(f"[SIGNALS DEBUG] {partition_name} FROM {from_dt.isoformat()} vs cutoff {cutoff_utc.isoformat()}")
 
             if from_dt < cutoff_utc:
