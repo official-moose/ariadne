@@ -161,7 +161,7 @@ def main():
                     last_price, buy_price, sell_price,
                     average_price, vol, volval, change_rate,
                     avg_trade_price, avg_trade_size, buy_volume_ratio
-                ) VALUES %s
+                ) VALUES %s 
             """
 
             execute_values(cur, insert_sql, rows)
