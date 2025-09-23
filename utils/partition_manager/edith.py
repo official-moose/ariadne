@@ -192,6 +192,8 @@ def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
 
     return created_count
 
+from datetime import datetime
+
 def drop_old_signals_partitions(cur) -> int:
     """Drop signals_intel partitions older than 24 hours"""
     dropped_count = 0
@@ -211,8 +213,13 @@ def drop_old_signals_partitions(cur) -> int:
 
     for partition_name, partition_range in partitions:
         try:
-            # partition_range looks like: FOR VALUES FROM ('2025-09-23 16:00:00+00') TO ('2025-09-23 17:00:00+00')
+            # Extract the TO (...) value
             to_str = partition_range.split("TO (")[1].split(")")[0].strip().strip("'")
+
+            # Ensure timezone offset is in ±HH:MM format
+            if len(to_str) > 3 and (to_str[-3] in ["+", "-"]):
+                to_str = to_str + ":00"
+
             to_datetime = datetime.fromisoformat(to_str)
 
             if to_datetime < cutoff_time:
@@ -221,7 +228,7 @@ def drop_old_signals_partitions(cur) -> int:
                 logger.info(f"[SIGNALS DROP] Dropped old partition {partition_name}")
 
         except Exception as e:
-            logger.error(f"[SIGNALS ERROR] Failed to drop partition {partition_name}: {e}")
+            logger.error(f"[SIGNALS ERROR] Failed to drop partition {partition_name}: {e} | Raw: {partition_range}")
 
     return dropped_count
 
