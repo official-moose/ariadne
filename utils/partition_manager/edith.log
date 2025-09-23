@@ -2104,3 +2104,5 @@ LINE 4:                 FOR VALUES FROM (1758657600) TO (1758661200)
 [2025-09-23 19:54:30] ERROR: [SIGNALS ERROR] Failed to parse partition signals_intel_2025_09_23_20: time data '2025-09-23 16:00:00-04' does not match format '%Y-%m-%d %H:%M:%S+00'
 [2025-09-23 19:54:30] ERROR: [SIGNALS ERROR] Failed to parse partition signals_intel_2025_09_23_21: time data '2025-09-23 17:00:00-04' does not match format '%Y-%m-%d %H:%M:%S+00'
 [2025-09-23 19:54:30] ERROR: [SIGNALS ERROR] Failed to parse partition signals_intel_2025_09_23_22: time data '2025-09-23 18:00:00-04' does not match format '%Y-%m-%d %H:%M:%S+00'
+[2025-09-23 19:56:32] ERROR: [ERROR] Proposal sweep failed: current transaction is aborted, commands ignored until end of transaction block
+
