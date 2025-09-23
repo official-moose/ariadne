@@ -10,7 +10,7 @@
 #
 # [520] [741] [8]
 #===================================================================
-# ✠ THE ENGINE                ✔ PERSISTENT RUNTIME  ✔ MONIT MANAGED
+# 🜁 THE COMMANDER            ✔ PERSISTENT RUNTIME  ✔ MONIT MANAGED
 #===================================================================
 
 import os
