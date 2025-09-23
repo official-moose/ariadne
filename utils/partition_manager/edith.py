@@ -31,7 +31,7 @@ from zoneinfo import ZoneInfo
 
 from mm.utils.helpers.wintermute import update_heartbeat
 import mm.config.marcus as marcus
-from mm.utils.helpers.wintermute import send_email, now_local, to_pack, now_pack
+from mm.utils.helpers.wintermute import send_email, now_local
 
 # ── Constants ─────────────────────────────────────────────────────────
 LOG_FILE = "/root/Echelon/valentrix/mm/utils/partition_manager/edith.log"
@@ -167,12 +167,9 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create partitions for signals_intel table"""
     created_count = 0
     
-    # Get current hour in Toronto timezone
-    toronto_tz = pytz.timezone('America/Toronto')
-    now_toronto = datetime.now(toronto_tz).replace(minute=0, second=0, microsecond=0)
+    now_toronto = now_local("America/Toronto").replace(minute=0, second=0, microsecond=0)
     
     for h in range(hours_ahead):
         start_time = now_toronto + timedelta(hours=h)
@@ -180,9 +177,8 @@ def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
         
         partition_name = f"signals_intel_{start_time.strftime('%Y_%m_%d_%H')}"
         
-        # Convert to UTC for partition bounds (Postgres stores in UTC)
-        start_utc = start_time.astimezone(pytz.UTC)
-        end_utc = end_time.astimezone(pytz.UTC)
+        start_utc = start_time.astimezone(timezone.utc)
+        end_utc = end_time.astimezone(timezone.utc)
         
         try:
             cur.execute(f"""
@@ -203,8 +199,7 @@ def drop_old_signals_partitions(cur) -> int:
     """Drop signals_intel partitions older than 24 hours"""
     dropped_count = 0
     
-    # Calculate cutoff as 24 hours ago in UTC
-    cutoff_utc = datetime.now(pytz.UTC) - timedelta(hours=24)
+    cutoff_utc = datetime.now(timezone.utc) - timedelta(hours=24)
     
     cur.execute("""
         SELECT child.relname, pg_get_expr(child.relpartbound, child.oid)
@@ -217,9 +212,8 @@ def drop_old_signals_partitions(cur) -> int:
     
     for partition_name, bound in cur.fetchall():
         try:
-            # Parse the FROM timestamp from partition bound
             from_str = bound.split("FROM (")[1].split(")")[0].strip("'")
-            from_dt = datetime.strptime(from_str, "%Y-%m-%d %H:%M:%S+00").replace(tzinfo=pytz.UTC)
+            from_dt = datetime.strptime(from_str, "%Y-%m-%d %H:%M:%S+00").replace(tzinfo=timezone.utc)
             
             if from_dt < cutoff_utc:
                 cur.execute(f"DROP TABLE IF EXISTS {partition_name}")
