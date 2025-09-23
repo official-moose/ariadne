@@ -167,7 +167,7 @@ def drop_old_partitions(cur) -> int:
     return dropped_count
 
 def create_signals_partitions(cur, hours_ahead: int = 3) -> int:
-    """Create partitions for signals_intel: current hour + future hours"""
+    """Create partitions for the next N hours (signals_intel)"""
     created_count = 0
     now_toronto = now_local("America/Toronto").replace(minute=0, second=0, microsecond=0)
     
