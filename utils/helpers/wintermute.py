@@ -482,61 +482,17 @@ def notional(qty: Decimal, price: Decimal) -> Decimal:
     """Notional = qty * price (quote-currency value)."""
     return Decimal(str(qty)) * Decimal(str(price))
 
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 5: FEE CALCULATIONS
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 Fee Calculations ======================================
 
-def apply_fee(amount: Decimal, rate: Decimal, coefficient: Decimal = Decimal("1")) -> Tuple[Decimal, Decimal]:
-    """
-    Apply fee with coefficient. Returns (fee, net_amount).
-    """
-    amount = Decimal(str(amount))
-    eff = Decimal(str(rate)) * Decimal(str(coefficient))
-    fee = (amount * eff).quantize(Decimal("0.00000001"), rounding=ROUND_DOWN)
-    net = (amount - fee).quantize(Decimal("0.00000001"), rounding=ROUND_DOWN)
-    return fee, net
+def calculate_fees(symbol: str, price: float, qty: float) -> float:
+    from mm.conn.conn_kucoin import KucoinClient
+    
+    client = KucoinClient()
+    fee_rate = client.taker_fee(symbol)["value"]
+    notional = price * qty
+    return fee_rate * notional
 
-def calculate_fees(symbol: str, size: float, price: float, side: str, 
-                  maker_rate: float = 0.001, taker_rate: float = 0.001) -> float:
-    """
-    Calculate maker/taker fees for order.
-    Returns fee amount in quote currency.
-    """
-    notional_value = size * price
-    # Assume taker unless specified otherwise
-    fee_rate = maker_rate if side == 'maker' else taker_rate
-    return notional_value * fee_rate
-
-def get_fee_rate(symbol: str, side: str, conn=None) -> float:
-    """
-    Get fee rate for symbol/side from database or default.
-    """
-    if conn:
-        try:
-            cur = conn.cursor()
-            cur.execute("""
-                SELECT maker_fee_rate, taker_fee_rate 
-                FROM symbol_info 
-                WHERE symbol = %s
-            """, (symbol,))
-            row = cur.fetchone()
-            cur.close()
-            if row:
-                return float(row[0] if side == 'maker' else row[1])
-        except:
-            pass
-    # Default rates
-    return 0.001  # 0.1%
-
-def breakeven(entry_price: Decimal, fee_rate: Decimal, coefficient: Decimal = Decimal("1")) -> Decimal:
-    """Approx round-trip breakeven with fees on buy and sell."""
-    entry = Decimal(str(entry_price))
-    eff = Decimal(str(fee_rate)) * Decimal(str(coefficient))
-    return entry * (Decimal("1") + (Decimal("2") * eff))
-
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 6: ORDER VALIDATION
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 Order Validation ======================================
 
 def validate_min_order_size(symbol: str, size: float, conn=None) -> bool:
     """Check if order size meets minimum requirements."""
@@ -574,9 +530,7 @@ def count_open_orders(symbol: str, conn) -> int:
         log.error(f"Error counting open orders for {symbol}: {e}")
         return 0
 
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 7: BALANCE OPERATIONS
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 Balance Operations ======================================
 
 def get_available_balance(currency: str, conn) -> float:
     """Get tradeable balance for currency."""
@@ -633,9 +587,7 @@ def can_afford(currency: str, amount: float, conn) -> bool:
     available = get_available_balance(currency, conn)
     return available >= amount
 
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 8: DATABASE OPERATIONS
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 Database Operations ======================================
 
 def get_db_connection() -> psycopg2.extensions.connection:
     """
@@ -758,9 +710,7 @@ def get_approved_buy_proposals(conn):
         logger.error(f"Error getting approved buy proposals: {e}")
         return []
 
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 9: RISK CALCULATIONS
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 Risk Calculations ======================================
 
 def calculate_position_size(capital: float, risk_pct: float, 
                            stop_loss_pct: float = None) -> float:
@@ -824,9 +774,7 @@ def calculate_drawdown(peak: float, current: float) -> float:
     drawdown = ((peak - current) / peak) * 100
     return max(0.0, drawdown)
 
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 10: MARKET DATA & ANALYSIS
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 Market Data and Analysis ======================================
 
 def get_latest_ticker(symbol: str, conn) -> dict:
     """
@@ -910,9 +858,7 @@ def calculate_volatility(symbol: str, period: int, conn) -> float:
         log.error(f"Error calculating volatility for {symbol}: {e}")
         return 0.0
 
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 11: STATE MANAGEMENT
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 State Management ======================================
 
 def save_state(state: dict, filepath: str) -> bool:
     """
@@ -1002,9 +948,7 @@ def update_heartbeat(process_name: str, conn=None) -> None:
         if own_conn and conn:
             release_db_connection(conn)
 
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 12: PROCESS MANAGEMENT
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 Process Management ======================================
 
 def write_pid_file(filepath: str) -> None:
     """
@@ -1042,9 +986,7 @@ def check_process_alive(pid: int) -> bool:
     except OSError:
         return False
 
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-#  SECTION 13: RETRY & BACKOFF
-# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+# 🔸 Retry and Backoff ======================================
 
 def time_sleep(sec: float) -> None:
     import time as _t; _t.sleep(sec)
