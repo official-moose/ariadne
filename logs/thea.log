@@ -151,3 +151,5 @@ DETAIL:  Partition key of the failing row contains (ts) = (2025-09-23 14:38:52-0
 [2025-09-23 18:59:56] WARNING: [SKIP] GAIN-USDT: float() argument must be a string or a real number, not 'NoneType'
 [2025-09-23 19:00:36] WARNING: [SKIP] XAN-USDT: float() argument must be a string or a real number, not 'NoneType'
 [2025-09-23 19:00:36] WARNING: [SKIP] XAN-USDT: float() argument must be a string or a real number, not 'NoneType'
+[2025-09-23 19:02:09] INFO: [SAVE] Captured 1306 signal rows @ 2025-09-23 14:54:24
+[2025-09-23 19:02:09] INFO: [SAVE] Captured 1306 signal rows @ 2025-09-23 14:54:24
