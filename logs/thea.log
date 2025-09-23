@@ -91,3 +91,5 @@ DETAIL:  Partition key of the failing row contains (ts) = (2025-09-23 13:59:39-0
 [2025-09-23 18:07:29] ERROR: [ERROR] no partition of relation "signals_intel" found for row
 DETAIL:  Partition key of the failing row contains (ts) = (2025-09-23 13:59:39-04).
 
+[2025-09-23 18:13:08] WARNING: [SKIP] GAIN-USDT: float() argument must be a string or a real number, not 'NoneType'
+[2025-09-23 18:13:08] WARNING: [SKIP] GAIN-USDT: float() argument must be a string or a real number, not 'NoneType'
