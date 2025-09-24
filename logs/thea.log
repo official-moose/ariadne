@@ -787,3 +787,5 @@ Traceback (most recent call last):
   File "/root/Echelon/valentrix/mm/utils/seldon_engine/thea.py", line 43, in <module>
     from mm.utils.helpers.wintermute import (
 ImportError: cannot import name 'get_logger' from 'mm.utils.helpers.wintermute' (/root/Echelon/valentrix/mm/utils/helpers/wintermute.py)
+[2025-09-24 10:03:18] ERROR: [ERROR] connection already closed
+[2025-09-24 10:03:18] ERROR: [ERROR] connection already closed
