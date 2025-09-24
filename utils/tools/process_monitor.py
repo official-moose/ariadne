@@ -148,13 +148,13 @@ def main():
                 cycle_time = "-"
 
                 if process_lower == "thea":
-                    cycle_time = f"{HB_THEA}s"
+                    cycle_time = f"{HB_THEA//60}m" if HB_THEA >= 60 else f"{HB_THEA}s"
                 elif process_lower == "laurel":
-                    cycle_time = f"{HB_LAUREL}s"
+                    cycle_time = f"{HB_LAUREL//60}m" if HB_LAUREL >= 60 else f"{HB_LAUREL}s"
                 elif process_lower == "alma":
-                    cycle_time = f"{HB_ALMA}s"
+                    cycle_time = f"{HB_ALMA//60}m" if HB_ALMA >= 60 else f"{HB_ALMA}s"
                 elif process_lower == "edith":
-                    cycle_time = f"{HB_EDITH}s"
+                    cycle_time = f"{HB_EDITH//60}m" if HB_EDITH >= 60 else f"{HB_EDITH}s"
 
                 print(f"{process:<20} {last_hb_str:<25} {time_str:<15} {cycle_time:<15}")
             
