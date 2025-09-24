@@ -3055,3 +3055,12 @@ LINE 1: -> to string = 1758690000
 [2025-09-24 02:46:35] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_04
 [2025-09-24 02:46:35] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_05
 [2025-09-24 02:46:35] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-24 03:44:04] INFO: [PARTITION] Running partition management (cycle 7)
+[2025-09-24 03:44:04] INFO: [CREATE] Created partition tickstick_2025_09_24_04
+[2025-09-24 03:44:04] INFO: [CREATE] Created partition tickstick_2025_09_24_05
+[2025-09-24 03:44:04] INFO: [CREATE] Created partition tickstick_2025_09_24_06
+[2025-09-24 03:44:04] INFO: [PARTITION] Created 3 new partitions
+[2025-09-24 03:44:04] WARNING: 🜁 Set partitions to [('tickstick_2025_09_24_02', "FOR VALUES FROM ('1758679200') TO ('1758682800')"), ('tickstick_2025_09_24_03', "FOR VALUES FROM ('1758682800') TO ('1758686400')"), ('tickstick_2025_09_24_04', "FOR VALUES FROM ('1758686400') TO ('1758690000')"), ('tickstick_2025_09_24_05', "FOR VALUES FROM ('1758690000') TO ('1758693600')"), ('tickstick_2025_09_24_06', "FOR VALUES FROM ('1758693600') TO ('1758697200')")]
+[2025-09-24 03:44:04] INFO: [SIGNALS] Running signals_intel partition maintenance
+[2025-09-24 03:44:04] INFO: [CREATE] Created partition signals_intel_2025_09_24_04
+[2025-09-24 03:44:04] INFO: [CREATE] Created partition signals_intel_2025_09_24_05
