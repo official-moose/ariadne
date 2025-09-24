@@ -1764,3 +1764,5 @@ Traceback (most recent call last):
   File "/root/Echelon/valentrix/mm/utils/helpers/wintermute.py", line 963, in write_pid_file
     logger.error(f"Failed to write PID file: {e}")
 NameError: name 'logger' is not defined
+[2025-09-24 10:58:19] ERROR: [ERROR] connection already closed
+[2025-09-24 10:58:19] ERROR: [ERROR] connection already closed
