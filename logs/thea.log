@@ -2443,3 +2443,7 @@ NameError: name 'logger' is not defined
 2025-09-24 15:08:32    [ Thea ] [INFO] [SLEEP] Next capture in 299s
 [2025-09-24 15:13:23] ERROR: [ERROR] connection already closed
 [2025-09-24 15:13:23] ERROR: [ERROR] connection already closed
+2025-09-24 15:13:32    [ Thea ] [ERROR] [ERROR] Collection cycle failed: 'list' object has no attribute 'get'
+2025-09-24 15:13:32    [ Thea ] [ERROR] [ERROR] Collection cycle failed: 'list' object has no attribute 'get'
+2025-09-24 15:13:32    [ Thea ] [INFO] [SLEEP] Next capture in 299s
+2025-09-24 15:13:32    [ Thea ] [INFO] [SLEEP] Next capture in 299s
