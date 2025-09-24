@@ -2575,3 +2575,32 @@ LINE 4:                 FOR VALUES FROM (1758661200) TO (1758664800)
 [2025-09-24 00:46:34] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_02
 [2025-09-24 00:46:34] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_03
 [2025-09-24 00:46:34] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-24 00:49:54] INFO: [PARTITION] Running partition management (cycle 7)
+[2025-09-24 00:49:54] INFO: [CREATE] Created partition tickstick_2025_09_24_01
+[2025-09-24 00:49:54] INFO: [CREATE] Created partition tickstick_2025_09_24_02
+[2025-09-24 00:49:54] INFO: [CREATE] Created partition tickstick_2025_09_24_03
+[2025-09-24 00:49:54] INFO: [PARTITION] Created 3 new partitions
+[2025-09-24 00:49:54] INFO: [SIGNALS] Running signals_intel partition maintenance
+[2025-09-24 00:49:54] WARNING: Start time set to -> 1758675600
+[2025-09-24 00:49:54] WARNING: End time set to -> 1758679200
+[2025-09-24 00:49:54] WARNING: Partition name set to -> signals_intel_2025_09_24_01
+[2025-09-24 00:49:54] WARNING: try->Start time set to -> 1758675600
+[2025-09-24 00:49:54] WARNING: try->End time set to -> 1758679200
+[2025-09-24 00:49:54] INFO: [CREATE] Created partition signals_intel_2025_09_24_01
+[2025-09-24 00:49:54] WARNING: Start time set to -> 1758679200
+[2025-09-24 00:49:54] WARNING: End time set to -> 1758682800
+[2025-09-24 00:49:54] WARNING: Partition name set to -> signals_intel_2025_09_24_02
+[2025-09-24 00:49:54] WARNING: try->Start time set to -> 1758679200
+[2025-09-24 00:49:54] WARNING: try->End time set to -> 1758682800
+[2025-09-24 00:49:54] INFO: [CREATE] Created partition signals_intel_2025_09_24_02
+[2025-09-24 00:49:54] WARNING: Start time set to -> 1758682800
+[2025-09-24 00:49:54] WARNING: End time set to -> 1758686400
+[2025-09-24 00:49:54] WARNING: Partition name set to -> signals_intel_2025_09_24_03
+[2025-09-24 00:49:54] WARNING: try->Start time set to -> 1758682800
+[2025-09-24 00:49:54] WARNING: try->End time set to -> 1758686400
+[2025-09-24 00:49:54] INFO: [CREATE] Created partition signals_intel_2025_09_24_03
+[2025-09-24 00:49:54] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-24 00:49:54] ERROR: Started drop function.
+[2025-09-24 00:49:54] ERROR: Set drop count to 0
+[2025-09-24 00:49:54] ERROR: Set cutoff time to 2025-09-23 00:49:54.836589
+[2025-09-24 00:49:54] ERROR: [ERROR] Cycle error: local variable 'partition_name' referenced before assignment
