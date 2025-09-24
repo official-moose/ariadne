@@ -3195,3 +3195,6 @@ LINE 1: -> to string = 1758690000
 [2025-09-24 08:46:38] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_10
 [2025-09-24 08:46:38] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_11
 [2025-09-24 08:46:38] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-24 09:22:11] INFO: ======================================================================
+[2025-09-24 09:22:11] INFO: [INIT] EDITH starting as persistent background process
+[2025-09-24 09:22:11] INFO: [INIT] Database connection established
