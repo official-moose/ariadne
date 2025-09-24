@@ -3592,3 +3592,7 @@ LINE 4:                 FOR VALUES FROM (1758661200) TO (1758664800)
 [2025-09-24 22:46:44] INFO: [DROP] Dropped old partition tickstick_2025_09_24_20
 [2025-09-24 22:46:44] INFO: [PARTITION] Dropped 1 old partitions
 [2025-09-24 22:46:44] INFO: [SIGNALS] Running signals_intel partition maintenance
+[2025-09-24 22:46:44] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_23
+[2025-09-24 22:46:44] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_25_00
+[2025-09-24 22:46:44] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_25_01
+[2025-09-24 22:46:44] INFO: [SIGNALS] Created 3 new partitions
