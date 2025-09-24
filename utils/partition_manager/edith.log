@@ -3384,3 +3384,5 @@ LINE 1: -> to string = 1758690000
 [2025-09-24 17:22:15] INFO: [SIGNALS] Running signals_intel partition maintenance
 [2025-09-24 17:22:15] INFO: [CREATE] Created partition signals_intel_2025_09_24_18
 [2025-09-24 17:22:15] INFO: [CREATE] Created partition signals_intel_2025_09_24_19
+[2025-09-24 17:22:15] INFO: [CREATE] Created partition signals_intel_2025_09_24_20
+[2025-09-24 17:22:15] INFO: [SIGNALS] Created 3 new partitions
