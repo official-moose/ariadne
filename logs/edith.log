@@ -18,3 +18,14 @@ LINE 4:                     FOR VALUES FROM (1758747600) TO (1758751...
 
 2025-09-24 22:44:44    [ Edith ] [INFO] ======================================================================
 2025-09-24 22:44:44    [ Edith ] [INFO] [INIT] EDITH starting as persistent background process
+2025-09-24 22:44:44    [ Edith ] [INFO] [PARTITION] Running tickstick maintenance...
+2025-09-24 22:44:44    [ Edith ] [ERROR] [ERROR] Creating tickstick_2025_09_24_17: partition "tickstick_2025_09_24_17" would overlap partition "tickstick_2025_09_24_21"
+LINE 4:                     FOR VALUES FROM (1758747600) TO (1758751...
+                                             ^
+
+2025-09-24 22:44:44    [ Edith ] [ERROR] [ERROR] Creating tickstick_2025_09_24_18: current transaction is aborted, commands ignored until end of transaction block
+
+2025-09-24 22:44:44    [ Edith ] [ERROR] [ERROR] Creating tickstick_2025_09_24_19: current transaction is aborted, commands ignored until end of transaction block
+
+2025-09-24 22:44:44    [ Edith ] [ERROR] [ERROR] Runtime: current transaction is aborted, commands ignored until end of transaction block
+
