@@ -32,3 +32,14 @@ LINE 4:                     FOR VALUES FROM (1758747600) TO (1758751...
 2025-09-24 22:47:56    [ Edith ] [INFO] [SHUTDOWN] Signal 2 received. Will exit after current cycle.
 2025-09-24 23:06:01    [ Edith ] [INFO] ======================================================================
 2025-09-24 23:06:01    [ Edith ] [INFO] [INIT] EDITH starting as persistent background process
+2025-09-24 23:06:01    [ Edith ] [INFO] [PARTITION] Running tickstick maintenance...
+2025-09-24 23:06:01    [ Edith ] [ERROR] [ERROR] Creating tickstick_2025_09_24_18: partition "tickstick_2025_09_24_18" would overlap partition "tickstick_2025_09_24_22"
+LINE 4:                     FOR VALUES FROM (1758751200) TO (1758754...
+                                             ^
+
+2025-09-24 23:06:01    [ Edith ] [ERROR] [ERROR] Creating tickstick_2025_09_24_19: current transaction is aborted, commands ignored until end of transaction block
+
+2025-09-24 23:06:01    [ Edith ] [ERROR] [ERROR] Creating tickstick_2025_09_24_20: current transaction is aborted, commands ignored until end of transaction block
+
+2025-09-24 23:06:01    [ Edith ] [ERROR] [ERROR] Runtime: current transaction is aborted, commands ignored until end of transaction block
+
