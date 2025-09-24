@@ -2165,3 +2165,6 @@ NameError: name 'logger' is not defined
 2025-09-24 11:29:36    [ Thea ] [INFO] [SLEEP] Next capture in 299s
 [2025-09-24 11:33:19] ERROR: [ERROR] connection already closed
 [2025-09-24 11:33:19] ERROR: [ERROR] connection already closed
+2025-09-24 11:33:28    [ Thea ] [INFO] [SHUTDOWN] Received signal 15
+2025-09-24 11:33:28    [ Thea ] [INFO] [SHUTDOWN] Received signal 15
+2025-09-24 11:33:28    [ Wintermute ] [INFO] PID file /root/Echelon/valentrix/mm/config/pid/thea.pid removed
