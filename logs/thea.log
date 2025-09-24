@@ -2168,3 +2168,14 @@ NameError: name 'logger' is not defined
 2025-09-24 11:33:28    [ Thea ] [INFO] [SHUTDOWN] Received signal 15
 2025-09-24 11:33:28    [ Thea ] [INFO] [SHUTDOWN] Received signal 15
 2025-09-24 11:33:28    [ Wintermute ] [INFO] PID file /root/Echelon/valentrix/mm/config/pid/thea.pid removed
+2025-09-24 11:33:29    [ Thea ] [INFO] ======================================================================
+2025-09-24 11:33:29    [ Thea ] [INFO] ======================================================================
+2025-09-24 11:33:29    [ Thea ] [INFO] [INIT] THEA starting as persistent background process
+2025-09-24 11:33:29    [ Thea ] [INFO] [INIT] THEA starting as persistent background process
+2025-09-24 11:33:29    [ Thea ] [INFO] [CONFIG] Capture interval: 300s
+2025-09-24 11:33:29    [ Thea ] [INFO] [CONFIG] Capture interval: 300s
+2025-09-24 11:33:29    [ Thea ] [INFO] [CONFIG] Volume range: 3,000,000 - 200,000,000 USDT
+2025-09-24 11:33:29    [ Thea ] [INFO] [CONFIG] Volume range: 3,000,000 - 200,000,000 USDT
+2025-09-24 11:33:29    [ Thea ] [INFO] [CONFIG] Minimum maturity: 7 days
+2025-09-24 11:33:29    [ Thea ] [INFO] [CONFIG] Minimum maturity: 7 days
+2025-09-24 11:33:29    [ Wintermute ] [INFO] PID 3426034 written to /root/Echelon/valentrix/mm/config/pid/thea.pid
