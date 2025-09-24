@@ -1617,3 +1617,32 @@ Traceback (most recent call last):
   File "/root/Echelon/valentrix/mm/utils/helpers/wintermute.py", line 963, in write_pid_file
     logger.error(f"Failed to write PID file: {e}")
 NameError: name 'logger' is not defined
+2025-09-24 10:53:16    [ Thea ] [INFO] ======================================================================
+2025-09-24 10:53:16    [ Thea ] [INFO] ======================================================================
+2025-09-24 10:53:16    [ Thea ] [INFO] [INIT] THEA starting as persistent background process
+2025-09-24 10:53:16    [ Thea ] [INFO] [INIT] THEA starting as persistent background process
+2025-09-24 10:53:16    [ Thea ] [INFO] [CONFIG] Capture interval: 300s
+2025-09-24 10:53:16    [ Thea ] [INFO] [CONFIG] Capture interval: 300s
+2025-09-24 10:53:16    [ Thea ] [INFO] [CONFIG] Volume range: 3,000,000 - 200,000,000 USDT
+2025-09-24 10:53:16    [ Thea ] [INFO] [CONFIG] Volume range: 3,000,000 - 200,000,000 USDT
+2025-09-24 10:53:16    [ Thea ] [INFO] [CONFIG] Minimum maturity: 7 days
+2025-09-24 10:53:16    [ Thea ] [INFO] [CONFIG] Minimum maturity: 7 days
+Traceback (most recent call last):
+  File "/root/Echelon/valentrix/mm/utils/helpers/wintermute.py", line 961, in write_pid_file
+    logger.info(f"PID {os.getpid()} written to {filepath}")
+NameError: name 'logger' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/root/Echelon/valentrix/mm/utils/seldon_engine/thea.py", line 531, in <module>
+    collector.run()
+  File "/root/Echelon/valentrix/mm/utils/seldon_engine/thea.py", line 493, in run
+    write_pid_file(PID_FILE)
+  File "/root/Echelon/valentrix/mm/utils/helpers/wintermute.py", line 963, in write_pid_file
+    logger.error(f"Failed to write PID file: {e}")
+NameError: name 'logger' is not defined
