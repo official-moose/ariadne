@@ -29,3 +29,4 @@ LINE 4:                     FOR VALUES FROM (1758747600) TO (1758751...
 
 2025-09-24 22:44:44    [ Edith ] [ERROR] [ERROR] Runtime: current transaction is aborted, commands ignored until end of transaction block
 
+2025-09-24 22:47:56    [ Edith ] [INFO] [SHUTDOWN] Signal 2 received. Will exit after current cycle.
