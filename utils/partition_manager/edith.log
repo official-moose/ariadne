@@ -3242,3 +3242,8 @@ LINE 1: -> to string = 1758690000
 [2025-09-24 10:46:39] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_12
 [2025-09-24 10:46:39] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_13
 [2025-09-24 10:46:39] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-24 11:22:12] INFO: [PARTITION] Running partition management (cycle 13)
+[2025-09-24 11:22:12] INFO: [CREATE] Created partition tickstick_2025_09_24_12
+[2025-09-24 11:22:12] INFO: [CREATE] Created partition tickstick_2025_09_24_13
+[2025-09-24 11:22:12] INFO: [CREATE] Created partition tickstick_2025_09_24_14
+[2025-09-24 11:22:12] INFO: [PARTITION] Created 3 new partitions
