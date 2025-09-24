@@ -441,3 +441,5 @@ LINE 3:                     sigid, ts, symbol, interval,
 [2025-09-24 04:51:45] INFO: [SHUTDOWN] Received signal 2, shutting down gracefully...
 [2025-09-24 04:53:13] ERROR: [ERROR] connection already closed
 [2025-09-24 04:53:13] ERROR: [ERROR] connection already closed
+[2025-09-24 04:58:13] ERROR: [ERROR] connection already closed
+[2025-09-24 04:58:13] ERROR: [ERROR] connection already closed
