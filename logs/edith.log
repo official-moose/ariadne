@@ -16,3 +16,5 @@ LINE 4:                     FOR VALUES FROM (1758747600) TO (1758751...
 
 2025-09-24 22:44:13    [ Edith ] [ERROR] [ERROR] Runtime: current transaction is aborted, commands ignored until end of transaction block
 
+2025-09-24 22:44:44    [ Edith ] [INFO] ======================================================================
+2025-09-24 22:44:44    [ Edith ] [INFO] [INIT] EDITH starting as persistent background process
