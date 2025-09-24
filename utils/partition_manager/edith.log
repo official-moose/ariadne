@@ -3064,3 +3064,27 @@ LINE 1: -> to string = 1758690000
 [2025-09-24 03:44:04] INFO: [SIGNALS] Running signals_intel partition maintenance
 [2025-09-24 03:44:04] INFO: [CREATE] Created partition signals_intel_2025_09_24_04
 [2025-09-24 03:44:04] INFO: [CREATE] Created partition signals_intel_2025_09_24_05
+[2025-09-24 03:44:04] INFO: [CREATE] Created partition signals_intel_2025_09_24_06
+[2025-09-24 03:44:04] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-24 03:44:04] ERROR: Started drop function.
+[2025-09-24 03:44:04] ERROR: Set drop count to 0
+[2025-09-24 03:44:04] ERROR: Set cutoff time to 2025-09-23 03:44:04.435638
+[2025-09-24 03:44:04] ERROR: Selected tables from the database.
+[2025-09-24 03:44:04] WARNING: 🜁 Set partitions to [('signals_intel_2025_09_24_02', "FOR VALUES FROM ('1758679200') TO ('1758682800')"), ('signals_intel_2025_09_24_03', "FOR VALUES FROM ('1758682800') TO ('1758686400')"), ('signals_intel_2025_09_24_04', "FOR VALUES FROM ('1758686400') TO ('1758690000')"), ('signals_intel_2025_09_24_05', "FOR VALUES FROM ('1758690000') TO ('1758693600')"), ('signals_intel_2025_09_24_06', "FOR VALUES FROM ('1758693600') TO ('1758697200')")]
+[2025-09-24 03:44:04] WARNING: [TIMING] Partition query completed in 0.001s
+[2025-09-24 03:44:04] ERROR: -> to string 1758682800
+[2025-09-24 03:44:04] ERROR: -> to string as an integer 1758682800
+[2025-09-24 03:44:04] ERROR: -> datetime with integer 2025-09-24 03:00:00
+[2025-09-24 03:44:04] ERROR: -> to string 1758686400
+[2025-09-24 03:44:04] ERROR: -> to string as an integer 1758686400
+[2025-09-24 03:44:04] ERROR: -> datetime with integer 2025-09-24 04:00:00
+[2025-09-24 03:44:04] ERROR: -> to string 1758690000
+[2025-09-24 03:44:04] ERROR: -> to string as an integer 1758690000
+[2025-09-24 03:44:04] ERROR: -> datetime with integer 2025-09-24 05:00:00
+[2025-09-24 03:44:04] ERROR: -> to string 1758693600
+[2025-09-24 03:44:04] ERROR: -> to string as an integer 1758693600
+[2025-09-24 03:44:04] ERROR: -> datetime with integer 2025-09-24 06:00:00
+[2025-09-24 03:44:04] ERROR: -> to string 1758697200
+[2025-09-24 03:44:04] ERROR: -> to string as an integer 1758697200
+[2025-09-24 03:44:04] ERROR: -> datetime with integer 2025-09-24 07:00:00
+[2025-09-24 03:44:04] WARNING: [RETURN] drop_old_signals_partitions is returning.
