@@ -3498,3 +3498,6 @@ LINE 1: -> to string = 1758690000
 [2025-09-24 22:46:44] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_25_00
 [2025-09-24 22:46:44] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_25_01
 [2025-09-24 22:46:44] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-24 22:56:45] ERROR: [ERROR] Proposal sweep failed: SSL connection has been closed unexpectedly
+
+[2025-09-24 22:56:45] ERROR: [DB FATAL] Database interface error: connection already closed
