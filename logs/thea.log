@@ -1648,3 +1648,15 @@ Traceback (most recent call last):
 NameError: name 'logger' is not defined
 [2025-09-24 10:53:19] ERROR: [ERROR] connection already closed
 [2025-09-24 10:53:19] ERROR: [ERROR] connection already closed
+2025-09-24 10:54:48    [ Thea ] [INFO] ======================================================================
+2025-09-24 10:54:48    [ Thea ] [INFO] ======================================================================
+2025-09-24 10:54:48    [ Thea ] [INFO] [INIT] THEA starting as persistent background process
+2025-09-24 10:54:48    [ Thea ] [INFO] [INIT] THEA starting as persistent background process
+2025-09-24 10:54:48    [ Thea ] [INFO] [CONFIG] Capture interval: 300s
+2025-09-24 10:54:48    [ Thea ] [INFO] [CONFIG] Capture interval: 300s
+2025-09-24 10:54:48    [ Thea ] [INFO] [CONFIG] Volume range: 3,000,000 - 200,000,000 USDT
+2025-09-24 10:54:48    [ Thea ] [INFO] [CONFIG] Volume range: 3,000,000 - 200,000,000 USDT
+2025-09-24 10:54:48    [ Thea ] [INFO] [CONFIG] Minimum maturity: 7 days
+2025-09-24 10:54:48    [ Thea ] [INFO] [CONFIG] Minimum maturity: 7 days
+Traceback (most recent call last):
+  File "/root/Echelon/valentrix/mm/utils/helpers/wintermute.py", line 961, in write_pid_file
