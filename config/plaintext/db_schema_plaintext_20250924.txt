@@ -1,6 +1,6 @@
 DATABASE SCHEMA
 ==================================================
-Generated: 2025-09-24T04:31:58.081166
+Generated: 2025-09-24T23:03:11.795951
 
 TABLE LIST
 --------------------
@@ -23,29 +23,27 @@ TABLE LIST
 17. realism_history
 18. risk_metrics
 19. signals_intel
-20. signals_intel_2025_09_24_05
-21. signals_intel_2025_09_24_06
-22. signals_intel_2025_09_24_07
-23. sim_balances
-24. sim_order_cancel
-25. sim_orders
-26. sim_positions
-27. sim_trades
-28. sim_transactions
-29. symbol_info
-30. system_events
-31. system_state
-32. tax_lots
-33. tickstick
-34. tickstick_2025_09_24_05
-35. tickstick_2025_09_24_06
-36. tickstick_2025_09_24_07
-37. trades
-38. transaction_queue
-39. wallet_hold_ledger
-40. wallet_holds
+20. signals_intel_2025_09_24_23
+21. sim_balances
+22. sim_order_cancel
+23. sim_orders
+24. sim_positions
+25. sim_trades
+26. sim_transactions
+27. symbol_info
+28. system_events
+29. system_state
+30. tax_lots
+31. tickstick
+32. tickstick_2025_09_24_21
+33. tickstick_2025_09_24_22
+34. tickstick_2025_09_24_23
+35. trades
+36. transaction_queue
+37. wallet_hold_ledger
+38. wallet_holds
 
-Total: 40 tables
+Total: 38 tables
 
 ============================================================
 
@@ -600,7 +598,7 @@ INDEXES:
 
 ------------------------------------------------------------
 
-TABLE: signals_intel_2025_09_24_05
+TABLE: signals_intel_2025_09_24_23
 ==================================
 COLUMNS:
   sigid                     uuid NOT NULL
@@ -635,106 +633,14 @@ COLUMNS:
   buy_volume_ratio          double precision
 
 CONSTRAINTS:
-  signals_intel_2025_09_24_05_pkey (PRIMARY KEY)
-  2200_33559_1_not_null (CHECK)
-  2200_33559_2_not_null (CHECK)
-  2200_33559_3_not_null (CHECK)
+  signals_intel_2025_09_24_23_pkey (PRIMARY KEY)
+  2200_34477_1_not_null (CHECK)
+  2200_34477_2_not_null (CHECK)
+  2200_34477_3_not_null (CHECK)
 
 INDEXES:
-  signals_intel_2025_09_24_05_pkey
-    CREATE UNIQUE INDEX signals_intel_2025_09_24_05_pkey ON public.signals_intel_2025_09_24_05 USING btree (sigid, "timestamp")
-
-------------------------------------------------------------
-
-TABLE: signals_intel_2025_09_24_06
-==================================
-COLUMNS:
-  sigid                     uuid NOT NULL
-  timestamp                 bigint NOT NULL
-  symbol                    text NOT NULL
-  interval                  text
-  open_15m                  double precision
-  high_15m                  double precision
-  low_15m                   double precision
-  close_15m                 double precision
-  vol_15m                   double precision
-  volval_15m                double precision
-  open_1h                   double precision
-  high_1h                   double precision
-  low_1h                    double precision
-  close_1h                  double precision
-  vol_1h                    double precision
-  volval_1h                 double precision
-  bid_size_total            double precision
-  ask_size_total            double precision
-  mid_price                 double precision
-  spread_pct                double precision
-  last_price                double precision
-  buy_price                 double precision
-  sell_price                double precision
-  average_price             double precision
-  vol                       double precision
-  volval                    double precision
-  change_rate               double precision
-  avg_trade_price           double precision
-  avg_trade_size            double precision
-  buy_volume_ratio          double precision
-
-CONSTRAINTS:
-  signals_intel_2025_09_24_06_pkey (PRIMARY KEY)
-  2200_33566_1_not_null (CHECK)
-  2200_33566_2_not_null (CHECK)
-  2200_33566_3_not_null (CHECK)
-
-INDEXES:
-  signals_intel_2025_09_24_06_pkey
-    CREATE UNIQUE INDEX signals_intel_2025_09_24_06_pkey ON public.signals_intel_2025_09_24_06 USING btree (sigid, "timestamp")
-
-------------------------------------------------------------
-
-TABLE: signals_intel_2025_09_24_07
-==================================
-COLUMNS:
-  sigid                     uuid NOT NULL
-  timestamp                 bigint NOT NULL
-  symbol                    text NOT NULL
-  interval                  text
-  open_15m                  double precision
-  high_15m                  double precision
-  low_15m                   double precision
-  close_15m                 double precision
-  vol_15m                   double precision
-  volval_15m                double precision
-  open_1h                   double precision
-  high_1h                   double precision
-  low_1h                    double precision
-  close_1h                  double precision
-  vol_1h                    double precision
-  volval_1h                 double precision
-  bid_size_total            double precision
-  ask_size_total            double precision
-  mid_price                 double precision
-  spread_pct                double precision
-  last_price                double precision
-  buy_price                 double precision
-  sell_price                double precision
-  average_price             double precision
-  vol                       double precision
-  volval                    double precision
-  change_rate               double precision
-  avg_trade_price           double precision
-  avg_trade_size            double precision
-  buy_volume_ratio          double precision
-
-CONSTRAINTS:
-  signals_intel_2025_09_24_07_pkey (PRIMARY KEY)
-  2200_33573_1_not_null (CHECK)
-  2200_33573_2_not_null (CHECK)
-  2200_33573_3_not_null (CHECK)
-
-INDEXES:
-  signals_intel_2025_09_24_07_pkey
-    CREATE UNIQUE INDEX signals_intel_2025_09_24_07_pkey ON public.signals_intel_2025_09_24_07 USING btree (sigid, "timestamp")
+  signals_intel_2025_09_24_23_pkey
+    CREATE UNIQUE INDEX signals_intel_2025_09_24_23_pkey ON public.signals_intel_2025_09_24_23 USING btree (sigid, "timestamp")
 
 ------------------------------------------------------------
 
@@ -1052,7 +958,7 @@ INDEXES:
 
 ------------------------------------------------------------
 
-TABLE: tickstick_2025_09_24_05
+TABLE: tickstick_2025_09_24_21
 ==============================
 COLUMNS:
   id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
@@ -1077,17 +983,17 @@ COLUMNS:
   maker_coefficient         numeric
 
 CONSTRAINTS:
-  2200_33538_1_not_null (CHECK)
-  2200_33538_2_not_null (CHECK)
-  2200_33538_3_not_null (CHECK)
+  2200_34278_1_not_null (CHECK)
+  2200_34278_2_not_null (CHECK)
+  2200_34278_3_not_null (CHECK)
 
 INDEXES:
-  tickstick_2025_09_24_05_symbol_timestamp_idx
-    CREATE INDEX tickstick_2025_09_24_05_symbol_timestamp_idx ON public.tickstick_2025_09_24_05 USING btree (symbol, "timestamp" DESC)
+  tickstick_2025_09_24_21_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_24_21_symbol_timestamp_idx ON public.tickstick_2025_09_24_21 USING btree (symbol, "timestamp" DESC)
 
 ------------------------------------------------------------
 
-TABLE: tickstick_2025_09_24_06
+TABLE: tickstick_2025_09_24_22
 ==============================
 COLUMNS:
   id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
@@ -1112,17 +1018,17 @@ COLUMNS:
   maker_coefficient         numeric
 
 CONSTRAINTS:
-  2200_33545_1_not_null (CHECK)
-  2200_33545_2_not_null (CHECK)
-  2200_33545_3_not_null (CHECK)
+  2200_34324_1_not_null (CHECK)
+  2200_34324_2_not_null (CHECK)
+  2200_34324_3_not_null (CHECK)
 
 INDEXES:
-  tickstick_2025_09_24_06_symbol_timestamp_idx
-    CREATE INDEX tickstick_2025_09_24_06_symbol_timestamp_idx ON public.tickstick_2025_09_24_06 USING btree (symbol, "timestamp" DESC)
+  tickstick_2025_09_24_22_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_24_22_symbol_timestamp_idx ON public.tickstick_2025_09_24_22 USING btree (symbol, "timestamp" DESC)
 
 ------------------------------------------------------------
 
-TABLE: tickstick_2025_09_24_07
+TABLE: tickstick_2025_09_24_23
 ==============================
 COLUMNS:
   id                        integer NOT NULL DEFAULT nextval('tickstick_id_seq'::regclass)
@@ -1147,13 +1053,13 @@ COLUMNS:
   maker_coefficient         numeric
 
 CONSTRAINTS:
-  2200_33552_1_not_null (CHECK)
-  2200_33552_2_not_null (CHECK)
-  2200_33552_3_not_null (CHECK)
+  2200_34367_1_not_null (CHECK)
+  2200_34367_2_not_null (CHECK)
+  2200_34367_3_not_null (CHECK)
 
 INDEXES:
-  tickstick_2025_09_24_07_symbol_timestamp_idx
-    CREATE INDEX tickstick_2025_09_24_07_symbol_timestamp_idx ON public.tickstick_2025_09_24_07 USING btree (symbol, "timestamp" DESC)
+  tickstick_2025_09_24_23_symbol_timestamp_idx
+    CREATE INDEX tickstick_2025_09_24_23_symbol_timestamp_idx ON public.tickstick_2025_09_24_23 USING btree (symbol, "timestamp" DESC)
 
 ------------------------------------------------------------
 
