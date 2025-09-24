@@ -42770,3 +42770,5 @@
 2025-09-24 22:46:35,171 ERROR laurel: Failed to check heartbeats: 'default'
 2025-09-24 22:47:05,197 ERROR laurel: Failed to check heartbeats: 'default'
 2025-09-24 22:47:35,229 ERROR laurel: Failed to check heartbeats: 'default'
+2025-09-24 22:48:05,266 ERROR laurel: Failed to check heartbeats: SSL connection has been closed unexpectedly
+
