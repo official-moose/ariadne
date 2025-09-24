@@ -3219,3 +3219,4 @@ LINE 4:                 FOR VALUES FROM (1758661200) TO (1758664800)
 [2025-09-24 01:46:34] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_03
 [2025-09-24 01:46:34] INFO: [SIGNALS CREATE] Created partition signals_intel_2025_09_24_04
 [2025-09-24 01:46:34] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-24 02:46:35] INFO: [PARTITION] Running partition management (cycle 43)
