@@ -434,3 +434,5 @@ LINE 3:                     sigid, ts, symbol, interval,
                                    ^
 
 [2025-09-24 04:48:02] WARNING: [SKIP] PIN-USDT: float() argument must be a string or a real number, not 'NoneType'
+[2025-09-24 04:48:13] ERROR: [ERROR] connection already closed
+[2025-09-24 04:48:13] ERROR: [ERROR] connection already closed
