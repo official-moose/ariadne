@@ -2130,3 +2130,14 @@ Traceback (most recent call last):
 NameError: name 'logger' is not defined
 [2025-09-24 11:13:19] ERROR: [ERROR] connection already closed
 [2025-09-24 11:13:19] ERROR: [ERROR] connection already closed
+2025-09-24 11:14:35    [ Thea ] [INFO] ======================================================================
+2025-09-24 11:14:35    [ Thea ] [INFO] ======================================================================
+2025-09-24 11:14:35    [ Thea ] [INFO] [INIT] THEA starting as persistent background process
+2025-09-24 11:14:35    [ Thea ] [INFO] [INIT] THEA starting as persistent background process
+2025-09-24 11:14:35    [ Thea ] [INFO] [CONFIG] Capture interval: 300s
+2025-09-24 11:14:35    [ Thea ] [INFO] [CONFIG] Capture interval: 300s
+2025-09-24 11:14:35    [ Thea ] [INFO] [CONFIG] Volume range: 3,000,000 - 200,000,000 USDT
+2025-09-24 11:14:35    [ Thea ] [INFO] [CONFIG] Volume range: 3,000,000 - 200,000,000 USDT
+2025-09-24 11:14:35    [ Thea ] [INFO] [CONFIG] Minimum maturity: 7 days
+2025-09-24 11:14:35    [ Thea ] [INFO] [CONFIG] Minimum maturity: 7 days
+2025-09-24 11:14:35    [ Wintermute ] [INFO] PID 3423983 written to /root/Echelon/valentrix/mm/config/pid/thea.pid
