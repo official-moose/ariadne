@@ -2604,3 +2604,66 @@ LINE 4:                 FOR VALUES FROM (1758661200) TO (1758664800)
 [2025-09-24 00:49:54] ERROR: Set drop count to 0
 [2025-09-24 00:49:54] ERROR: Set cutoff time to 2025-09-23 00:49:54.836589
 [2025-09-24 00:49:54] ERROR: [ERROR] Cycle error: local variable 'partition_name' referenced before assignment
+[2025-09-24 01:08:00] INFO: ======================================================================
+[2025-09-24 01:08:00] INFO: [INIT] EDITH starting as persistent background process
+[2025-09-24 01:08:00] INFO: [INIT] Database connection established
+[2025-09-24 01:08:00] INFO: [PARTITION] Running partition management (cycle 1)
+[2025-09-24 01:08:00] INFO: [CREATE] Created partition tickstick_2025_09_24_02
+[2025-09-24 01:08:00] INFO: [CREATE] Created partition tickstick_2025_09_24_03
+[2025-09-24 01:08:00] INFO: [CREATE] Created partition tickstick_2025_09_24_04
+[2025-09-24 01:08:00] INFO: [PARTITION] Created 3 new partitions
+[2025-09-24 01:08:00] INFO: [DROP] Dropped old partition tickstick_2025_09_23_23
+[2025-09-24 01:08:00] INFO: [PARTITION] Dropped 1 old partitions
+[2025-09-24 01:08:00] INFO: [SIGNALS] Running signals_intel partition maintenance
+[2025-09-24 01:08:00] WARNING: Start time set to -> 1758679200
+[2025-09-24 01:08:00] WARNING: End time set to -> 1758682800
+[2025-09-24 01:08:00] WARNING: Partition name set to -> signals_intel_2025_09_24_02
+[2025-09-24 01:08:00] WARNING: try->Start time set to -> 1758679200
+[2025-09-24 01:08:00] WARNING: try->End time set to -> 1758682800
+[2025-09-24 01:08:00] INFO: [CREATE] Created partition signals_intel_2025_09_24_02
+[2025-09-24 01:08:00] WARNING: Start time set to -> 1758682800
+[2025-09-24 01:08:00] WARNING: End time set to -> 1758686400
+[2025-09-24 01:08:00] WARNING: Partition name set to -> signals_intel_2025_09_24_03
+[2025-09-24 01:08:00] WARNING: try->Start time set to -> 1758682800
+[2025-09-24 01:08:00] WARNING: try->End time set to -> 1758686400
+[2025-09-24 01:08:00] INFO: [CREATE] Created partition signals_intel_2025_09_24_03
+[2025-09-24 01:08:00] WARNING: Start time set to -> 1758686400
+[2025-09-24 01:08:00] WARNING: End time set to -> 1758690000
+[2025-09-24 01:08:00] WARNING: Partition name set to -> signals_intel_2025_09_24_04
+[2025-09-24 01:08:00] WARNING: try->Start time set to -> 1758686400
+[2025-09-24 01:08:00] WARNING: try->End time set to -> 1758690000
+[2025-09-24 01:08:00] INFO: [CREATE] Created partition signals_intel_2025_09_24_04
+[2025-09-24 01:08:00] INFO: [SIGNALS] Created 3 new partitions
+[2025-09-24 01:08:00] ERROR: Started drop function.
+[2025-09-24 01:08:00] ERROR: Set drop count to 0
+[2025-09-24 01:08:00] ERROR: Set cutoff time to 2025-09-23 01:08:00.097977
+[2025-09-24 01:08:00] ERROR: Selected tables from the database.
+[2025-09-24 01:08:00] ERROR: Set partitions to [('signals_intel_2025_09_23_22', "FOR VALUES FROM ('1758664800') TO ('1758668400')"), ('signals_intel_2025_09_23_23', "FOR VALUES FROM ('1758668400') TO ('1758672000')"), ('signals_intel_2025_09_24_00', "FOR VALUES FROM ('1758672000') TO ('1758675600')"), ('signals_intel_2025_09_24_01', "FOR VALUES FROM ('1758675600') TO ('1758679200')"), ('signals_intel_2025_09_24_02', "FOR VALUES FROM ('1758679200') TO ('1758682800')"), ('signals_intel_2025_09_24_03', "FOR VALUES FROM ('1758682800') TO ('1758686400')"), ('signals_intel_2025_09_24_04', "FOR VALUES FROM ('1758686400') TO ('1758690000')")]
+[2025-09-24 01:08:00] ERROR: [ERROR] Failed to parse partition signals_intel_2025_09_23_22: syntax error at or near "->"
+LINE 1: -> to string = 1758668400
+        ^
+
+[2025-09-24 01:08:00] ERROR: [ERROR] Failed to parse partition signals_intel_2025_09_23_23: syntax error at or near "->"
+LINE 1: -> to string = 1758672000
+        ^
+
+[2025-09-24 01:08:00] ERROR: [ERROR] Failed to parse partition signals_intel_2025_09_24_00: syntax error at or near "->"
+LINE 1: -> to string = 1758675600
+        ^
+
+[2025-09-24 01:08:00] ERROR: [ERROR] Failed to parse partition signals_intel_2025_09_24_01: syntax error at or near "->"
+LINE 1: -> to string = 1758679200
+        ^
+
+[2025-09-24 01:08:00] ERROR: [ERROR] Failed to parse partition signals_intel_2025_09_24_02: syntax error at or near "->"
+LINE 1: -> to string = 1758682800
+        ^
+
+[2025-09-24 01:08:00] ERROR: [ERROR] Failed to parse partition signals_intel_2025_09_24_03: syntax error at or near "->"
+LINE 1: -> to string = 1758686400
+        ^
+
+[2025-09-24 01:08:00] ERROR: [ERROR] Failed to parse partition signals_intel_2025_09_24_04: syntax error at or near "->"
+LINE 1: -> to string = 1758690000
+        ^
+
