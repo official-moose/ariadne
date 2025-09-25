@@ -77,3 +77,13 @@ LINE 4:                     FOR VALUES FROM (1758754800) TO (1758758...
 2025-09-25 01:07:31    [ Edith ] [INFO] [CREATE] signals_intel_2025_09_25_00
 2025-09-25 01:07:31    [ Edith ] [ERROR] [ERROR] Dropping signals_intel_2025_09_24_18: invalid literal for int() with base 10: "'1758772800'"
 2025-09-25 01:07:31    [ Edith ] [ERROR] [ERROR] Dropping signals_intel_2025_09_25_00: invalid literal for int() with base 10: "'1758794400'"
+2025-09-25 02:07:31    [ Edith ] [INFO] [PARTITION] Running tickstick maintenance...
+2025-09-25 02:07:31    [ Edith ] [INFO] [CREATE] tickstick_2025_09_25_00
+2025-09-25 02:07:31    [ Edith ] [ERROR] [ERROR] Dropping tickstick_2025_09_24_20: invalid literal for int() with base 10: "'1758762000'"
+2025-09-25 02:07:31    [ Edith ] [ERROR] [ERROR] Dropping tickstick_2025_09_25_00: invalid literal for int() with base 10: "'1758776400'"
+2025-09-25 02:07:31    [ Edith ] [ERROR] [ERROR] Dropping tickstick_2025_09_24_21: invalid literal for int() with base 10: "'1758751200'"
+2025-09-25 02:07:31    [ Edith ] [ERROR] [ERROR] Dropping tickstick_2025_09_24_22: invalid literal for int() with base 10: "'1758754800'"
+2025-09-25 02:07:31    [ Edith ] [ERROR] [ERROR] Dropping tickstick_2025_09_24_23: invalid literal for int() with base 10: "'1758758400'"
+2025-09-25 02:07:31    [ Edith ] [INFO] [PARTITION] Running signals_intel maintenance...
+2025-09-25 02:07:31    [ Edith ] [ERROR] [ERROR] Dropping signals_intel_2025_09_24_18: invalid literal for int() with base 10: "'1758772800'"
+2025-09-25 02:07:31    [ Edith ] [ERROR] [ERROR] Dropping signals_intel_2025_09_25_00: invalid literal for int() with base 10: "'1758794400'"
