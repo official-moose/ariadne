@@ -3078,3 +3078,5 @@ NameError: name 'logger' is not defined
 [2025-09-25 01:48:33] ERROR: [ERROR] connection already closed
 [2025-09-25 01:53:33] ERROR: [ERROR] connection already closed
 [2025-09-25 01:53:33] ERROR: [ERROR] connection already closed
+[2025-09-25 01:58:33] ERROR: [ERROR] connection already closed
+[2025-09-25 01:58:33] ERROR: [ERROR] connection already closed
