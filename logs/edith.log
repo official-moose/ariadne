@@ -57,3 +57,12 @@ LINE 4:                     FOR VALUES FROM (1758751200) TO (1758754...
 
 2025-09-24 23:07:30    [ Edith ] [ERROR] [ERROR] Runtime: current transaction is aborted, commands ignored until end of transaction block
 
+2025-09-25 00:07:30    [ Edith ] [INFO] [PARTITION] Running tickstick maintenance...
+2025-09-25 00:07:30    [ Edith ] [ERROR] [ERROR] Creating tickstick_2025_09_24_19: partition "tickstick_2025_09_24_19" would overlap partition "tickstick_2025_09_24_23"
+LINE 4:                     FOR VALUES FROM (1758754800) TO (1758758...
+                                             ^
+
+2025-09-25 00:07:30    [ Edith ] [ERROR] [ERROR] Creating tickstick_2025_09_24_20: current transaction is aborted, commands ignored until end of transaction block
+
+2025-09-25 00:07:30    [ Edith ] [ERROR] [ERROR] Runtime: current transaction is aborted, commands ignored until end of transaction block
+
